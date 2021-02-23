@@ -2,7 +2,14 @@
 
 **(Leia até o final)**
 
-Este desafio consiste em consultar a variação do preço de um ativo a sua escolha nos últimos 30 pregões.
+Este desafio consiste em consultar a variação do preço de um ativo a sua escolha nos últimos 30 pregões. Você deverá apresentar o percentual de variação de preço de um dia para o outro e o percentual desde o primeiro pregão apresentado.
+
+| Dia   | Data          |  Valor    | Variação em relaçào a D-1     | Variação em relação a primeira data
+|-      | -             | -         | -                             | - 
+|2      |  01/01/2021   |  R$ 1,00  | -                             | -
+|3      |  02/01/2021   |  R$ 1,10  | 10%                           | 10%
+|4      |  03/01/2021   |  R$ 1,05  | -4,54%                        | 5%
+|5      |  04/01/2021   |  R$ 1,90  | 80,95%                        | 90%
 
 Para este desafio, iremos utilizar a API do Yahoo Finance https://finance.yahoo.com/ 
 
@@ -34,6 +41,8 @@ Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para 
 3. Implementar uma tela em linguagem nativa ou flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
 4. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação.
 5. Disponibilizar seu app junto com seu código aqui no Github
+
+Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API em vez de utilizar a API do Yahoo Finance. Fica a sua escolha. :smirk:
 
 ## Importante
 ### Sobre a API

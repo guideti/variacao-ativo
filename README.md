@@ -50,3 +50,6 @@ Os valores estrão estruturados em vetores, desta forma, você precisará casar 
 
 ### Sobre a entrega
 Use sua criatividade para estruturar sua solução. Importante manter uma documentação clara de como deveremos proceder para executar sua aplicação, sendo assim, importante disponibilizar os scripts de banco de dados e demais recursos utilizados e como utilizá-los.
+
+#### ATENÇÃO
+:heavy_exclamation_mark: Seu código deverá ser disponibilizado em um repositório no Github

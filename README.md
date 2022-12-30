@@ -55,16 +55,16 @@ Os valores estrão estruturados em vetores, desta forma, você precisará casar 
 #### ATENÇÃO
 :heavy_exclamation_mark: Seu código deverá ser disponibilizado em um repositório no Github
 
-#### Observações
+### Observações
 
-### Projeto desenvolvido Flutter utilizando:
+#### Projeto desenvolvido Flutter utilizando:
 	
 - Clean Architecture como padrão de arquitetura .
 - GetIT para injeção de dependência.
 - MobX para gerenciamento de estado.
 - Dio para camada Rest.
 
-### Feature:
+#### Feature:
 
 - Tela simples com os seguintes eventos:
 1 - Botão para apresentação da tabela com variação do preço do ativo nos últimos 30 pregões .

@@ -17,7 +17,6 @@
 Por está com o tempo apertado, não deu para incluir:
 
 - I18n para gerenciamento de strings.
-- Either para controle de dados/erros entre as camadas.
-- Definir alguns procedimentos em Extensions
-- Testes
+- Definir alguns procedimentos em Extensions.
+- Testes.
 - Melhorias no layout/design.

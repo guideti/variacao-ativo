@@ -1,3 +1,6 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../core/domain/error.dart';
 import '../../domain/repository/asset_change_repository_interface.dart';
 import '../datasource/asset_change_datasource_interface.dart';
 import '../model/chart_response.dart';
@@ -8,7 +11,7 @@ class AssetChangeRepository implements IAssetChangeRepository {
   AssetChangeRepository(this.assetChangeDatasource);
 
   @override
-  Future<ChartResponse> getAssetChange() async {
-    return assetChangeDatasource.getAssetChange();
+  Future<Either<Failure, ChartResponse>> getAssetChange() async {
+    return Right(await assetChangeDatasource.getAssetChange());
   }
 }

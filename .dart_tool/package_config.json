@@ -134,6 +134,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "dartz",
+      "rootUri": "file:///Users/user/workspace/Flutter/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/dartz-0.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "dio",
       "rootUri": "file:///Users/user/workspace/Flutter/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/dio-4.0.6",
       "packageUri": "lib/",
@@ -446,7 +452,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-12-30T08:16:48.021590Z",
+  "generated": "2023-01-02T18:33:18.654537Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

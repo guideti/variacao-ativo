@@ -5,6 +5,7 @@ import 'package:mobx/mobx.dart';
 
 import '../../../presentation/util/asset_change_table.dart';
 import '../../../presentation/util/price_point.dart';
+import '../../data/model/chart.dart';
 import '../../domain/usecase/get_asset_change_usecase_interface.dart';
 
 part 'asset_change_controller.g.dart';
@@ -39,14 +40,17 @@ abstract class _AssetChangeController with Store {
   Future<void> fetchChartData() async {
     showLoadingDialog();
 
-    ChartResponse chartResponse = await getAssetchangeUsecase();
-    final resultResponse = chartResponse.chart.chartResult[0];
+    final response = await getAssetchangeUsecase();
+    final chartResponse =
+        response.fold((l) => ChartResponse(Chart([])), (r) => r);
+
+    final chartResult = chartResponse.chart.chartResult[0];
 
     // extract the last 30 records
-    List<double> prices = resultResponse.getLastestPrices(limit: 30);
+    List<double> prices = chartResult.getLastestPrices(limit: 30);
 
     // extract the last 30 records
-    final currentTimes = resultResponse.getLastestTimes(limit: 30);
+    final currentTimes = chartResult.getLastestTimes(limit: 30);
 
     // convert timestamp for datetime
     List<DateTime> dates = [];

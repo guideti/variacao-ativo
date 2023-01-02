@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-// ignore: depend_on_referenced_packages
 import 'package:mobx/mobx.dart' as mobx;
 import 'package:mobx/mobx.dart';
 

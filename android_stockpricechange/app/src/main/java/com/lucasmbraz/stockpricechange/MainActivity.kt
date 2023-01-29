@@ -35,25 +35,44 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainContent() {
+    val mContext = LocalContext.current
     Scaffold(
         topBar = { TopAppBar(title = { Text("Stock Price Change") }) },
         content = { padding ->
             Column(
-                modifier = Modifier.padding(padding).fillMaxSize(),
+                modifier = Modifier
+                    .padding(padding)
+                    .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                AppButton(title = "Historical Data")
+                AppButton(
+                    title = "Historical Data",
+                    onClick = {
+                        mContext.startActivity(
+                            FlutterStockPriceActivity.withVisualisationType(
+                                mContext,
+                                FlutterApi.VisualisationType.HISTORICAL
+                            )
+                        )
+                    })
                 Spacer(modifier = Modifier.padding(16.dp))
-                AppButton(title = "Chart")
+                AppButton(title = "Chart", onClick = {
+                    mContext.startActivity(
+                        FlutterStockPriceActivity.withVisualisationType(
+                            mContext,
+                            FlutterApi.VisualisationType.CHART
+                        )
+                    )
+                })
             }
         }
     )
 }
 
 @Composable
-fun AppButton(title: String) {
-    Button(onClick = { /*TODO*/ }) {
+fun AppButton(title: String, onClick: () -> Unit) {
+    Button(onClick = onClick) {
         Text(title)
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
 import com.lucasmbraz.stockpricechange.ui.theme.StockPriceChangeTheme
 import io.flutter.embedding.android.FlutterActivity
 
@@ -43,7 +44,11 @@ fun LaunchFlutterButton() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = { mContext.startActivity(FlutterActivity.createDefaultIntent(mContext)) }) {
+        Button(onClick = {
+            mContext.startActivity(
+                FlutterActivity.withCachedEngine(ENGINE_ID).build(mContext)
+            )
+        }) {
             Text("Launch Flutter Activity")
         }
     }

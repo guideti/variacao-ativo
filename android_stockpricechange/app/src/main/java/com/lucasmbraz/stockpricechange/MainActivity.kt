@@ -3,18 +3,14 @@ package com.lucasmbraz.stockpricechange
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
 import com.lucasmbraz.stockpricechange.ui.theme.StockPriceChangeTheme
 import io.flutter.embedding.android.FlutterActivity
@@ -24,15 +20,41 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StockPriceChangeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    LaunchFlutterButton()
-                }
+//                // A surface container using the 'background' color from the theme
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colors.background
+//                ) {
+//                    LaunchFlutterButton()
+//                }
+                MainContent()
             }
         }
+    }
+}
+
+@Composable
+fun MainContent() {
+    Scaffold(
+        topBar = { TopAppBar(title = { Text("Stock Price Change") }) },
+        content = { padding ->
+            Column(
+                modifier = Modifier.padding(padding).fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                AppButton(title = "Historical Data")
+                Spacer(modifier = Modifier.padding(16.dp))
+                AppButton(title = "Chart")
+            }
+        }
+    )
+}
+
+@Composable
+fun AppButton(title: String) {
+    Button(onClick = { /*TODO*/ }) {
+        Text(title)
     }
 }
 
@@ -58,6 +80,6 @@ fun LaunchFlutterButton() {
 @Composable
 fun DefaultPreview() {
     StockPriceChangeTheme {
-        LaunchFlutterButton()
+        MainContent()
     }
 }

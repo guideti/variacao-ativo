@@ -5,12 +5,11 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
 rootProject.name = "Stock Price Change"
 include ':app'
+// Flutter Module Setup
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir,
+        '../flutter_module_stockpricechange/.android/include_flutter.groovy'
+))

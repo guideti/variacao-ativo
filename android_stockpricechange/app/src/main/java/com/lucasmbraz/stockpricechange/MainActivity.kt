@@ -13,8 +13,10 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.lucasmbraz.stockpricechange.ui.theme.StockPriceChangeTheme
+import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +37,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LaunchFlutterButton() {
+    val mContext = LocalContext.current
+
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { mContext.startActivity(FlutterActivity.createDefaultIntent(mContext)) }) {
             Text("Launch Flutter Activity")
         }
     }

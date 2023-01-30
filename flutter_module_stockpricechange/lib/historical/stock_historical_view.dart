@@ -15,8 +15,17 @@ class StockHistoricalView extends StatelessWidget {
           initial: () => Container(),
           loading: () => const Text('Loading'),
           success: (historicalItems) {
-            print(historicalItems);
-            return const Text('Success');
+            return ListView.builder(
+              itemCount: historicalItems.length,
+              itemBuilder: (context, index) {
+                final item = historicalItems[index];
+                return ListTile(
+                  title: Text("Price: R\$${item.openPrice.toStringAsFixed(2)}"),
+                  subtitle: Text(
+                      "D1: ${item.dayOneChange == null ? '-' : (item.dayOneChange! * 100).toStringAsFixed(2)} \t\t Previous: ${item.previousDayChange == null ? '-' : (item.previousDayChange! * 100).toStringAsFixed(2)}"),
+                );
+              },
+            );
           },
           failure: () => const Text('Failure'),
         );

@@ -10,7 +10,7 @@ class YahooFinanceApiClient {
 
   Future<Chart> fetchStockData() async {
     final stockData = await _dio.get('/chart/$_assetName', queryParameters: {
-      'period1': 1672172319,
+      'period1': 1674591519,
       'period2': 1674850719,
       'interval': '1d',
       'events': 'history',

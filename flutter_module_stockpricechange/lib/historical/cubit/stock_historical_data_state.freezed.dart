@@ -20,7 +20,7 @@ mixin _$StockHistoricalDataState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<HistoricalDataItem> items) success,
     required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$StockHistoricalDataState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<HistoricalDataItem> items)? success,
     TResult? Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$StockHistoricalDataState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<HistoricalDataItem> items)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<HistoricalDataItem> items) success,
     required TResult Function() failure,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<HistoricalDataItem> items)? success,
     TResult? Function()? failure,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<HistoricalDataItem> items)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -239,7 +239,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<HistoricalDataItem> items) success,
     required TResult Function() failure,
   }) {
     return loading();
@@ -250,7 +250,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<HistoricalDataItem> items)? success,
     TResult? Function()? failure,
   }) {
     return loading?.call();
@@ -261,7 +261,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<HistoricalDataItem> items)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -317,6 +317,8 @@ abstract class _Loading implements StockHistoricalDataState {
 abstract class _$$_SucessCopyWith<$Res> {
   factory _$$_SucessCopyWith(_$_Sucess value, $Res Function(_$_Sucess) then) =
       __$$_SucessCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<HistoricalDataItem> items});
 }
 
 /// @nodoc
@@ -325,36 +327,66 @@ class __$$_SucessCopyWithImpl<$Res>
     implements _$$_SucessCopyWith<$Res> {
   __$$_SucessCopyWithImpl(_$_Sucess _value, $Res Function(_$_Sucess) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$_Sucess(
+      null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<HistoricalDataItem>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Sucess implements _Sucess {
-  const _$_Sucess();
+  const _$_Sucess(final List<HistoricalDataItem> items) : _items = items;
+
+  final List<HistoricalDataItem> _items;
+  @override
+  List<HistoricalDataItem> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'StockHistoricalDataState.success()';
+    return 'StockHistoricalDataState.success(items: $items)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Sucess);
+        (other.runtimeType == runtimeType &&
+            other is _$_Sucess &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SucessCopyWith<_$_Sucess> get copyWith =>
+      __$$_SucessCopyWithImpl<_$_Sucess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<HistoricalDataItem> items) success,
     required TResult Function() failure,
   }) {
-    return success();
+    return success(items);
   }
 
   @override
@@ -362,10 +394,10 @@ class _$_Sucess implements _Sucess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<HistoricalDataItem> items)? success,
     TResult? Function()? failure,
   }) {
-    return success?.call();
+    return success?.call(items);
   }
 
   @override
@@ -373,12 +405,12 @@ class _$_Sucess implements _Sucess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<HistoricalDataItem> items)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(items);
     }
     return orElse();
   }
@@ -422,7 +454,12 @@ class _$_Sucess implements _Sucess {
 }
 
 abstract class _Sucess implements StockHistoricalDataState {
-  const factory _Sucess() = _$_Sucess;
+  const factory _Sucess(final List<HistoricalDataItem> items) = _$_Sucess;
+
+  List<HistoricalDataItem> get items;
+  @JsonKey(ignore: true)
+  _$$_SucessCopyWith<_$_Sucess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -464,7 +501,7 @@ class _$_Failure implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(List<HistoricalDataItem> items) success,
     required TResult Function() failure,
   }) {
     return failure();
@@ -475,7 +512,7 @@ class _$_Failure implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(List<HistoricalDataItem> items)? success,
     TResult? Function()? failure,
   }) {
     return failure?.call();
@@ -486,7 +523,7 @@ class _$_Failure implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(List<HistoricalDataItem> items)? success,
     TResult Function()? failure,
     required TResult orElse(),
   }) {

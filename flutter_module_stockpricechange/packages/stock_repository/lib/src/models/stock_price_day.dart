@@ -5,7 +5,7 @@ part 'stock_price_day.freezed.dart';
 @freezed
 class StockPriceDay with _$StockPriceDay {
   factory StockPriceDay({
-    required DateTime date,
+    required int timestamp,
     required double open,
   }) = _StockPriceDay;
 }

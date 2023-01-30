@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StockPriceDay {
-  DateTime get date => throw _privateConstructorUsedError;
+  int get timestamp => throw _privateConstructorUsedError;
   double get open => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $StockPriceDayCopyWith<$Res> {
           StockPriceDay value, $Res Function(StockPriceDay) then) =
       _$StockPriceDayCopyWithImpl<$Res, StockPriceDay>;
   @useResult
-  $Res call({DateTime date, double open});
+  $Res call({int timestamp, double open});
 }
 
 /// @nodoc
@@ -46,14 +46,14 @@ class _$StockPriceDayCopyWithImpl<$Res, $Val extends StockPriceDay>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
+    Object? timestamp = null,
     Object? open = null,
   }) {
     return _then(_value.copyWith(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
       open: null == open
           ? _value.open
           : open // ignore: cast_nullable_to_non_nullable
@@ -70,7 +70,7 @@ abstract class _$$_StockPriceDayCopyWith<$Res>
       __$$_StockPriceDayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime date, double open});
+  $Res call({int timestamp, double open});
 }
 
 /// @nodoc
@@ -84,14 +84,14 @@ class __$$_StockPriceDayCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
+    Object? timestamp = null,
     Object? open = null,
   }) {
     return _then(_$_StockPriceDay(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
       open: null == open
           ? _value.open
           : open // ignore: cast_nullable_to_non_nullable
@@ -103,16 +103,16 @@ class __$$_StockPriceDayCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StockPriceDay implements _StockPriceDay {
-  _$_StockPriceDay({required this.date, required this.open});
+  _$_StockPriceDay({required this.timestamp, required this.open});
 
   @override
-  final DateTime date;
+  final int timestamp;
   @override
   final double open;
 
   @override
   String toString() {
-    return 'StockPriceDay(date: $date, open: $open)';
+    return 'StockPriceDay(timestamp: $timestamp, open: $open)';
   }
 
   @override
@@ -120,12 +120,13 @@ class _$_StockPriceDay implements _StockPriceDay {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StockPriceDay &&
-            (identical(other.date, date) || other.date == date) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
             (identical(other.open, open) || other.open == open));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, date, open);
+  int get hashCode => Object.hash(runtimeType, timestamp, open);
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +137,11 @@ class _$_StockPriceDay implements _StockPriceDay {
 
 abstract class _StockPriceDay implements StockPriceDay {
   factory _StockPriceDay(
-      {required final DateTime date,
+      {required final int timestamp,
       required final double open}) = _$_StockPriceDay;
 
   @override
-  DateTime get date;
+  int get timestamp;
   @override
   double get open;
   @override

@@ -14,7 +14,10 @@ class StockHistoricalView extends StatelessWidget {
         return state.when(
           initial: () => Container(),
           loading: () => const Text('Loading'),
-          success: () => const Text('Success'),
+          success: (historicalItems) {
+            print(historicalItems);
+            return const Text('Success');
+          },
           failure: () => const Text('Failure'),
         );
       }),

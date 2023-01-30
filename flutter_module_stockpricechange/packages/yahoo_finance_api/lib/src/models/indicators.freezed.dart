@@ -20,7 +20,7 @@ Indicators _$IndicatorsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Indicators {
-  Quote get quote => throw _privateConstructorUsedError;
+  List<Quote> get quote => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +34,7 @@ abstract class $IndicatorsCopyWith<$Res> {
           Indicators value, $Res Function(Indicators) then) =
       _$IndicatorsCopyWithImpl<$Res, Indicators>;
   @useResult
-  $Res call({Quote quote});
-
-  $QuoteCopyWith<$Res> get quote;
+  $Res call({List<Quote> quote});
 }
 
 /// @nodoc
@@ -58,16 +56,8 @@ class _$IndicatorsCopyWithImpl<$Res, $Val extends Indicators>
       quote: null == quote
           ? _value.quote
           : quote // ignore: cast_nullable_to_non_nullable
-              as Quote,
+              as List<Quote>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $QuoteCopyWith<$Res> get quote {
-    return $QuoteCopyWith<$Res>(_value.quote, (value) {
-      return _then(_value.copyWith(quote: value) as $Val);
-    });
   }
 }
 
@@ -79,10 +69,7 @@ abstract class _$$_IndicatorsCopyWith<$Res>
       __$$_IndicatorsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Quote quote});
-
-  @override
-  $QuoteCopyWith<$Res> get quote;
+  $Res call({List<Quote> quote});
 }
 
 /// @nodoc
@@ -100,9 +87,9 @@ class __$$_IndicatorsCopyWithImpl<$Res>
   }) {
     return _then(_$_Indicators(
       quote: null == quote
-          ? _value.quote
+          ? _value._quote
           : quote // ignore: cast_nullable_to_non_nullable
-              as Quote,
+              as List<Quote>,
     ));
   }
 }
@@ -110,13 +97,18 @@ class __$$_IndicatorsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Indicators implements _Indicators {
-  _$_Indicators({required this.quote});
+  _$_Indicators({required final List<Quote> quote}) : _quote = quote;
 
   factory _$_Indicators.fromJson(Map<String, dynamic> json) =>
       _$$_IndicatorsFromJson(json);
 
+  final List<Quote> _quote;
   @override
-  final Quote quote;
+  List<Quote> get quote {
+    if (_quote is EqualUnmodifiableListView) return _quote;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_quote);
+  }
 
   @override
   String toString() {
@@ -128,12 +120,13 @@ class _$_Indicators implements _Indicators {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Indicators &&
-            (identical(other.quote, quote) || other.quote == quote));
+            const DeepCollectionEquality().equals(other._quote, _quote));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, quote);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_quote));
 
   @JsonKey(ignore: true)
   @override
@@ -150,13 +143,13 @@ class _$_Indicators implements _Indicators {
 }
 
 abstract class _Indicators implements Indicators {
-  factory _Indicators({required final Quote quote}) = _$_Indicators;
+  factory _Indicators({required final List<Quote> quote}) = _$_Indicators;
 
   factory _Indicators.fromJson(Map<String, dynamic> json) =
       _$_Indicators.fromJson;
 
   @override
-  Quote get quote;
+  List<Quote> get quote;
   @override
   @JsonKey(ignore: true)
   _$$_IndicatorsCopyWith<_$_Indicators> get copyWith =>

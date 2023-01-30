@@ -8,7 +8,9 @@ part of 'indicators.dart';
 
 _$_Indicators _$$_IndicatorsFromJson(Map<String, dynamic> json) =>
     _$_Indicators(
-      quote: Quote.fromJson(json['quote'] as Map<String, dynamic>),
+      quote: (json['quote'] as List<dynamic>)
+          .map((e) => Quote.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_IndicatorsToJson(_$_Indicators instance) =>

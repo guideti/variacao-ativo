@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ui/home_page.dart';
+import 'home_page.dart';
 
 class StockPriceApp extends StatelessWidget {
   const StockPriceApp({super.key});

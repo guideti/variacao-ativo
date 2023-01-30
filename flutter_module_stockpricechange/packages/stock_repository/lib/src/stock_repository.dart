@@ -14,8 +14,8 @@ class StockRepository {
 
 extension on Chart {
   List<StockPriceDay> toDailyPrices() {
-    final timestamps = result.timestamp;
-    final openPrices = result.indicators.quote.open;
+    final timestamps = result.first.timestamp;
+    final openPrices = result.first.indicators.quote.first.open;
 
     final dailyPrices = timestamps.mapIndexed((index, element) {
       final price = openPrices[index];

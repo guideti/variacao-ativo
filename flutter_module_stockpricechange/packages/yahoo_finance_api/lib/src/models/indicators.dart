@@ -8,7 +8,7 @@ part 'indicators.g.dart';
 @freezed
 class Indicators with _$Indicators {
   factory Indicators({
-    required Quote quote,
+    required List<Quote> quote,
   }) = _Indicators;
 
   factory Indicators.fromJson(Map<String, dynamic> json) => _$IndicatorsFromJson(json);

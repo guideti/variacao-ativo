@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_module_stockpricechange/historical/cubit/stock_historical_data_cubit.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
-import 'package:flutter_module_stockpricechange/ui/chart/stock_chart_widget.dart';
+import 'package:stock_repository/stock_repository.dart';
 
-import 'historical/stock_historical_widget.dart';
+import 'historical/stock_historical_view.dart';
 
 typedef DisplayStockDataEventReceived = void Function(VisualisationType visualisationType);
 
@@ -40,12 +42,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_visualisationType == VisualisationType.historical ? 'Historical' : 'Chart'),
+    return BlocProvider(
+      create: (context) => StockHistoricalDataCubit(StockRepository())..fetchData(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(_visualisationType == VisualisationType.historical ? 'Historical' : 'Chart'),
+        ),
+        body: _visualisationType == VisualisationType.historical
+            ? const StockHistoricalView()
+            : const Center(child: Text('Chart')),
       ),
-      body:
-          _visualisationType == VisualisationType.historical ? const StockHistoricalWidget() : const StockChartWidget(),
     );
   }
 }

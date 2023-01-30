@@ -20,7 +20,7 @@ Chart _$ChartFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Chart {
-  Result get result => throw _privateConstructorUsedError;
+  List<Result> get result => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,9 +32,7 @@ abstract class $ChartCopyWith<$Res> {
   factory $ChartCopyWith(Chart value, $Res Function(Chart) then) =
       _$ChartCopyWithImpl<$Res, Chart>;
   @useResult
-  $Res call({Result result});
-
-  $ResultCopyWith<$Res> get result;
+  $Res call({List<Result> result});
 }
 
 /// @nodoc
@@ -56,16 +54,8 @@ class _$ChartCopyWithImpl<$Res, $Val extends Chart>
       result: null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
-              as Result,
+              as List<Result>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ResultCopyWith<$Res> get result {
-    return $ResultCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
   }
 }
 
@@ -75,10 +65,7 @@ abstract class _$$_ChartCopyWith<$Res> implements $ChartCopyWith<$Res> {
       __$$_ChartCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Result result});
-
-  @override
-  $ResultCopyWith<$Res> get result;
+  $Res call({List<Result> result});
 }
 
 /// @nodoc
@@ -94,9 +81,9 @@ class __$$_ChartCopyWithImpl<$Res> extends _$ChartCopyWithImpl<$Res, _$_Chart>
   }) {
     return _then(_$_Chart(
       result: null == result
-          ? _value.result
+          ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as Result,
+              as List<Result>,
     ));
   }
 }
@@ -104,13 +91,18 @@ class __$$_ChartCopyWithImpl<$Res> extends _$ChartCopyWithImpl<$Res, _$_Chart>
 /// @nodoc
 @JsonSerializable()
 class _$_Chart implements _Chart {
-  _$_Chart({required this.result});
+  _$_Chart({required final List<Result> result}) : _result = result;
 
   factory _$_Chart.fromJson(Map<String, dynamic> json) =>
       _$$_ChartFromJson(json);
 
+  final List<Result> _result;
   @override
-  final Result result;
+  List<Result> get result {
+    if (_result is EqualUnmodifiableListView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_result);
+  }
 
   @override
   String toString() {
@@ -122,12 +114,13 @@ class _$_Chart implements _Chart {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Chart &&
-            (identical(other.result, result) || other.result == result));
+            const DeepCollectionEquality().equals(other._result, _result));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, result);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
   @JsonKey(ignore: true)
   @override
@@ -144,12 +137,12 @@ class _$_Chart implements _Chart {
 }
 
 abstract class _Chart implements Chart {
-  factory _Chart({required final Result result}) = _$_Chart;
+  factory _Chart({required final List<Result> result}) = _$_Chart;
 
   factory _Chart.fromJson(Map<String, dynamic> json) = _$_Chart.fromJson;
 
   @override
-  Result get result;
+  List<Result> get result;
   @override
   @JsonKey(ignore: true)
   _$$_ChartCopyWith<_$_Chart> get copyWith =>

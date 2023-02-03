@@ -1,7 +1,5 @@
 library sp_design_system;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/sp_theme.dart';
+export 'src/shared/shared.dart';
+export 'src/extensions/extensions.dart';

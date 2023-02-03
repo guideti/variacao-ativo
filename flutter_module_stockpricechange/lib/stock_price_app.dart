@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sp_design_system/sp_design_system.dart';
 
 import 'home_page.dart';
 
@@ -8,9 +9,8 @@ class StockPriceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: SpTheme.light,
+      darkTheme: SpTheme.dark,
       home: const HomePage(),
     );
   }

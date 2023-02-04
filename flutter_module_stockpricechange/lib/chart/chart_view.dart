@@ -11,17 +11,45 @@ class ChartView extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [
-              Column(
-                children: [
-                  SpText.header('SBUX', color: context.spColors.header),
-                  SpText.bodyRegular12('Starbucks', color: context.spColors.bodyLight),
-                ],
-              ),
+            children: const [
+              _CompanyInfo(),
+              Expanded(child: SizedBox(width: 8)),
+              _CurrentPrice(),
             ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CompanyInfo extends StatelessWidget {
+  const _CompanyInfo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SpText.header('SBUX', color: context.spColors.header),
+        const SizedBox(height: 2),
+        SpText.bodyRegular12('Starbucks', color: context.spColors.bodyLight),
+      ],
+    );
+  }
+}
+
+class _CurrentPrice extends StatelessWidget {
+  const _CurrentPrice();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SpText.header('\$1,863.02', color: context.spColors.header),
+        const SizedBox(height: 2),
+        SpText.bodyRegular12('^ 2.35% in last 7 days', color: SpColors.accentGreen),
+      ],
     );
   }
 }

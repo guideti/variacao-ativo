@@ -26,6 +26,8 @@ class SpColors {
   final SpColor header;
   final SpColor body;
   final SpColor bodyLight;
+
+  static const SpColor accentGreen = SpColor._(0xFF19AF00);
 }
 
 class SpColor extends Color {

@@ -16,7 +16,9 @@ class StockHistoricalView extends StatelessWidget {
         child: BlocBuilder<StockHistoricalDataCubit, StockHistoricalDataState>(builder: (context, state) {
           return state.when(
             initial: () => Container(),
-            loading: () => const Text('Loading'),
+            loading: () => const Center(
+              child: CircularProgressIndicator(color: SpColors.green),
+            ),
             success: (historicalItems) {
               final widgets = historicalItems
                   .map((e) => [

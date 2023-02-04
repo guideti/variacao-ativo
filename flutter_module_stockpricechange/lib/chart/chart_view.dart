@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class ChartView extends StatelessWidget {
@@ -31,7 +32,20 @@ class ChartView extends StatelessWidget {
           const SizedBox(height: 16),
           const _Divider(),
           const SizedBox(height: 16),
-          const _StatRow(title: '24H Returns %', value: '2.35%'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SpText.bodyRegular14('24H Returns %', color: context.spColors.bodyLight),
+              // TODO(lucas): Use widget for variable percentage
+              Row(
+                children: [
+                  // TODO(lucas): Use constant for assets
+                  SvgPicture.asset('assets/arrow_up.svg'),
+                  SpText.bodyRegular12('2.35%', color: SpColors.green),
+                ],
+              )
+            ],
+          ),
           const SizedBox(height: 16),
         ],
       ),
@@ -64,7 +78,13 @@ class _CurrentPrice extends StatelessWidget {
       children: [
         SpText.header('\$1,863.02', color: context.spColors.header),
         const SizedBox(height: 2),
-        SpText.bodyRegular12('^ 2.35% in last 7 days', color: SpColors.accentGreen),
+        // TODO(lucas): Use widget for variable percentage
+        Row(
+          children: [
+            SvgPicture.asset('assets/arrow_up.svg'),
+            SpText.bodyRegular12('2.35% in last 7 days', color: SpColors.green),
+          ],
+        ),
       ],
     );
   }

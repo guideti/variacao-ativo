@@ -1,4 +1,6 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/chart/chart.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
@@ -22,7 +24,10 @@ class ChartView extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          const _Chart(),
+          const AspectRatio(
+            aspectRatio: 2,
+            child: Chart(),
+          ),
           const SizedBox(height: 28),
           SpText.bodyMedium14('Statistics', color: context.spColors.body),
           const SizedBox(height: 16),
@@ -109,18 +114,6 @@ class _CurrentPrice extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-class _Chart extends StatelessWidget {
-  const _Chart();
-
-  @override
-  Widget build(BuildContext context) {
-    return const AspectRatio(
-      aspectRatio: 2,
-      child: Placeholder(),
     );
   }
 }

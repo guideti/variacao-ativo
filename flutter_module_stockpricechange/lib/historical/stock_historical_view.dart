@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_module_stockpricechange/historical/cubit/stock_historical_data_cubit.dart';
+import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 import 'cubit/stock_historical_data_state.dart';
@@ -42,49 +43,55 @@ class StockHistoricalView extends StatelessWidget {
               );
             }).toList();
 
-            return Table(
-              border: TableBorder.all(
-                color: context.spColors.border,
-                width: 1,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              columnWidths: const {
-                0: FlexColumnWidth(1),
-                1: FlexColumnWidth(3),
-                2: FlexColumnWidth(2),
-                3: FlexColumnWidth(2),
-                4: FlexColumnWidth(2),
-              },
+            return Column(
               children: [
-                TableRow(
-                  decoration: const BoxDecoration(
-                    color: SpColors.green,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                const StockInfo(),
+                const SizedBox(height: 32),
+                Table(
+                  border: TableBorder.all(
+                    color: context.spColors.border,
+                    width: 1,
+                    borderRadius: BorderRadius.circular(8),
                   ),
+                  columnWidths: const {
+                    0: FlexColumnWidth(1),
+                    1: FlexColumnWidth(3),
+                    2: FlexColumnWidth(2),
+                    3: FlexColumnWidth(2),
+                    4: FlexColumnWidth(2),
+                  },
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
+                    TableRow(
+                      decoration: const BoxDecoration(
+                        color: SpColors.green,
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                      ),
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
-                    ),
+                    ...rows,
                   ],
                 ),
-                ...rows,
               ],
             );
           },

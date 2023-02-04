@@ -13,3 +13,8 @@ class Visualisation {
 abstract class FlutterStockApi {
   void displayStockData(Visualisation visualisation);
 }
+
+@HostApi()
+abstract class NativeNavigationApi {
+  void goBack();
+}

@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final NativeNavigationApi navigationApi = NativeNavigationApi();
   var _visualisationType = VisualisationType.chart;
 
   @override
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage> {
             child: IconButton(
               // TODO(lucas): Use constants for assets
               icon: SvgPicture.asset('assets/back_icon.svg'),
-              onPressed: () {},
+              onPressed: () => navigationApi.goBack(),
             ),
           ),
           title: Text(_visualisationType == VisualisationType.historical ? 'Historical' : 'Chart'),

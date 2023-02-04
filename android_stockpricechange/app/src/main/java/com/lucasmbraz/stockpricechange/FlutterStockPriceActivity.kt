@@ -35,10 +35,19 @@ class FlutterStockPriceActivity : FlutterActivity() {
             .setVisualisationType(visualisationType)
             .build()
 
+        FlutterApi.NativeNavigationApi.setup(flutterEngine.dartExecutor, NativeNavigationApiHandler())
+
         // Send in the visualisationType to Flutter
         FlutterApi.FlutterStockApi(flutterEngine.dartExecutor)
             .displayStockData(visualisation) {
                 // ignore callback
             }
+    }
+
+    inner class NativeNavigationApiHandler : FlutterApi.NativeNavigationApi {
+        override fun goBack() {
+           finish()
+        }
+
     }
 }

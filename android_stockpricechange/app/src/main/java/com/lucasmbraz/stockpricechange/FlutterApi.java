@@ -142,4 +142,38 @@ public class FlutterApi {
           channelReply -> callback.reply(null));
     }
   }
+  /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
+  public interface NativeNavigationApi {
+
+    void goBack();
+
+    /** The codec used by NativeNavigationApi. */
+    static MessageCodec<Object> getCodec() {
+      return new StandardMessageCodec();
+    }
+    /**Sets up an instance of `NativeNavigationApi` to handle messages through the `binaryMessenger`. */
+    static void setup(BinaryMessenger binaryMessenger, NativeNavigationApi api) {
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(
+                binaryMessenger, "dev.flutter.pigeon.NativeNavigationApi.goBack", getCodec());
+        if (api != null) {
+          channel.setMessageHandler(
+              (message, reply) -> {
+                ArrayList<Object> wrapped = new ArrayList<Object>();
+                try {
+                  api.goBack();
+                  wrapped.add(0, null);
+                } catch (Error | RuntimeException exception) {
+                  ArrayList<Object> wrappedError = wrapError(exception);
+                  wrapped = wrappedError;
+                }
+                reply.reply(wrapped);
+              });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+    }
+  }
 }

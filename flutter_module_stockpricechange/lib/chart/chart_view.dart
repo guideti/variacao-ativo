@@ -17,6 +17,8 @@ class ChartView extends StatelessWidget {
               _CurrentPrice(),
             ],
           ),
+          const SizedBox(height: 20),
+          const _Chart(),
         ],
       ),
     );
@@ -50,6 +52,18 @@ class _CurrentPrice extends StatelessWidget {
         const SizedBox(height: 2),
         SpText.bodyRegular12('^ 2.35% in last 7 days', color: SpColors.accentGreen),
       ],
+    );
+  }
+}
+
+class _Chart extends StatelessWidget {
+  const _Chart();
+
+  @override
+  Widget build(BuildContext context) {
+    return const AspectRatio(
+      aspectRatio: 2,
+      child: Placeholder(),
     );
   }
 }

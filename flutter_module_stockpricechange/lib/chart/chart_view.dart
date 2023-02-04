@@ -14,6 +14,8 @@ class ChartView extends StatelessWidget {
         children: [
           Row(
             children: const [
+              _CompanyLogo(),
+              SizedBox(width: 8),
               _CompanyInfo(),
               Expanded(child: SizedBox(width: 8)),
               _CurrentPrice(),
@@ -48,6 +50,27 @@ class ChartView extends StatelessWidget {
           ),
           const SizedBox(height: 16),
         ],
+      ),
+    );
+  }
+}
+
+class _CompanyLogo extends StatelessWidget {
+  const _CompanyLogo();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 48,
+      height: 48,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: context.spColors.border),
+      ),
+      child: Center(
+        child: SvgPicture.asset(
+          'assets/starbucks.svg',
+        ),
       ),
     );
   }
@@ -130,7 +153,7 @@ class _Divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      color: context.spColors.divider,
+      color: context.spColors.border,
     );
   }
 }

@@ -9,6 +9,7 @@ class ChartView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: const [
@@ -19,6 +20,19 @@ class ChartView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           const _Chart(),
+          const SizedBox(height: 28),
+          SpText.bodyMedium14('Statistics', color: context.spColors.body),
+          const SizedBox(height: 16),
+          const _StatRow(title: 'Previous Close', value: '\$1,800'),
+          const SizedBox(height: 16),
+          const _Divider(),
+          const SizedBox(height: 16),
+          const _StatRow(title: 'Opening Price', value: '\$1,860'),
+          const SizedBox(height: 16),
+          const _Divider(),
+          const SizedBox(height: 16),
+          const _StatRow(title: '24H Returns %', value: '2.35%'),
+          const SizedBox(height: 16),
         ],
       ),
     );
@@ -64,6 +78,39 @@ class _Chart extends StatelessWidget {
     return const AspectRatio(
       aspectRatio: 2,
       child: Placeholder(),
+    );
+  }
+}
+
+class _StatRow extends StatelessWidget {
+  const _StatRow({
+    required this.title,
+    required this.value,
+  });
+
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SpText.bodyRegular14(title, color: context.spColors.bodyLight),
+        SpText.bodyMedium14(value, color: context.spColors.body),
+      ],
+    );
+  }
+}
+
+class _Divider extends StatelessWidget {
+  const _Divider();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1,
+      color: const Color(0xFFE6E6E6),
     );
   }
 }

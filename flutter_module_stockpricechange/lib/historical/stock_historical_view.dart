@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_module_stockpricechange/historical/cubit/stock_historical_data_cubit.dart';
@@ -19,33 +20,28 @@ class StockHistoricalView extends StatelessWidget {
             child: CircularProgressIndicator(color: SpColors.green),
           ),
           success: (historicalItems) {
-            // final widgets = historicalItems
-            //     .map((e) => [
-            //           SpText.bodyRegular14('01/01/2021', color: context.spColors.body),
-            //           SpText.bodyRegular14('R\$${e.openPrice.toStringAsFixed(2)}', color: context.spColors.body),
-            //           SpText.bodyRegular14(
-            //             e.previousDayChange == null ? '-' : '${(e.previousDayChange! * 100).toStringAsFixed(2)}%',
-            //             color: context.spColors.body,
-            //           ),
-            //           SpText.bodyRegular14(
-            //             e.dayOneChange == null ? '-' : '${(e.dayOneChange! * 100).toStringAsFixed(2)}%',
-            //             color: context.spColors.body,
-            //           ),
-            //         ])
-            //     .toList()
-            //     .expand((i) => i)
-            //     .toList();
+            // TODO(lucas): Add scroll
+            final rows = historicalItems.mapIndexed((index, element) {
+              return TableRow(
+                children: [
+                  _TableItem((index + 1).toString()),
+                  // TODO(lucas): Fix date formatting
+                  _TableItem('01/01/2023'),
+                  _TableItem(('R\$${element.openPrice.toStringAsFixed(2)}').toString()),
+                  _TableItem(
+                    (element.previousDayChange == null
+                            ? '-'
+                            : '${(element.previousDayChange! * 100).toStringAsFixed(2)}%')
+                        .toString(),
+                  ),
+                  _TableItem(
+                    (element.dayOneChange == null ? '-' : '${(element.dayOneChange! * 100).toStringAsFixed(2)}%')
+                        .toString(),
+                  ),
+                ],
+              );
+            }).toList();
 
-            // return GridView.count(
-            //   crossAxisCount: 4,
-            //   children: [
-            //     SpText.bodyMedium14('Data', color: context.spColors.body),
-            //     SpText.bodyMedium14('Valor', color: context.spColors.body),
-            //     SpText.bodyMedium14('% D-1', color: context.spColors.body),
-            //     SpText.bodyMedium14('% Total', color: context.spColors.body),
-            //     ...widgets,
-            //   ],
-            // );
             return Table(
               border: TableBorder.all(
                 color: context.spColors.border,
@@ -88,56 +84,27 @@ class StockHistoricalView extends StatelessWidget {
                     ),
                   ],
                 ),
-                TableRow(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('1', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('01/01/2021', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('R\$ 1,00', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('-', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('-', color: context.spColors.body)),
-                  ),
-                ]),
-                TableRow(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('2', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('02/01/2021', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('R\$ 1,10', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('10%', color: context.spColors.body)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(child: SpText.bodyRegular14('10%', color: context.spColors.body)),
-                  ),
-                ]),
+                ...rows,
               ],
             );
           },
           failure: () => const Text('Failure'),
         );
       }),
+    );
+  }
+}
+
+class _TableItem extends StatelessWidget {
+  const _TableItem(this.value);
+
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(child: SpText.bodyRegular14(value, color: context.spColors.body)),
     );
   }
 }

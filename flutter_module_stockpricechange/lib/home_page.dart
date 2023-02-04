@@ -30,7 +30,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final NativeNavigationApi navigationApi = NativeNavigationApi();
-  var _visualisationType = VisualisationType.chart;
+  var _visualisationType = VisualisationType.historical;
 
   @override
   void initState() {
@@ -57,7 +57,6 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => navigationApi.goBack(),
             ),
           ),
-          title: Text(_visualisationType == VisualisationType.historical ? 'Historical' : 'Chart'),
         ),
         body: _visualisationType == VisualisationType.historical ? const StockHistoricalView() : const ChartView(),
       ),

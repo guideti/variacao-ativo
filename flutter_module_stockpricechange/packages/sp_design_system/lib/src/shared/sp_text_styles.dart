@@ -7,6 +7,7 @@ class SpTextStyles {
   static final TextStyle header = GoogleFonts.ibmPlexSans(
     fontSize: 20,
     fontWeight: FontWeight.w600,
+    height: 1.4,
   );
 
   static final TextStyle bodyRegular14 = GoogleFonts.ibmPlexSans(
@@ -17,6 +18,7 @@ class SpTextStyles {
   static final TextStyle bodyRegular12 = GoogleFonts.ibmPlexSans(
     fontSize: 12,
     fontWeight: FontWeight.normal,
+    height: 1.4,
   );
 
   static final TextStyle bodyMedium14 = GoogleFonts.ibmPlexSans(

@@ -12,46 +12,132 @@ class StockHistoricalView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Center(
-        child: BlocBuilder<StockHistoricalDataCubit, StockHistoricalDataState>(builder: (context, state) {
-          return state.when(
-            initial: () => Container(),
-            loading: () => const Center(
-              child: CircularProgressIndicator(color: SpColors.green),
-            ),
-            success: (historicalItems) {
-              final widgets = historicalItems
-                  .map((e) => [
-                        SpText.bodyRegular14('01/01/2021', color: context.spColors.body),
-                        SpText.bodyRegular14('R\$${e.openPrice.toStringAsFixed(2)}', color: context.spColors.body),
-                        SpText.bodyRegular14(
-                          e.previousDayChange == null ? '-' : '${(e.previousDayChange! * 100).toStringAsFixed(2)}%',
-                          color: context.spColors.body,
-                        ),
-                        SpText.bodyRegular14(
-                          e.dayOneChange == null ? '-' : '${(e.dayOneChange! * 100).toStringAsFixed(2)}%',
-                          color: context.spColors.body,
-                        ),
-                      ])
-                  .toList()
-                  .expand((i) => i)
-                  .toList();
+      child: BlocBuilder<StockHistoricalDataCubit, StockHistoricalDataState>(builder: (context, state) {
+        return state.when(
+          initial: () => Container(),
+          loading: () => const Center(
+            child: CircularProgressIndicator(color: SpColors.green),
+          ),
+          success: (historicalItems) {
+            // final widgets = historicalItems
+            //     .map((e) => [
+            //           SpText.bodyRegular14('01/01/2021', color: context.spColors.body),
+            //           SpText.bodyRegular14('R\$${e.openPrice.toStringAsFixed(2)}', color: context.spColors.body),
+            //           SpText.bodyRegular14(
+            //             e.previousDayChange == null ? '-' : '${(e.previousDayChange! * 100).toStringAsFixed(2)}%',
+            //             color: context.spColors.body,
+            //           ),
+            //           SpText.bodyRegular14(
+            //             e.dayOneChange == null ? '-' : '${(e.dayOneChange! * 100).toStringAsFixed(2)}%',
+            //             color: context.spColors.body,
+            //           ),
+            //         ])
+            //     .toList()
+            //     .expand((i) => i)
+            //     .toList();
 
-              return GridView.count(
-                crossAxisCount: 4,
-                children: [
-                  SpText.bodyMedium14('Data', color: context.spColors.body),
-                  SpText.bodyMedium14('Valor', color: context.spColors.body),
-                  SpText.bodyMedium14('% D-1', color: context.spColors.body),
-                  SpText.bodyMedium14('% Total', color: context.spColors.body),
-                  ...widgets,
-                ],
-              );
-            },
-            failure: () => const Text('Failure'),
-          );
-        }),
-      ),
+            // return GridView.count(
+            //   crossAxisCount: 4,
+            //   children: [
+            //     SpText.bodyMedium14('Data', color: context.spColors.body),
+            //     SpText.bodyMedium14('Valor', color: context.spColors.body),
+            //     SpText.bodyMedium14('% D-1', color: context.spColors.body),
+            //     SpText.bodyMedium14('% Total', color: context.spColors.body),
+            //     ...widgets,
+            //   ],
+            // );
+            return Table(
+              border: TableBorder.all(
+                color: context.spColors.border,
+                width: 1,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              columnWidths: const {
+                0: FlexColumnWidth(1),
+                1: FlexColumnWidth(3),
+                2: FlexColumnWidth(2),
+                3: FlexColumnWidth(2),
+                4: FlexColumnWidth(2),
+              },
+              children: [
+                TableRow(
+                  decoration: const BoxDecoration(
+                    color: SpColors.green,
+                    borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                  ),
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
+                    ),
+                  ],
+                ),
+                TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('1', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('01/01/2021', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('R\$ 1,00', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('-', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('-', color: context.spColors.body)),
+                  ),
+                ]),
+                TableRow(children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('2', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('02/01/2021', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('R\$ 1,10', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('10%', color: context.spColors.body)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: SpText.bodyRegular14('10%', color: context.spColors.body)),
+                  ),
+                ]),
+              ],
+            );
+          },
+          failure: () => const Text('Failure'),
+        );
+      }),
     );
   }
 }

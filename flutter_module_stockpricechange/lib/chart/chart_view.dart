@@ -130,7 +130,7 @@ class _Divider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 1,
-      color: const Color(0xFFE6E6E6),
+      color: context.spColors.divider,
     );
   }
 }

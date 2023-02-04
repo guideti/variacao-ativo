@@ -6,6 +6,7 @@ class SpColors {
     required this.header,
     required this.body,
     required this.bodyLight,
+    required this.divider,
   });
 
   static SpColors light = SpColors._(
@@ -13,6 +14,7 @@ class SpColors {
     header: const SpColor._(0xFF000000),
     body: const SpColor._(0xFF000000),
     bodyLight: const SpColor._(0xFF5F676F),
+    divider: const SpColor._(0xFFE6E6E6),
   );
 
   static SpColors dark = SpColors._(
@@ -20,12 +22,14 @@ class SpColors {
     header: const SpColor._(0xFFFFFFFF),
     body: const SpColor._(0xFFF5F5F5),
     bodyLight: const SpColor._(0xFF9AA4AE),
+    divider: const SpColor._(0xFF3F3F3F),
   );
 
   final SpColor background;
   final SpColor header;
   final SpColor body;
   final SpColor bodyLight;
+  final SpColor divider;
 
   static const SpColor green = SpColor._(0xFF19AF00);
   static const SpColor red = SpColor._(0xFFD92A2A);

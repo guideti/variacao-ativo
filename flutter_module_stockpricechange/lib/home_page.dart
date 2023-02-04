@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () => navigationApi.goBack(),
             ),
           ),
+          title: _visualisationType == VisualisationType.historical ? const Text('Variação do Ativo') : null,
         ),
         body: _visualisationType == VisualisationType.historical ? const StockHistoricalView() : const ChartView(),
       ),

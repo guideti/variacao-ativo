@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
@@ -39,7 +40,7 @@ fun MainContent() {
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 AppButton(
-                    title = "Historical Data",
+                    title = stringResource(R.string.table),
                     onClick = {
                         mContext.startActivity(
                             FlutterStockPriceActivity.withVisualisationType(
@@ -50,7 +51,7 @@ fun MainContent() {
                     })
                 Spacer(modifier = Modifier.padding(32.dp))
                 AppButton(
-                    title = "Chart",
+                    title = stringResource(R.string.chart),
                     onClick = {
                         mContext.startActivity(
                             FlutterStockPriceActivity.withVisualisationType(

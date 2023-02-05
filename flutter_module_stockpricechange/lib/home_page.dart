@@ -9,7 +9,9 @@ import 'package:sp_design_system/sp_design_system.dart';
 import 'table/table_view.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final NativeNavigationApi api = NativeNavigationApi();
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,7 @@ class HomePage extends StatelessWidget {
               'assets/back_icon.svg',
               colorFilter: ColorFilter.mode(context.spColors.body, BlendMode.srcIn),
             ),
-            // onPressed: () => navigationApi.goBack(),
-            onPressed: () {},
+            onPressed: () => api.goBack(),
           ),
         ),
       ),

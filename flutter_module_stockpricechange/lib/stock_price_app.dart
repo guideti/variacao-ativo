@@ -19,7 +19,7 @@ class StockPriceApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: SpTheme.light,
         darkTheme: SpTheme.dark,
-        home: const HomePage(),
+        home: HomePage(),
       ),
     );
   }

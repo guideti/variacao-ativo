@@ -3,7 +3,7 @@ import 'package:flutter_module_stockpricechange/chart/chart_view.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'historical/stock_historical_view.dart';
+import 'table/table_view.dart';
 
 typedef DisplayStockDataEventReceived = void Function(VisualisationType visualisationType);
 
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: _visualisationType == VisualisationType.historical ? const StockHistoricalView() : const ChartView(),
+        child: _visualisationType == VisualisationType.historical ? const TableView() : const ChartView(),
       ),
     );
   }

@@ -9,8 +9,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:intl/intl.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
-class StockHistoricalView extends StatelessWidget {
-  const StockHistoricalView({super.key});
+class TableView extends StatelessWidget {
+  const TableView({super.key});
 
   @override
   Widget build(BuildContext context) {

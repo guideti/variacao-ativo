@@ -27,6 +27,7 @@ class StockHistoricalView extends StatelessWidget {
 
         final rows = state.tradingDays.mapIndexed((index, element) {
           return TableRow(
+            // TODO(lucas): Format currency and percentage using NumberFormat
             children: [
               _TableItem((index + 1).toString()),
               // TODO(lucas): Move formatting logic to appropriate location

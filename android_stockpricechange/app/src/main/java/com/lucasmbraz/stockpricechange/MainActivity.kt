@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,6 +32,11 @@ class MainActivity : ComponentActivity() {
 fun MainContent() {
     val mContext = LocalContext.current
     Scaffold(
+        topBar = {
+            TopAppBar(title = {
+                Text(text = stringResource(id = R.string.app_name))
+            })
+        },
         content = { padding ->
             Column(
                 modifier = Modifier

@@ -1,0 +1,3 @@
+class LoadTradingDaysAction {}
+
+class TradingDaysNotLoadedAction {}

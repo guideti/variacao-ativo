@@ -113,6 +113,7 @@ class _Content extends StatelessWidget {
                 ...rows,
               ],
             ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

@@ -14,6 +14,7 @@ class SpTheme {
       foregroundColor: Colors.black,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
+        statusBarColor: SpColors.darkGreen,
       ),
     ),
   );
@@ -27,6 +28,7 @@ class SpTheme {
       foregroundColor: Colors.white,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
+        statusBarColor: SpColors.darkGreen,
       ),
     ),
   );

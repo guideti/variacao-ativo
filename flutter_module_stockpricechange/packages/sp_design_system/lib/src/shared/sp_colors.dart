@@ -32,8 +32,11 @@ class SpColors {
   final SpColor border;
 
   static const SpColor green = SpColor._(0xFF19AF00);
-  static const SpColor green40 = SpColor._(0x6619AF00);
   static const SpColor green10 = SpColor._(0x1919AF00);
+  static const SpColor green40 = SpColor._(0x6619AF00);
+
+  static const SpColor darkGreen = SpColor._(0xFF008e00);
+
   static const SpColor red = SpColor._(0xFFD92A2A);
 }
 

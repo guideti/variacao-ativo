@@ -3,11 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_state.freezed.dart';
 
+enum DataStatus { initial, loading, loaded, failure }
+
 @freezed
 class AppState with _$AppState {
   factory AppState({
     required List<TradingDay> tradingDays,
-    required bool isLoading,
-    required bool failed,
+    required DataStatus dataStatus,
   }) = _AppState;
 }

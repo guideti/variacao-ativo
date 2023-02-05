@@ -18,53 +18,65 @@ class ChartView extends StatelessWidget {
       onInit: (store) => store.dispatch(LoadTradingDaysAction()),
       converter: (store) => store.state,
       builder: (context, state) {
-        if (state.isLoading) {
-          return const Loading();
+        switch (state.dataStatus) {
+          case DataStatus.initial:
+            return Container();
+          case DataStatus.loading:
+            return const Loading();
+          case DataStatus.loaded:
+            return const _Content();
+          case DataStatus.failure:
+            return const ErrorWithRetry();
         }
-        if (state.failed || state.tradingDays.isEmpty) {
-          return const ErrorWithRetry();
-        }
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      },
+    );
+  }
+}
+
+class _Content extends StatelessWidget {
+  const _Content();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const StockInfo(),
+          const SizedBox(height: 20),
+          const AspectRatio(
+            aspectRatio: 1,
+            child: Chart(),
+          ),
+          const SizedBox(height: 28),
+          SpText.bodyMedium14('Statistics', color: context.spColors.body),
+          const SizedBox(height: 16),
+          const _StatRow(title: 'Previous Close', value: '\$1,800'),
+          const SizedBox(height: 16),
+          const _Divider(),
+          const SizedBox(height: 16),
+          const _StatRow(title: 'Opening Price', value: '\$1,860'),
+          const SizedBox(height: 16),
+          const _Divider(),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const StockInfo(),
-              const SizedBox(height: 20),
-              const AspectRatio(
-                aspectRatio: 1,
-                child: Chart(),
-              ),
-              const SizedBox(height: 28),
-              SpText.bodyMedium14('Statistics', color: context.spColors.body),
-              const SizedBox(height: 16),
-              const _StatRow(title: 'Previous Close', value: '\$1,800'),
-              const SizedBox(height: 16),
-              const _Divider(),
-              const SizedBox(height: 16),
-              const _StatRow(title: 'Opening Price', value: '\$1,860'),
-              const SizedBox(height: 16),
-              const _Divider(),
-              const SizedBox(height: 16),
+              SpText.bodyRegular14('24H Returns %', color: context.spColors.bodyLight),
+              // TODO(lucas): Use widget for variable percentage
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SpText.bodyRegular14('24H Returns %', color: context.spColors.bodyLight),
-                  // TODO(lucas): Use widget for variable percentage
-                  Row(
-                    children: [
-                      // TODO(lucas): Use constant for assets
-                      SvgPicture.asset('assets/arrow_up.svg'),
-                      SpText.bodyRegular12('2.35%', color: SpColors.green),
-                    ],
-                  )
+                  // TODO(lucas): Use constant for assets
+                  SvgPicture.asset('assets/arrow_up.svg'),
+                  SpText.bodyRegular12('2.35%', color: SpColors.green),
                 ],
-              ),
-              const SizedBox(height: 16),
+              )
             ],
           ),
-        );
-      },
+          const SizedBox(height: 16),
+        ],
+      ),
     );
   }
 }

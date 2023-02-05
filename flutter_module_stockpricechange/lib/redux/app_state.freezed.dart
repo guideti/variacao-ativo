@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppState {
   List<TradingDay> get tradingDays => throw _privateConstructorUsedError;
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get failed => throw _privateConstructorUsedError;
+  DataStatus get dataStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -30,7 +29,7 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({List<TradingDay> tradingDays, bool isLoading, bool failed});
+  $Res call({List<TradingDay> tradingDays, DataStatus dataStatus});
 }
 
 /// @nodoc
@@ -47,22 +46,17 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? tradingDays = null,
-    Object? isLoading = null,
-    Object? failed = null,
+    Object? dataStatus = null,
   }) {
     return _then(_value.copyWith(
       tradingDays: null == tradingDays
           ? _value.tradingDays
           : tradingDays // ignore: cast_nullable_to_non_nullable
               as List<TradingDay>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      failed: null == failed
-          ? _value.failed
-          : failed // ignore: cast_nullable_to_non_nullable
-              as bool,
+      dataStatus: null == dataStatus
+          ? _value.dataStatus
+          : dataStatus // ignore: cast_nullable_to_non_nullable
+              as DataStatus,
     ) as $Val);
   }
 }
@@ -74,7 +68,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_AppStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<TradingDay> tradingDays, bool isLoading, bool failed});
+  $Res call({List<TradingDay> tradingDays, DataStatus dataStatus});
 }
 
 /// @nodoc
@@ -89,22 +83,17 @@ class __$$_AppStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tradingDays = null,
-    Object? isLoading = null,
-    Object? failed = null,
+    Object? dataStatus = null,
   }) {
     return _then(_$_AppState(
       tradingDays: null == tradingDays
           ? _value._tradingDays
           : tradingDays // ignore: cast_nullable_to_non_nullable
               as List<TradingDay>,
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      failed: null == failed
-          ? _value.failed
-          : failed // ignore: cast_nullable_to_non_nullable
-              as bool,
+      dataStatus: null == dataStatus
+          ? _value.dataStatus
+          : dataStatus // ignore: cast_nullable_to_non_nullable
+              as DataStatus,
     ));
   }
 }
@@ -113,9 +102,7 @@ class __$$_AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   _$_AppState(
-      {required final List<TradingDay> tradingDays,
-      required this.isLoading,
-      required this.failed})
+      {required final List<TradingDay> tradingDays, required this.dataStatus})
       : _tradingDays = tradingDays;
 
   final List<TradingDay> _tradingDays;
@@ -127,13 +114,11 @@ class _$_AppState implements _AppState {
   }
 
   @override
-  final bool isLoading;
-  @override
-  final bool failed;
+  final DataStatus dataStatus;
 
   @override
   String toString() {
-    return 'AppState(tradingDays: $tradingDays, isLoading: $isLoading, failed: $failed)';
+    return 'AppState(tradingDays: $tradingDays, dataStatus: $dataStatus)';
   }
 
   @override
@@ -143,14 +128,13 @@ class _$_AppState implements _AppState {
             other is _$_AppState &&
             const DeepCollectionEquality()
                 .equals(other._tradingDays, _tradingDays) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.failed, failed) || other.failed == failed));
+            (identical(other.dataStatus, dataStatus) ||
+                other.dataStatus == dataStatus));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_tradingDays), isLoading, failed);
+      const DeepCollectionEquality().hash(_tradingDays), dataStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -162,15 +146,12 @@ class _$_AppState implements _AppState {
 abstract class _AppState implements AppState {
   factory _AppState(
       {required final List<TradingDay> tradingDays,
-      required final bool isLoading,
-      required final bool failed}) = _$_AppState;
+      required final DataStatus dataStatus}) = _$_AppState;
 
   @override
   List<TradingDay> get tradingDays;
   @override
-  bool get isLoading;
-  @override
-  bool get failed;
+  DataStatus get dataStatus;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

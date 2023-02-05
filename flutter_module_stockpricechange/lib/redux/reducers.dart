@@ -13,19 +13,20 @@ AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) {
     // Ignore this action if we have data
     return state;
   }
-  return state.copyWith(
-    isLoading: true,
-    failed: false,
-  );
+  return state.copyWith(dataStatus: DataStatus.loading);
 }
 
-AppState _onTradingDaysNotLoaded(AppState state, TradingDaysNotLoadedAction _) => state.copyWith(
-      isLoading: false,
-      failed: true,
-    );
+AppState _onTradingDaysNotLoaded(AppState state, TradingDaysNotLoadedAction _) =>
+    state.copyWith(dataStatus: DataStatus.failure);
 
-AppState _onTradingDaysLoaded(AppState state, TradingDaysLoadedAction action) => state.copyWith(
-      tradingDays: action.tradingDays,
-      isLoading: false,
-      failed: false,
-    );
+AppState _onTradingDaysLoaded(AppState state, TradingDaysLoadedAction action) {
+  if (action.tradingDays.isEmpty) {
+    // Treating this as an error, as it shouldn't happen in practice
+    return state.copyWith(dataStatus: DataStatus.failure);
+  }
+
+  return state.copyWith(
+    tradingDays: action.tradingDays,
+    dataStatus: DataStatus.loaded,
+  );
+}

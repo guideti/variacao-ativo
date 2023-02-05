@@ -8,8 +8,7 @@ Store<AppState> createReduxStore() => Store<AppState>(
       appReducer,
       initialState: AppState(
         tradingDays: const [],
-        isLoading: false,
-        failed: false,
+        dataStatus: DataStatus.initial,
       ),
       middleware: [
         RepositoryMiddleware(StockRepository()),

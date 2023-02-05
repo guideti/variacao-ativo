@@ -1,6 +1,7 @@
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_module_stockpricechange/redux/reducers.dart';
+import 'package:flutter_module_stockpricechange/redux/repository_middleware.dart';
 import 'package:redux/redux.dart';
 
 Store<AppState> createReduxStore() => Store<AppState>(
@@ -27,4 +28,7 @@ Store<AppState> createReduxStore() => Store<AppState>(
         isLoading: false,
         failed: false,
       ),
+      middleware: [
+        RepositoryMiddleware(),
+      ],
     );

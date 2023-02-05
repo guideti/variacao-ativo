@@ -8,10 +8,16 @@ final appReducer = combineReducers<AppState>([
   TypedReducer<AppState, TradingDaysLoadedAction>(_onTradingDaysLoaded),
 ]);
 
-AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) => state.copyWith(
-      isLoading: true,
-      failed: false,
-    );
+AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) {
+  if (state.tradingDays.isNotEmpty) {
+    // Ignore this action if we have data
+    return state;
+  }
+  return state.copyWith(
+    isLoading: true,
+    failed: false,
+  );
+}
 
 AppState _onTradingDaysNotLoaded(AppState state, TradingDaysNotLoadedAction _) => state.copyWith(
       isLoading: false,

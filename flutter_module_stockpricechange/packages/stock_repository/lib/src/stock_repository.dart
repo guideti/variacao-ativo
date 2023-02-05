@@ -19,7 +19,7 @@ extension on Chart {
 
     final dailyPrices = timestamps.mapIndexed((index, element) {
       final price = openPrices[index];
-      return StockPriceDay(timestamp: element, open: price);
+      return StockPriceDay(timestamp: element * 1000, open: price);
     }).toList();
 
     return dailyPrices;

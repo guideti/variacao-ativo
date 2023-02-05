@@ -27,7 +27,7 @@ class RepositoryMiddleware extends MiddlewareClass<AppState> {
       final tradingDays = days
           .map(
             (day) => TradingDay(
-              day: DateTime.fromMicrosecondsSinceEpoch(day.timestamp),
+              day: DateTime.fromMillisecondsSinceEpoch(day.timestamp),
               openPrice: day.open,
             ),
           )

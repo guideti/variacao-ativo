@@ -32,7 +32,7 @@ class ChartView extends StatelessWidget {
               const StockInfo(),
               const SizedBox(height: 20),
               const AspectRatio(
-                aspectRatio: 2,
+                aspectRatio: 1,
                 child: Chart(),
               ),
               const SizedBox(height: 28),

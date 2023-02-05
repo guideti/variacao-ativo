@@ -18,11 +18,11 @@ class ChartView extends StatelessWidget {
       onInit: (store) => store.dispatch(LoadTradingDaysAction()),
       converter: (store) => store.state,
       builder: (context, state) {
-        if (state.failed || state.tradingDays.isEmpty) {
-          return const ErrorWithRetry();
-        }
         if (state.isLoading) {
           return const Loading();
+        }
+        if (state.failed || state.tradingDays.isEmpty) {
+          return const ErrorWithRetry();
         }
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),

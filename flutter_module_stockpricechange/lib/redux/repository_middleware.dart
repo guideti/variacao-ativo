@@ -22,16 +22,25 @@ class RepositoryMiddleware extends MiddlewareClass<AppState> {
 
     try {
       final days = await _repository.getStockPriceData();
-      // final firstDay = days.first;
+      final firstDay = days.first;
 
-      final tradingDays = days
-          .map(
-            (day) => TradingDay(
-              day: DateTime.fromMillisecondsSinceEpoch(day.timestamp),
-              openPrice: day.open,
-            ),
-          )
-          .toList(growable: false);
+      final tradingDays = days.mapIndexed((index, day) {
+        double? previousDayChange;
+        double? thirtyDaysChange;
+
+        if (index > 0) {
+          final previousDay = days[index - 1];
+          previousDayChange = (day.open - previousDay.open) / previousDay.open;
+          thirtyDaysChange = (day.open - firstDay.open) / firstDay.open;
+        }
+
+        return TradingDay(
+          day: DateTime.fromMillisecondsSinceEpoch(day.timestamp),
+          openPrice: day.open,
+          previousDayChange: previousDayChange,
+          thirtyDaysChange: thirtyDaysChange,
+        );
+      }).toList(growable: false);
 
       store.dispatch(TradingDaysLoadedAction(tradingDays));
     } catch (_) {

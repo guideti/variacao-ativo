@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/redux/actions.dart';
+import 'package:flutter_module_stockpricechange/redux/app_state.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class ErrorWithRetry extends StatelessWidget {
@@ -14,8 +17,14 @@ class ErrorWithRetry extends StatelessWidget {
           children: [
             SpText.header('Something wrong happened.\nPlease try again', color: context.spColors.body),
             const SizedBox(height: 24),
-            // TODO(lucas): Customize button and handle presses
-            OutlinedButton(onPressed: () {}, child: const Text('Retry')),
+            StoreConnector<AppState, VoidCallback>(
+                converter: (store) => () => store.dispatch(LoadTradingDaysAction()),
+                builder: (context, onPressed) {
+                  return OutlinedButton(
+                    onPressed: onPressed,
+                    child: const Text('Retry'),
+                  );
+                }),
             const SizedBox(height: 48),
           ],
         ),

@@ -6,6 +6,7 @@ import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
 import 'package:flutter_module_stockpricechange/widgets/loading.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:intl/intl.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class StockHistoricalView extends StatelessWidget {
@@ -28,8 +29,8 @@ class StockHistoricalView extends StatelessWidget {
           return TableRow(
             children: [
               _TableItem((index + 1).toString()),
-              // TODO(lucas): Fix date formatting
-              _TableItem('01/01/2023'),
+              // TODO(lucas): Move formatting logic to appropriate location
+              _TableItem(DateFormat.yMd('pt_BR').format(element.day)),
               _TableItem(('R\$${element.openPrice.toStringAsFixed(2)}').toString()),
               _TableItem(
                 (element.previousDayChange == null ? '-' : '${(element.previousDayChange! * 100).toStringAsFixed(2)}%')

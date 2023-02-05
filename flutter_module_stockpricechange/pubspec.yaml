@@ -21,6 +21,7 @@ dependencies:
   sp_design_system:
     path: packages/sp_design_system
   fl_chart: ^0.60.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

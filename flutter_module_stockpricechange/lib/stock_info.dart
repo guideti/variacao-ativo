@@ -81,7 +81,9 @@ class _LatestPrice extends StatelessWidget {
                 if (tradingDay.thirtyDaysChange.isPositive()) SvgPicture.asset('assets/arrow_up.svg'),
                 if (tradingDay.thirtyDaysChange.isNegative()) SvgPicture.asset('assets/arrow_down.svg'),
                 SpText.bodyRegular12(
-                  '${(tradingDay.thirtyDaysChange! * 100).toStringAsFixed(2)}% em 30 dias',
+                  tradingDay.thirtyDaysChange == null
+                      ? '-'
+                      : '${(tradingDay.thirtyDaysChange! * 100).toStringAsFixed(2)}% em 30 dias',
                   color: tradingDay.thirtyDaysChange.isPositive()
                       ? SpColors.green
                       : tradingDay.thirtyDaysChange.isNegative()

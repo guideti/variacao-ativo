@@ -8,7 +8,6 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,13 +20,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             StockPriceChangeTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
-//                ) {
-//                    LaunchFlutterButton()
-//                }
                 MainContent()
             }
         }
@@ -56,15 +48,18 @@ fun MainContent() {
                             )
                         )
                     })
-                Spacer(modifier = Modifier.padding(16.dp))
-                AppButton(title = "Chart", onClick = {
-                    mContext.startActivity(
-                        FlutterStockPriceActivity.withVisualisationType(
-                            mContext,
-                            FlutterApi.VisualisationType.CHART
+                Spacer(modifier = Modifier.padding(32.dp))
+                AppButton(
+                    title = "Chart",
+                    onClick = {
+                        mContext.startActivity(
+                            FlutterStockPriceActivity.withVisualisationType(
+                                mContext,
+                                FlutterApi.VisualisationType.CHART
+                            )
                         )
-                    )
-                })
+                    },
+                )
             }
         }
     )
@@ -72,7 +67,7 @@ fun MainContent() {
 
 @Composable
 fun AppButton(title: String, onClick: () -> Unit) {
-    Button(onClick = onClick) {
+    OutlinedButton(modifier = Modifier.size(150.dp), onClick = onClick) {
         Text(title)
     }
 }

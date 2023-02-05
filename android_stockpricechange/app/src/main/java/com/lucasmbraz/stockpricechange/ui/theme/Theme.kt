@@ -9,13 +9,13 @@ import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
     primary = BrandGreen,
-//    primaryVariant = Purple700,
+    primaryVariant = BrandGreen700,
 //    secondary = Teal200
 )
 
 private val LightColorPalette = lightColors(
     primary = BrandGreen,
-//    primaryVariant = Purple700,
+    primaryVariant = BrandGreen700,
 //    secondary = Teal200
 
     /* Other default colors to override

@@ -59,7 +59,9 @@ class _HomePageState extends State<HomePage> {
           ),
           title: _visualisationType == VisualisationType.historical ? const Text('Variação do Ativo') : null,
         ),
-        body: _visualisationType == VisualisationType.historical ? const StockHistoricalView() : const ChartView(),
+        body: SafeArea(
+          child: _visualisationType == VisualisationType.historical ? const StockHistoricalView() : const ChartView(),
+        ),
       ),
     );
   }

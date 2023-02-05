@@ -33,7 +33,7 @@ public class FlutterApi {
   }
 
   public enum VisualisationType {
-    HISTORICAL(0),
+    TABLE(0),
     CHART(1);
 
     private final int index;

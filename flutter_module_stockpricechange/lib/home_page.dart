@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: SafeArea(
-        child: _visualisationType == VisualisationType.historical ? const TableView() : const ChartView(),
+        child: _visualisationType == VisualisationType.table ? const TableView() : const ChartView(),
       ),
     );
   }

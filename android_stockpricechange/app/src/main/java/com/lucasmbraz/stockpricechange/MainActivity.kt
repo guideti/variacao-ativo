@@ -51,7 +51,7 @@ fun MainContent() {
                         mContext.startActivity(
                             FlutterStockPriceActivity.withVisualisationType(
                                 mContext,
-                                FlutterApi.VisualisationType.HISTORICAL
+                                FlutterApi.VisualisationType.TABLE
                             )
                         )
                     })

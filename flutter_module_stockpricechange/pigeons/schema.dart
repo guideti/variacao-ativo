@@ -1,6 +1,6 @@
 import 'package:pigeon/pigeon.dart';
 
-enum VisualisationType { historical, chart }
+enum VisualisationType { table, chart }
 
 // This class is needed because Pigeon only supports enums as class properties
 class Visualisation {

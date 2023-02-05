@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/models/trading_day.dart';
+import 'package:flutter_module_stockpricechange/redux/app_state.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
@@ -13,7 +16,7 @@ class StockInfo extends StatelessWidget {
         SizedBox(width: 8),
         _CompanyInfo(),
         Expanded(child: SizedBox(width: 8)),
-        _CurrentPrice(),
+        _LatestPrice(),
       ],
     );
   }
@@ -55,24 +58,46 @@ class _CompanyInfo extends StatelessWidget {
   }
 }
 
-class _CurrentPrice extends StatelessWidget {
-  const _CurrentPrice();
+class _LatestPrice extends StatelessWidget {
+  const _LatestPrice();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        SpText.header('\$1,863.02', color: context.spColors.header),
-        const SizedBox(height: 2),
-        // TODO(lucas): Use widget for variable percentage
-        Row(
+    return StoreConnector<AppState, TradingDay>(
+      converter: (store) => store.state.tradingDays.last,
+      builder: (context, tradingDay) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            SvgPicture.asset('assets/arrow_up.svg'),
-            SpText.bodyRegular12('2.35% in last 7 days', color: SpColors.green),
+            // TODO(lucas): Format currency and percentage using NumberFormat
+            SpText.header(
+              ('R\$${tradingDay.openPrice.toStringAsFixed(2)}').toString(),
+              color: context.spColors.header,
+            ),
+            const SizedBox(height: 2),
+            // TODO(lucas): Use widget for variable percentage
+            Row(
+              children: [
+                if (tradingDay.thirtyDaysChange.isPositive()) SvgPicture.asset('assets/arrow_up.svg'),
+                if (tradingDay.thirtyDaysChange.isNegative()) SvgPicture.asset('assets/arrow_down.svg'),
+                SpText.bodyRegular12(
+                  '${(tradingDay.thirtyDaysChange! * 100).toStringAsFixed(2)}% em 30 dias',
+                  color: tradingDay.thirtyDaysChange.isPositive()
+                      ? SpColors.green
+                      : tradingDay.thirtyDaysChange.isNegative()
+                          ? SpColors.red
+                          : context.spColors.body,
+                ),
+              ],
+            ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
+}
+
+extension on double? {
+  bool isPositive() => this != null && this! > 0;
+  bool isNegative() => this != null && this! < 0;
 }

@@ -43,56 +43,58 @@ class StockHistoricalView extends StatelessWidget {
               );
             }).toList();
 
-            return Column(
-              children: [
-                const StockInfo(),
-                const SizedBox(height: 32),
-                Table(
-                  border: TableBorder.all(
-                    color: context.spColors.border,
-                    width: 1,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  columnWidths: const {
-                    0: FlexColumnWidth(1),
-                    1: FlexColumnWidth(3),
-                    2: FlexColumnWidth(2),
-                    3: FlexColumnWidth(2),
-                    4: FlexColumnWidth(2),
-                  },
-                  children: [
-                    TableRow(
-                      decoration: const BoxDecoration(
-                        color: SpColors.green,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
-                      ),
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
-                        ),
-                      ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  const StockInfo(),
+                  const SizedBox(height: 32),
+                  Table(
+                    border: TableBorder.all(
+                      color: context.spColors.border,
+                      width: 1,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    ...rows,
-                  ],
-                ),
-              ],
+                    columnWidths: const {
+                      0: FlexColumnWidth(1),
+                      1: FlexColumnWidth(3),
+                      2: FlexColumnWidth(2),
+                      3: FlexColumnWidth(2),
+                      4: FlexColumnWidth(2),
+                    },
+                    children: [
+                      TableRow(
+                        decoration: const BoxDecoration(
+                          color: SpColors.green,
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                        ),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
+                          ),
+                        ],
+                      ),
+                      ...rows,
+                    ],
+                  ),
+                ],
+              ),
             );
           },
           failure: () => const Text('Failure'),

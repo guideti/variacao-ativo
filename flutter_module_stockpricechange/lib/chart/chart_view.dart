@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/chart/chart.dart';
+import 'package:flutter_module_stockpricechange/redux/actions.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
@@ -14,6 +15,7 @@ class ChartView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, AppState>(
+      onInit: (store) => store.dispatch(LoadTradingDaysAction()),
       converter: (store) => store.state,
       builder: (context, state) {
         if (state.failed || state.tradingDays.isEmpty) {

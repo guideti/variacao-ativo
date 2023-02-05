@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppState {
   List<TradingDay> get tradingDays => throw _privateConstructorUsedError;
   DataStatus get dataStatus => throw _privateConstructorUsedError;
+  VisualisationType get visualisationType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
-  $Res call({List<TradingDay> tradingDays, DataStatus dataStatus});
+  $Res call(
+      {List<TradingDay> tradingDays,
+      DataStatus dataStatus,
+      VisualisationType visualisationType});
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   $Res call({
     Object? tradingDays = null,
     Object? dataStatus = null,
+    Object? visualisationType = null,
   }) {
     return _then(_value.copyWith(
       tradingDays: null == tradingDays
@@ -57,6 +62,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.dataStatus
           : dataStatus // ignore: cast_nullable_to_non_nullable
               as DataStatus,
+      visualisationType: null == visualisationType
+          ? _value.visualisationType
+          : visualisationType // ignore: cast_nullable_to_non_nullable
+              as VisualisationType,
     ) as $Val);
   }
 }
@@ -68,7 +77,10 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$$_AppStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<TradingDay> tradingDays, DataStatus dataStatus});
+  $Res call(
+      {List<TradingDay> tradingDays,
+      DataStatus dataStatus,
+      VisualisationType visualisationType});
 }
 
 /// @nodoc
@@ -84,6 +96,7 @@ class __$$_AppStateCopyWithImpl<$Res>
   $Res call({
     Object? tradingDays = null,
     Object? dataStatus = null,
+    Object? visualisationType = null,
   }) {
     return _then(_$_AppState(
       tradingDays: null == tradingDays
@@ -94,6 +107,10 @@ class __$$_AppStateCopyWithImpl<$Res>
           ? _value.dataStatus
           : dataStatus // ignore: cast_nullable_to_non_nullable
               as DataStatus,
+      visualisationType: null == visualisationType
+          ? _value.visualisationType
+          : visualisationType // ignore: cast_nullable_to_non_nullable
+              as VisualisationType,
     ));
   }
 }
@@ -102,7 +119,9 @@ class __$$_AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   _$_AppState(
-      {required final List<TradingDay> tradingDays, required this.dataStatus})
+      {required final List<TradingDay> tradingDays,
+      required this.dataStatus,
+      required this.visualisationType})
       : _tradingDays = tradingDays;
 
   final List<TradingDay> _tradingDays;
@@ -115,10 +134,12 @@ class _$_AppState implements _AppState {
 
   @override
   final DataStatus dataStatus;
+  @override
+  final VisualisationType visualisationType;
 
   @override
   String toString() {
-    return 'AppState(tradingDays: $tradingDays, dataStatus: $dataStatus)';
+    return 'AppState(tradingDays: $tradingDays, dataStatus: $dataStatus, visualisationType: $visualisationType)';
   }
 
   @override
@@ -129,12 +150,17 @@ class _$_AppState implements _AppState {
             const DeepCollectionEquality()
                 .equals(other._tradingDays, _tradingDays) &&
             (identical(other.dataStatus, dataStatus) ||
-                other.dataStatus == dataStatus));
+                other.dataStatus == dataStatus) &&
+            (identical(other.visualisationType, visualisationType) ||
+                other.visualisationType == visualisationType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_tradingDays), dataStatus);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_tradingDays),
+      dataStatus,
+      visualisationType);
 
   @JsonKey(ignore: true)
   @override
@@ -146,12 +172,15 @@ class _$_AppState implements _AppState {
 abstract class _AppState implements AppState {
   factory _AppState(
       {required final List<TradingDay> tradingDays,
-      required final DataStatus dataStatus}) = _$_AppState;
+      required final DataStatus dataStatus,
+      required final VisualisationType visualisationType}) = _$_AppState;
 
   @override
   List<TradingDay> get tradingDays;
   @override
   DataStatus get dataStatus;
+  @override
+  VisualisationType get visualisationType;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

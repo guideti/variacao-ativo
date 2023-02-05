@@ -1,45 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/chart/chart_view.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
+import 'package:flutter_module_stockpricechange/redux/app_state.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 import 'table/table_view.dart';
 
-typedef DisplayStockDataEventReceived = void Function(VisualisationType visualisationType);
-
-class FlutterStockApiHandler extends FlutterStockApi {
-  FlutterStockApiHandler(this.onEventReceived);
-
-  final DisplayStockDataEventReceived onEventReceived;
-
-  @override
-  void displayStockData(Visualisation visualisation) {
-    onEventReceived(visualisation.visualisationType);
-  }
-}
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final NativeNavigationApi navigationApi = NativeNavigationApi();
-  var _visualisationType = VisualisationType.chart;
-
-  @override
-  void initState() {
-    super.initState();
-
-    FlutterStockApi.setup(FlutterStockApiHandler((visualisationType) {
-      setState(() {
-        _visualisationType = visualisationType;
-      });
-    }));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +23,23 @@ class _HomePageState extends State<HomePage> {
               'assets/back_icon.svg',
               colorFilter: ColorFilter.mode(context.spColors.body, BlendMode.srcIn),
             ),
-            onPressed: () => navigationApi.goBack(),
+            // onPressed: () => navigationApi.goBack(),
+            onPressed: () {},
           ),
         ),
       ),
       body: SafeArea(
-        child: _visualisationType == VisualisationType.table ? const TableView() : const ChartView(),
+        child: StoreConnector<AppState, VisualisationType>(
+          converter: (store) => store.state.visualisationType,
+          builder: (context, visualisationType) {
+            switch (visualisationType) {
+              case VisualisationType.table:
+                return const TableView();
+              case VisualisationType.chart:
+                return const ChartView();
+            }
+          },
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter_module_stockpricechange/pigeon.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_module_stockpricechange/redux/reducers.dart';
 import 'package:flutter_module_stockpricechange/redux/repository_middleware.dart';
@@ -9,6 +10,7 @@ Store<AppState> createReduxStore() => Store<AppState>(
       initialState: AppState(
         tradingDays: const [],
         dataStatus: DataStatus.initial,
+        visualisationType: VisualisationType.table,
       ),
       middleware: [
         RepositoryMiddleware(StockRepository()),

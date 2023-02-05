@@ -6,6 +6,7 @@ final appReducer = combineReducers<AppState>([
   TypedReducer<AppState, LoadTradingDaysAction>(_onLoadTradingDays),
   TypedReducer<AppState, TradingDaysNotLoadedAction>(_onTradingDaysNotLoaded),
   TypedReducer<AppState, TradingDaysLoadedAction>(_onTradingDaysLoaded),
+  TypedReducer<AppState, ChangeVisualisationAction>(_onChangeVisualisationType),
 ]);
 
 AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) {
@@ -30,3 +31,7 @@ AppState _onTradingDaysLoaded(AppState state, TradingDaysLoadedAction action) {
     dataStatus: DataStatus.loaded,
   );
 }
+
+AppState _onChangeVisualisationType(AppState state, ChangeVisualisationAction action) => state.copyWith(
+      visualisationType: action.visualisationType,
+    );

@@ -5,6 +5,7 @@ import 'package:redux/redux.dart';
 final appReducer = combineReducers<AppState>([
   TypedReducer<AppState, LoadTradingDaysAction>(_onLoadTradingDays),
   TypedReducer<AppState, TradingDaysNotLoadedAction>(_onTradingDaysNotLoaded),
+  TypedReducer<AppState, TradingDaysLoadedAction>(_onTradingDaysLoaded),
 ]);
 
 AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) => state.copyWith(
@@ -15,4 +16,10 @@ AppState _onLoadTradingDays(AppState state, LoadTradingDaysAction _) => state.co
 AppState _onTradingDaysNotLoaded(AppState state, TradingDaysNotLoadedAction _) => state.copyWith(
       isLoading: false,
       failed: true,
+    );
+
+AppState _onTradingDaysLoaded(AppState state, TradingDaysLoadedAction action) => state.copyWith(
+      tradingDays: action.tradingDays,
+      isLoading: false,
+      failed: false,
     );

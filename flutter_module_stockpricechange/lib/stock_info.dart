@@ -36,7 +36,7 @@ class _CompanyLogo extends StatelessWidget {
       ),
       child: Center(
         child: SvgPicture.asset(
-          'assets/starbucks.svg',
+          'assets/vale.svg',
         ),
       ),
     );
@@ -49,10 +49,11 @@ class _CompanyInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SpText.header('SBUX', color: context.spColors.header),
+        SpText.header('VALE3', color: context.spColors.header),
         const SizedBox(height: 2),
-        SpText.bodyRegular12('Starbucks', color: context.spColors.bodyLight),
+        SpText.bodyRegular12('Vale SA', color: context.spColors.bodyLight),
       ],
     );
   }

@@ -38,45 +38,69 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const StockInfo(),
-          const SizedBox(height: 20),
-          const AspectRatio(
-            aspectRatio: 1,
-            child: Chart(),
-          ),
-          const SizedBox(height: 28),
-          SpText.bodyMedium14('Statistics', color: context.spColors.body),
-          const SizedBox(height: 16),
-          const _StatRow(title: 'Previous Close', value: '\$1,800'),
-          const SizedBox(height: 16),
-          const _Divider(),
-          const SizedBox(height: 16),
-          const _StatRow(title: 'Opening Price', value: '\$1,860'),
-          const SizedBox(height: 16),
-          const _Divider(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SpText.bodyRegular14('24H Returns %', color: context.spColors.bodyLight),
-              // TODO(lucas): Use widget for variable percentage
-              Row(
-                children: [
-                  // TODO(lucas): Use constant for assets
-                  SvgPicture.asset('assets/arrow_up.svg'),
-                  SpText.bodyRegular12('2.35%', color: SpColors.green),
-                ],
-              )
-            ],
-          ),
-          const SizedBox(height: 16),
-        ],
-      ),
+    return OrientationBuilder(builder: (context, orientation) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const StockInfo(),
+            const SizedBox(height: 20),
+            orientation.isPortrait
+                ? const AspectRatio(
+                    aspectRatio: 1,
+                    child: Chart(),
+                  )
+                : const Expanded(
+                    child: Chart(),
+                  ),
+            const SizedBox(height: 28),
+            if (orientation.isPortrait && screenBigEnoughForStatistics(context)) ...[
+              const _Statistics(),
+              const SizedBox(height: 16),
+            ]
+          ],
+        ),
+      );
+    });
+  }
+
+  bool screenBigEnoughForStatistics(BuildContext context) => MediaQuery.of(context).size.height >= 700;
+}
+
+class _Statistics extends StatelessWidget {
+  const _Statistics();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SpText.bodyMedium14('Statistics', color: context.spColors.body),
+        const SizedBox(height: 16),
+        const _StatRow(title: 'Previous Close', value: '\$1,800'),
+        const SizedBox(height: 16),
+        const _Divider(),
+        const SizedBox(height: 16),
+        const _StatRow(title: 'Opening Price', value: '\$1,860'),
+        const SizedBox(height: 16),
+        const _Divider(),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SpText.bodyRegular14('24H Returns %', color: context.spColors.bodyLight),
+            // TODO(lucas): Use widget for variable percentage
+            Row(
+              children: [
+                // TODO(lucas): Use constant for assets
+                SvgPicture.asset('assets/arrow_up.svg'),
+                SpText.bodyRegular12('2.35%', color: SpColors.green),
+              ],
+            )
+          ],
+        ),
+      ],
     );
   }
 }
@@ -112,4 +136,8 @@ class _Divider extends StatelessWidget {
       color: context.spColors.border,
     );
   }
+}
+
+extension on Orientation {
+  bool get isPortrait => this == Orientation.portrait;
 }

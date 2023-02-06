@@ -14,6 +14,7 @@
 		A00DD07829911E36004EF808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00DD07629911E36004EF808 /* Main.storyboard */; };
 		A00DD07A29911E38004EF808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00DD07929911E38004EF808 /* Assets.xcassets */; };
 		A00DD07D29911E38004EF808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00DD07B29911E38004EF808 /* LaunchScreen.storyboard */; };
+		A01AE1EB29913372006A6EB6 /* api.m in Sources */ = {isa = PBXBuildFile; fileRef = A01AE1EA29913372006A6EB6 /* api.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,9 @@
 		A00DD07929911E38004EF808 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A00DD07C29911E38004EF808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A00DD07E29911E38004EF808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A01AE1E829913371006A6EB6 /* stockpricechange-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "stockpricechange-Bridging-Header.h"; sourceTree = "<group>"; };
+		A01AE1E929913372006A6EB6 /* api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = api.h; sourceTree = "<group>"; };
+		A01AE1EA29913372006A6EB6 /* api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = api.m; sourceTree = "<group>"; };
 		A7165DDE943E0A1C13D0D0E4 /* Pods-stockpricechange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stockpricechange.release.xcconfig"; path = "Target Support Files/Pods-stockpricechange/Pods-stockpricechange.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +67,8 @@
 		A00DD06F29911E36004EF808 /* stockpricechange */ = {
 			isa = PBXGroup;
 			children = (
+				A01AE1E929913372006A6EB6 /* api.h */,
+				A01AE1EA29913372006A6EB6 /* api.m */,
 				A00DD07029911E36004EF808 /* AppDelegate.swift */,
 				A00DD07229911E36004EF808 /* SceneDelegate.swift */,
 				A00DD07429911E36004EF808 /* ViewController.swift */,
@@ -70,6 +76,7 @@
 				A00DD07929911E38004EF808 /* Assets.xcassets */,
 				A00DD07B29911E38004EF808 /* LaunchScreen.storyboard */,
 				A00DD07E29911E38004EF808 /* Info.plist */,
+				A01AE1E829913371006A6EB6 /* stockpricechange-Bridging-Header.h */,
 			);
 			path = stockpricechange;
 			sourceTree = "<group>";
@@ -80,7 +87,6 @@
 				6D625E9D73E13E1F3B9FAE8C /* Pods-stockpricechange.debug.xcconfig */,
 				A7165DDE943E0A1C13D0D0E4 /* Pods-stockpricechange.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -128,6 +134,7 @@
 				TargetAttributes = {
 					A00DD06C29911E36004EF808 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -231,6 +238,7 @@
 			files = (
 				A00DD07529911E36004EF808 /* ViewController.swift in Sources */,
 				A00DD07129911E36004EF808 /* AppDelegate.swift in Sources */,
+				A01AE1EB29913372006A6EB6 /* api.m in Sources */,
 				A00DD07329911E36004EF808 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4JM369B565;
@@ -395,6 +404,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmbraz.stockpricechange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "stockpricechange/stockpricechange-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -406,6 +417,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4JM369B565;
@@ -424,6 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmbraz.stockpricechange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "stockpricechange/stockpricechange-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

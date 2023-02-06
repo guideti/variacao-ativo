@@ -9,20 +9,29 @@ import UIKit
 import Flutter
 
 class ViewController: UIViewController {
+    private var api: FlutterStockApi!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-//        // Make a button to call the showFlutter function when pressed.
-//        let button = UIButton(type:UIButton.ButtonType.custom)
-//        button.addTarget(self, action: #selector(showFlutter), for: .touchUpInside)
-//        button.setTitle("Show Flutter!", for: UIControl.State.normal)
-//        button.frame = CGRect(x: 80.0, y: 210.0, width: 160.0, height: 40.0)
-//        button.backgroundColor = UIColor.blue
-//        self.view.addSubview(button)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        api = FlutterStockApi.init(binaryMessenger: appDelegate.flutterEngine.binaryMessenger)
     }
 
-    @IBAction func showFlutter(_ sender: UIButton) {
+    @IBAction func showTable(_ sender: Any) {
+        showFlutter(visualisationType: VisualisationType.table)
+    }
+    
+    @IBAction func showChart(_ sender: Any) {
+        showFlutter(visualisationType: VisualisationType.chart)
+    }
+    
+    func showFlutter(visualisationType: VisualisationType) {
+        api.displayStockDataVisualisation(Visualisation.make(with: visualisationType)) { (error) in
+            if let error = error {
+                print(error)
+            }
+        }
+        
         let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
         let flutterViewController =
             FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)

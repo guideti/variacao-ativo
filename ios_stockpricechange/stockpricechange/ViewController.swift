@@ -8,13 +8,15 @@
 import UIKit
 import Flutter
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NativeNavigationApi {
     private var api: FlutterStockApi!
+    private var flutterViewController: FlutterViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         api = FlutterStockApi.init(binaryMessenger: appDelegate.flutterEngine.binaryMessenger)
+        NativeNavigationApiSetup(appDelegate.flutterEngine.binaryMessenger, self)
     }
 
     @IBAction func showTable(_ sender: Any) {
@@ -33,9 +35,16 @@ class ViewController: UIViewController {
         }
         
         let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
-        let flutterViewController =
+        flutterViewController =
             FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        
+        flutterViewController.modalPresentationStyle = .overCurrentContext
+        flutterViewController.isViewOpaque = true
         present(flutterViewController, animated: true, completion: nil)
+    }
+    
+    func goBackWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        flutterViewController.dismiss(animated: true)
     }
 }
 

@@ -62,7 +62,7 @@ class _Content extends StatelessWidget {
     }).toList();
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -76,7 +76,7 @@ class _Content extends StatelessWidget {
               ),
               columnWidths: const {
                 0: FlexColumnWidth(1),
-                1: FlexColumnWidth(3),
+                1: FlexColumnWidth(2.5),
                 2: FlexColumnWidth(2),
                 3: FlexColumnWidth(2),
                 4: FlexColumnWidth(2),
@@ -89,23 +89,23 @@ class _Content extends StatelessWidget {
                   ),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
                     ),
                   ],
@@ -129,7 +129,7 @@ class _TableItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: Center(child: SpText.bodyRegular14(value, color: context.spColors.body)),
     );
   }

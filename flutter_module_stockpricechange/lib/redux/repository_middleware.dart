@@ -37,6 +37,9 @@ class RepositoryMiddleware extends MiddlewareClass<AppState> {
         return TradingDay(
           day: DateTime.fromMillisecondsSinceEpoch(day.timestamp),
           openPrice: day.open,
+          closePrice: day.close,
+          lowPrice: day.low,
+          highPrice: day.high,
           previousDayChange: previousDayChange,
           thirtyDaysChange: thirtyDaysChange,
         );

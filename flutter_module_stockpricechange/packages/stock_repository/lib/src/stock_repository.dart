@@ -23,11 +23,17 @@ extension on Chart {
   List<StockPriceDay> toDailyPrices() {
     final timestamps = result.first.timestamp;
     final openPrices = result.first.indicators.quote.first.open;
+    final closePrices = result.first.indicators.quote.first.close;
+    final lowPrices = result.first.indicators.quote.first.low;
+    final highPrices = result.first.indicators.quote.first.high;
 
     final dailyPrices = timestamps
         .mapIndexed((index, element) {
-          final price = openPrices[index];
-          return StockPriceDay(timestamp: element * 1000, open: price);
+          final open = openPrices[index];
+          final close = closePrices[index];
+          final low = lowPrices[index];
+          final high = highPrices[index];
+          return StockPriceDay(timestamp: element * 1000, open: open, close: close, low: low, high: high);
         })
         .skip(openPrices.length < 30 ? 0 : openPrices.length - 30) // Discard first items so we end up with 30
         .toList();

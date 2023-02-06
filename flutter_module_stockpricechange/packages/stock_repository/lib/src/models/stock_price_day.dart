@@ -7,5 +7,8 @@ class StockPriceDay with _$StockPriceDay {
   factory StockPriceDay({
     required int timestamp,
     required double open,
+    required double close,
+    required double low,
+    required double high,
   }) = _StockPriceDay;
 }

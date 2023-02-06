@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TradingDay {
   DateTime get day => throw _privateConstructorUsedError;
   double get openPrice => throw _privateConstructorUsedError;
+  double get closePrice => throw _privateConstructorUsedError;
+  double get lowPrice => throw _privateConstructorUsedError;
+  double get highPrice => throw _privateConstructorUsedError;
   double? get previousDayChange => throw _privateConstructorUsedError;
   double? get thirtyDaysChange => throw _privateConstructorUsedError;
 
@@ -35,6 +38,9 @@ abstract class $TradingDayCopyWith<$Res> {
   $Res call(
       {DateTime day,
       double openPrice,
+      double closePrice,
+      double lowPrice,
+      double highPrice,
       double? previousDayChange,
       double? thirtyDaysChange});
 }
@@ -54,6 +60,9 @@ class _$TradingDayCopyWithImpl<$Res, $Val extends TradingDay>
   $Res call({
     Object? day = null,
     Object? openPrice = null,
+    Object? closePrice = null,
+    Object? lowPrice = null,
+    Object? highPrice = null,
     Object? previousDayChange = freezed,
     Object? thirtyDaysChange = freezed,
   }) {
@@ -65,6 +74,18 @@ class _$TradingDayCopyWithImpl<$Res, $Val extends TradingDay>
       openPrice: null == openPrice
           ? _value.openPrice
           : openPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      closePrice: null == closePrice
+          ? _value.closePrice
+          : closePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      lowPrice: null == lowPrice
+          ? _value.lowPrice
+          : lowPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      highPrice: null == highPrice
+          ? _value.highPrice
+          : highPrice // ignore: cast_nullable_to_non_nullable
               as double,
       previousDayChange: freezed == previousDayChange
           ? _value.previousDayChange
@@ -89,6 +110,9 @@ abstract class _$$_TradingDayCopyWith<$Res>
   $Res call(
       {DateTime day,
       double openPrice,
+      double closePrice,
+      double lowPrice,
+      double highPrice,
       double? previousDayChange,
       double? thirtyDaysChange});
 }
@@ -106,6 +130,9 @@ class __$$_TradingDayCopyWithImpl<$Res>
   $Res call({
     Object? day = null,
     Object? openPrice = null,
+    Object? closePrice = null,
+    Object? lowPrice = null,
+    Object? highPrice = null,
     Object? previousDayChange = freezed,
     Object? thirtyDaysChange = freezed,
   }) {
@@ -117,6 +144,18 @@ class __$$_TradingDayCopyWithImpl<$Res>
       openPrice: null == openPrice
           ? _value.openPrice
           : openPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      closePrice: null == closePrice
+          ? _value.closePrice
+          : closePrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      lowPrice: null == lowPrice
+          ? _value.lowPrice
+          : lowPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      highPrice: null == highPrice
+          ? _value.highPrice
+          : highPrice // ignore: cast_nullable_to_non_nullable
               as double,
       previousDayChange: freezed == previousDayChange
           ? _value.previousDayChange
@@ -136,6 +175,9 @@ class _$_TradingDay implements _TradingDay {
   const _$_TradingDay(
       {required this.day,
       required this.openPrice,
+      required this.closePrice,
+      required this.lowPrice,
+      required this.highPrice,
       this.previousDayChange,
       this.thirtyDaysChange});
 
@@ -144,13 +186,19 @@ class _$_TradingDay implements _TradingDay {
   @override
   final double openPrice;
   @override
+  final double closePrice;
+  @override
+  final double lowPrice;
+  @override
+  final double highPrice;
+  @override
   final double? previousDayChange;
   @override
   final double? thirtyDaysChange;
 
   @override
   String toString() {
-    return 'TradingDay(day: $day, openPrice: $openPrice, previousDayChange: $previousDayChange, thirtyDaysChange: $thirtyDaysChange)';
+    return 'TradingDay(day: $day, openPrice: $openPrice, closePrice: $closePrice, lowPrice: $lowPrice, highPrice: $highPrice, previousDayChange: $previousDayChange, thirtyDaysChange: $thirtyDaysChange)';
   }
 
   @override
@@ -161,6 +209,12 @@ class _$_TradingDay implements _TradingDay {
             (identical(other.day, day) || other.day == day) &&
             (identical(other.openPrice, openPrice) ||
                 other.openPrice == openPrice) &&
+            (identical(other.closePrice, closePrice) ||
+                other.closePrice == closePrice) &&
+            (identical(other.lowPrice, lowPrice) ||
+                other.lowPrice == lowPrice) &&
+            (identical(other.highPrice, highPrice) ||
+                other.highPrice == highPrice) &&
             (identical(other.previousDayChange, previousDayChange) ||
                 other.previousDayChange == previousDayChange) &&
             (identical(other.thirtyDaysChange, thirtyDaysChange) ||
@@ -168,8 +222,8 @@ class _$_TradingDay implements _TradingDay {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, day, openPrice, previousDayChange, thirtyDaysChange);
+  int get hashCode => Object.hash(runtimeType, day, openPrice, closePrice,
+      lowPrice, highPrice, previousDayChange, thirtyDaysChange);
 
   @JsonKey(ignore: true)
   @override
@@ -182,6 +236,9 @@ abstract class _TradingDay implements TradingDay {
   const factory _TradingDay(
       {required final DateTime day,
       required final double openPrice,
+      required final double closePrice,
+      required final double lowPrice,
+      required final double highPrice,
       final double? previousDayChange,
       final double? thirtyDaysChange}) = _$_TradingDay;
 
@@ -189,6 +246,12 @@ abstract class _TradingDay implements TradingDay {
   DateTime get day;
   @override
   double get openPrice;
+  @override
+  double get closePrice;
+  @override
+  double get lowPrice;
+  @override
+  double get highPrice;
   @override
   double? get previousDayChange;
   @override

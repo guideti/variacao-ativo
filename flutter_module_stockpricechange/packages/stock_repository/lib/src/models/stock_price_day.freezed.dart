@@ -18,6 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StockPriceDay {
   int get timestamp => throw _privateConstructorUsedError;
   double get open => throw _privateConstructorUsedError;
+  double get close => throw _privateConstructorUsedError;
+  double get low => throw _privateConstructorUsedError;
+  double get high => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StockPriceDayCopyWith<StockPriceDay> get copyWith =>
@@ -30,7 +33,8 @@ abstract class $StockPriceDayCopyWith<$Res> {
           StockPriceDay value, $Res Function(StockPriceDay) then) =
       _$StockPriceDayCopyWithImpl<$Res, StockPriceDay>;
   @useResult
-  $Res call({int timestamp, double open});
+  $Res call(
+      {int timestamp, double open, double close, double low, double high});
 }
 
 /// @nodoc
@@ -48,6 +52,9 @@ class _$StockPriceDayCopyWithImpl<$Res, $Val extends StockPriceDay>
   $Res call({
     Object? timestamp = null,
     Object? open = null,
+    Object? close = null,
+    Object? low = null,
+    Object? high = null,
   }) {
     return _then(_value.copyWith(
       timestamp: null == timestamp
@@ -57,6 +64,18 @@ class _$StockPriceDayCopyWithImpl<$Res, $Val extends StockPriceDay>
       open: null == open
           ? _value.open
           : open // ignore: cast_nullable_to_non_nullable
+              as double,
+      close: null == close
+          ? _value.close
+          : close // ignore: cast_nullable_to_non_nullable
+              as double,
+      low: null == low
+          ? _value.low
+          : low // ignore: cast_nullable_to_non_nullable
+              as double,
+      high: null == high
+          ? _value.high
+          : high // ignore: cast_nullable_to_non_nullable
               as double,
     ) as $Val);
   }
@@ -70,7 +89,8 @@ abstract class _$$_StockPriceDayCopyWith<$Res>
       __$$_StockPriceDayCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int timestamp, double open});
+  $Res call(
+      {int timestamp, double open, double close, double low, double high});
 }
 
 /// @nodoc
@@ -86,6 +106,9 @@ class __$$_StockPriceDayCopyWithImpl<$Res>
   $Res call({
     Object? timestamp = null,
     Object? open = null,
+    Object? close = null,
+    Object? low = null,
+    Object? high = null,
   }) {
     return _then(_$_StockPriceDay(
       timestamp: null == timestamp
@@ -96,6 +119,18 @@ class __$$_StockPriceDayCopyWithImpl<$Res>
           ? _value.open
           : open // ignore: cast_nullable_to_non_nullable
               as double,
+      close: null == close
+          ? _value.close
+          : close // ignore: cast_nullable_to_non_nullable
+              as double,
+      low: null == low
+          ? _value.low
+          : low // ignore: cast_nullable_to_non_nullable
+              as double,
+      high: null == high
+          ? _value.high
+          : high // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -103,16 +138,27 @@ class __$$_StockPriceDayCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StockPriceDay implements _StockPriceDay {
-  _$_StockPriceDay({required this.timestamp, required this.open});
+  _$_StockPriceDay(
+      {required this.timestamp,
+      required this.open,
+      required this.close,
+      required this.low,
+      required this.high});
 
   @override
   final int timestamp;
   @override
   final double open;
+  @override
+  final double close;
+  @override
+  final double low;
+  @override
+  final double high;
 
   @override
   String toString() {
-    return 'StockPriceDay(timestamp: $timestamp, open: $open)';
+    return 'StockPriceDay(timestamp: $timestamp, open: $open, close: $close, low: $low, high: $high)';
   }
 
   @override
@@ -122,11 +168,15 @@ class _$_StockPriceDay implements _StockPriceDay {
             other is _$_StockPriceDay &&
             (identical(other.timestamp, timestamp) ||
                 other.timestamp == timestamp) &&
-            (identical(other.open, open) || other.open == open));
+            (identical(other.open, open) || other.open == open) &&
+            (identical(other.close, close) || other.close == close) &&
+            (identical(other.low, low) || other.low == low) &&
+            (identical(other.high, high) || other.high == high));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, timestamp, open);
+  int get hashCode =>
+      Object.hash(runtimeType, timestamp, open, close, low, high);
 
   @JsonKey(ignore: true)
   @override
@@ -138,12 +188,21 @@ class _$_StockPriceDay implements _StockPriceDay {
 abstract class _StockPriceDay implements StockPriceDay {
   factory _StockPriceDay(
       {required final int timestamp,
-      required final double open}) = _$_StockPriceDay;
+      required final double open,
+      required final double close,
+      required final double low,
+      required final double high}) = _$_StockPriceDay;
 
   @override
   int get timestamp;
   @override
   double get open;
+  @override
+  double get close;
+  @override
+  double get low;
+  @override
+  double get high;
   @override
   @JsonKey(ignore: true)
   _$$_StockPriceDayCopyWith<_$_StockPriceDay> get copyWith =>

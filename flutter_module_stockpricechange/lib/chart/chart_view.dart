@@ -47,16 +47,11 @@ class _Content extends StatelessWidget {
           children: [
             const StockInfo(),
             const SizedBox(height: 20),
-            orientation.isPortrait
-                ? const AspectRatio(
-                    aspectRatio: 1,
-                    child: Chart(),
-                  )
-                : const Expanded(
-                    child: Chart(),
-                  ),
+            orientation.isLandscape || isSmallScreen(context)
+                ? const Expanded(child: Chart())
+                : const AspectRatio(aspectRatio: 1, child: Chart()),
             const SizedBox(height: 28),
-            if (orientation.isPortrait && screenBigEnoughForStatistics(context)) ...[
+            if (orientation.isPortrait) ...[
               const _Statistics(),
               const SizedBox(height: 16),
             ]
@@ -66,7 +61,7 @@ class _Content extends StatelessWidget {
     });
   }
 
-  bool screenBigEnoughForStatistics(BuildContext context) => MediaQuery.of(context).size.height >= 700;
+  bool isSmallScreen(BuildContext context) => MediaQuery.of(context).size.height < 750;
 }
 
 class _Statistics extends StatelessWidget {
@@ -145,4 +140,6 @@ class _Divider extends StatelessWidget {
 
 extension on Orientation {
   bool get isPortrait => this == Orientation.portrait;
+
+  bool get isLandscape => this == Orientation.landscape;
 }

@@ -8,7 +8,6 @@ import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
 import 'package:flutter_module_stockpricechange/widgets/loading.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:intl/intl.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class ChartView extends StatelessWidget {
@@ -76,13 +75,11 @@ class _Statistics extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // TODO(lucas): Fix formatting
               Row(
                 children: [
                   SpText.bodyMedium14('Variação do Dia', color: context.spColors.body),
                   const SizedBox(width: 8),
-                  SpText.bodyRegular12('/ ${DateFormat.MMMd('pt_BR').format(day.day)}',
-                      color: context.spColors.bodyLight),
+                  SpText.bodyRegular12('/ ${day.day.toMidString()}', color: context.spColors.bodyLight),
                 ],
               ),
               const SizedBox(height: 16),

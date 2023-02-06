@@ -8,7 +8,6 @@ import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
 import 'package:flutter_module_stockpricechange/widgets/loading.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:intl/intl.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class TableView extends StatelessWidget {
@@ -120,8 +119,7 @@ extension on List<TradingDay> {
         (index, item) => TableRow(
           children: [
             _TableItem((index + 1).toString()),
-            // TODO(lucas): Move formatting logic to appropriate location
-            _TableItem(DateFormat.yMd('pt_BR').format(item.day)),
+            _TableItem(item.day.toLongString()),
             _TableItem(item.openPrice.toCurrency()),
             _TableItem(item.previousDayChange.toPercentage()),
             _TableItem(item.thirtyDaysChange.toPercentage()),

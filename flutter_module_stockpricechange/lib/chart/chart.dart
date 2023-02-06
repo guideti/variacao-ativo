@@ -4,7 +4,6 @@ import 'package:flutter_module_stockpricechange/extensions/formatting_extensions
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:intl/intl.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
 class Chart extends StatelessWidget {
@@ -28,9 +27,7 @@ class Chart extends StatelessWidget {
       child: value == meta.min || value == meta.max
           ? Container()
           : SpText.bodyRegular12(
-              DateFormat.Md('pt_BR').format(
-                DateTime.fromMicrosecondsSinceEpoch(value.toInt()),
-              ),
+              DateTime.fromMicrosecondsSinceEpoch(value.toInt()).toShortString(),
               color: context.spColors.bodyLight,
             ),
     );
@@ -69,7 +66,7 @@ class Chart extends StatelessWidget {
         ),
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
-            interval: Duration(days: 10).inMicroseconds.toDouble(),
+            interval: const Duration(days: 10).inMicroseconds.toDouble(),
             showTitles: true,
             getTitlesWidget: (value, meta) => bottomTitleWidgets(context, value, meta),
           ),

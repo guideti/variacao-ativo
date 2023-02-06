@@ -41,26 +41,6 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final rows = _tradingDays.mapIndexed((index, element) {
-      return TableRow(
-        // TODO(lucas): Format currency and percentage using NumberFormat
-        children: [
-          _TableItem((index + 1).toString()),
-          // TODO(lucas): Move formatting logic to appropriate location
-          _TableItem(DateFormat.yMd('pt_BR').format(element.day)),
-          _TableItem(('R\$${element.openPrice.toStringAsFixed(2)}').toString()),
-          _TableItem(
-            (element.previousDayChange == null ? '-' : '${(element.previousDayChange! * 100).toStringAsFixed(2)}%')
-                .toString(),
-          ),
-          _TableItem(
-            (element.thirtyDaysChange == null ? '-' : '${(element.thirtyDaysChange! * 100).toStringAsFixed(2)}%')
-                .toString(),
-          ),
-        ],
-      );
-    }).toList();
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: SingleChildScrollView(
@@ -82,41 +62,40 @@ class _Content extends StatelessWidget {
                 4: FlexColumnWidth(2),
               },
               children: [
-                TableRow(
-                  decoration: const BoxDecoration(
+                const TableRow(
+                  decoration: BoxDecoration(
                     color: SpColors.green,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
                   ),
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Center(child: SpText.bodyMedium14('Dia', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Center(child: SpText.bodyMedium14('Data', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Center(child: SpText.bodyMedium14('Valor', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Center(child: SpText.bodyMedium14('% D-1', color: context.spColors.body)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                      child: Center(child: SpText.bodyMedium14('% Total', color: context.spColors.body)),
-                    ),
+                    _HeaderItem('Dia'),
+                    _HeaderItem('Data'),
+                    _HeaderItem('Valor'),
+                    _HeaderItem('% D-1'),
+                    _HeaderItem('% Total'),
                   ],
                 ),
-                ...rows,
+                ..._tradingDays.toTableRows(),
               ],
             ),
             const SizedBox(height: 16),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _HeaderItem extends StatelessWidget {
+  const _HeaderItem(this.value);
+
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      child: Center(child: SpText.bodyMedium14(value, color: context.spColors.body)),
     );
   }
 }
@@ -133,4 +112,25 @@ class _TableItem extends StatelessWidget {
       child: Center(child: SpText.bodyRegular14(value, color: context.spColors.body)),
     );
   }
+}
+
+extension on List<TradingDay> {
+  List<TableRow> toTableRows() => mapIndexed(
+        (index, item) => TableRow(
+          children: [
+            _TableItem((index + 1).toString()),
+            // TODO(lucas): Move formatting logic to appropriate location
+            _TableItem(DateFormat.yMd('pt_BR').format(item.day)),
+            _TableItem(('R\$${item.openPrice.toStringAsFixed(2)}').toString()),
+            _TableItem(
+              (item.previousDayChange == null ? '-' : '${(item.previousDayChange! * 100).toStringAsFixed(2)}%')
+                  .toString(),
+            ),
+            _TableItem(
+              (item.thirtyDaysChange == null ? '-' : '${(item.thirtyDaysChange! * 100).toStringAsFixed(2)}%')
+                  .toString(),
+            ),
+          ],
+        ),
+      ).toList();
 }

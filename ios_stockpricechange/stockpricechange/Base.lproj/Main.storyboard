@@ -16,30 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idy-EV-mmg">
-                                <rect key="frame" x="171" y="437.5" width="72" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Gráfico"/>
-                                <connections>
-                                    <action selector="showChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rG0-fW-uEo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7y-s6-yu9">
-                                <rect key="frame" x="173.5" y="349" width="67" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Tabela"/>
-                                <connections>
-                                    <action selector="showTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g57-xt-wlJ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="ob8-6w-82Y">
+                                <rect key="frame" x="163.5" y="377.5" width="87.5" height="151"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7y-s6-yu9">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Tabela" buttonSize="large">
+                                            <color key="baseBackgroundColor" red="0.098039215686274508" green="0.68627450980392157" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showTable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g57-xt-wlJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idy-EV-mmg">
+                                        <rect key="frame" x="0.0" y="104" width="87.5" height="47"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Gráfico" buttonSize="large">
+                                            <color key="baseBackgroundColor" red="0.098039215690000001" green="0.68627450980000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showChart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rG0-fW-uEo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="I7y-s6-yu9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="EL2-WR-wzO"/>
-                            <constraint firstItem="Idy-EV-mmg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FS5-Nm-kTm"/>
-                            <constraint firstItem="Idy-EV-mmg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="T8W-Xw-eOv"/>
-                            <constraint firstItem="I7y-s6-yu9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="305" id="bdN-GE-ZSG"/>
+                            <constraint firstItem="ob8-6w-82Y" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dck-rE-ylg"/>
+                            <constraint firstItem="ob8-6w-82Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lnf-yJ-L3a"/>
                         </constraints>
                     </view>
                 </viewController>

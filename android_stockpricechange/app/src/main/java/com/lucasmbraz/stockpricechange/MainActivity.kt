@@ -1,5 +1,7 @@
 package com.lucasmbraz.stockpricechange
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,10 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.lucasmbraz.stockpricechange.FlutterApi.VisualisationType
 import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
 import com.lucasmbraz.stockpricechange.ui.theme.StockPriceChangeTheme
 import io.flutter.embedding.android.FlutterActivity
@@ -38,37 +42,64 @@ fun MainContent() {
             })
         },
         content = { padding ->
-            Column(
-                modifier = Modifier
-                    .padding(padding)
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                AppButton(
-                    title = stringResource(R.string.table),
-                    onClick = {
-                        mContext.startActivity(
-                            FlutterStockPriceActivity.withVisualisationType(
-                                mContext,
-                                FlutterApi.VisualisationType.TABLE
-                            )
+            val configuration = LocalConfiguration.current
+            when (configuration.orientation) {
+                Configuration.ORIENTATION_PORTRAIT -> {
+                    Column(
+                        modifier = Modifier
+                            .padding(padding)
+                            .fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        AppButton(
+                            title = stringResource(R.string.table),
+                            onClick = {
+                                launchFlutter(mContext, VisualisationType.TABLE)
+                            })
+                        Spacer(modifier = Modifier.padding(32.dp))
+                        AppButton(
+                            title = stringResource(R.string.chart),
+                            onClick = {
+                                launchFlutter(mContext, VisualisationType.CHART)
+                            },
                         )
-                    })
-                Spacer(modifier = Modifier.padding(32.dp))
-                AppButton(
-                    title = stringResource(R.string.chart),
-                    onClick = {
-                        mContext.startActivity(
-                            FlutterStockPriceActivity.withVisualisationType(
-                                mContext,
-                                FlutterApi.VisualisationType.CHART
-                            )
+                    }
+                }
+                else -> {
+                    Row(
+                        modifier = Modifier
+                            .padding(padding)
+                            .fillMaxSize(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        AppButton(
+                            title = stringResource(R.string.table),
+                            onClick = {
+                                launchFlutter(mContext, VisualisationType.TABLE)
+                            })
+                        Spacer(modifier = Modifier.padding(32.dp))
+                        AppButton(
+                            title = stringResource(R.string.chart),
+                            onClick = {
+                                launchFlutter(mContext, VisualisationType.CHART)
+                            },
                         )
-                    },
-                )
+                    }
+                }
             }
+
         }
+    )
+}
+
+fun launchFlutter(mContext: Context, visualisationType: VisualisationType) {
+    mContext.startActivity(
+        FlutterStockPriceActivity.withVisualisationType(
+            mContext,
+            visualisationType
+        )
     )
 }
 

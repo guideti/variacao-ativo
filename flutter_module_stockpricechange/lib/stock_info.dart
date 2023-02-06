@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -72,7 +73,7 @@ class _LatestPrice extends StatelessWidget {
           children: [
             // TODO(lucas): Format currency and percentage using NumberFormat
             SpText.header(
-              ('R\$${tradingDay.openPrice.toStringAsFixed(2)}').toString(),
+              (tradingDay.openPrice.toCurrency()),
               color: context.spColors.header,
             ),
             const SizedBox(height: 2),

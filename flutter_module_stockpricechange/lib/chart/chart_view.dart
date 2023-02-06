@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/chart/chart.dart';
+import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/actions.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
@@ -85,19 +86,19 @@ class _Statistics extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16),
-              _StatRow(title: 'Abertura', value: 'R\$${day.openPrice.toStringAsFixed(2)}'),
+              _StatRow(title: 'Abertura', value: day.openPrice.toCurrency()),
               const SizedBox(height: 12),
               const _Divider(),
               const SizedBox(height: 12),
-              _StatRow(title: 'Fechamento', value: 'R\$${day.closePrice.toStringAsFixed(2)}'),
+              _StatRow(title: 'Fechamento', value: day.closePrice.toCurrency()),
               const SizedBox(height: 12),
               const _Divider(),
               const SizedBox(height: 12),
-              _StatRow(title: 'Máximo', value: 'R\$${day.highPrice.toStringAsFixed(2)}'),
+              _StatRow(title: 'Máximo', value: day.highPrice.toCurrency()),
               const SizedBox(height: 12),
               const _Divider(),
               const SizedBox(height: 12),
-              _StatRow(title: 'Mínimo', value: 'R\$${day.lowPrice.toStringAsFixed(2)}'),
+              _StatRow(title: 'Mínimo', value: day.lowPrice.toCurrency()),
               const SizedBox(height: 12),
             ],
           );

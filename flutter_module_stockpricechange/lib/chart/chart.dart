@@ -1,6 +1,6 @@
-import 'package:collection/collection.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -41,10 +41,7 @@ class Chart extends StatelessWidget {
       axisSide: meta.axisSide,
       child: value == meta.min || value == meta.max
           ? Container()
-          : SpText.bodyRegular12(
-              'R\$${value.toStringAsFixed(1)}',
-              color: context.spColors.bodyLight,
-            ),
+          : SpText.bodyRegular12(value.toCurrency(decimalDigits: 1), color: context.spColors.bodyLight),
     );
   }
 
@@ -81,7 +78,7 @@ class Chart extends StatelessWidget {
           sideTitles: SideTitles(
             showTitles: true,
             getTitlesWidget: (value, meta) => leftTitleWidgets(context, value, meta),
-            reservedSize: 50,
+            reservedSize: 52,
           ),
         ),
       ),

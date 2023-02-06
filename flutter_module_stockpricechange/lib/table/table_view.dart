@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/actions.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
@@ -121,7 +122,7 @@ extension on List<TradingDay> {
             _TableItem((index + 1).toString()),
             // TODO(lucas): Move formatting logic to appropriate location
             _TableItem(DateFormat.yMd('pt_BR').format(item.day)),
-            _TableItem(('R\$${item.openPrice.toStringAsFixed(2)}').toString()),
+            _TableItem(item.openPrice.toCurrency()),
             _TableItem(
               (item.previousDayChange == null ? '-' : '${(item.previousDayChange! * 100).toStringAsFixed(2)}%')
                   .toString(),

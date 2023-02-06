@@ -123,14 +123,8 @@ extension on List<TradingDay> {
             // TODO(lucas): Move formatting logic to appropriate location
             _TableItem(DateFormat.yMd('pt_BR').format(item.day)),
             _TableItem(item.openPrice.toCurrency()),
-            _TableItem(
-              (item.previousDayChange == null ? '-' : '${(item.previousDayChange! * 100).toStringAsFixed(2)}%')
-                  .toString(),
-            ),
-            _TableItem(
-              (item.thirtyDaysChange == null ? '-' : '${(item.thirtyDaysChange! * 100).toStringAsFixed(2)}%')
-                  .toString(),
-            ),
+            _TableItem(item.previousDayChange.toPercentage()),
+            _TableItem(item.thirtyDaysChange.toPercentage()),
           ],
         ),
       ).toList();

@@ -71,7 +71,6 @@ class _LatestPrice extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            // TODO(lucas): Format currency and percentage using NumberFormat
             SpText.header(
               (tradingDay.openPrice.toCurrency()),
               color: context.spColors.header,
@@ -85,7 +84,7 @@ class _LatestPrice extends StatelessWidget {
                 SpText.bodyRegular12(
                   tradingDay.thirtyDaysChange == null
                       ? '-'
-                      : '${(tradingDay.thirtyDaysChange! * 100).toStringAsFixed(2)}% em 30 dias',
+                      : '${tradingDay.thirtyDaysChange.toPercentage()} em 30 dias',
                   color: tradingDay.thirtyDaysChange.isPositive()
                       ? SpColors.green
                       : tradingDay.thirtyDaysChange.isNegative()

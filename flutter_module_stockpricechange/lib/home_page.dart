@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/assets.dart';
 import 'package:flutter_module_stockpricechange/features/chart/chart_view.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
@@ -20,9 +21,8 @@ class HomePage extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.only(left: 8.0),
           child: IconButton(
-            // TODO(lucas): Use constants for assets
             icon: SvgPicture.asset(
-              'assets/back_icon.svg',
+              Assets.arrowBack,
               colorFilter: ColorFilter.mode(context.spColors.body, BlendMode.srcIn),
             ),
             onPressed: () => api.goBack(),

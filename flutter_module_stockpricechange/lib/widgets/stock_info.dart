@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module_stockpricechange/assets.dart';
 import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
@@ -36,9 +37,7 @@ class _CompanyLogo extends StatelessWidget {
         border: Border.all(color: context.spColors.border),
       ),
       child: Center(
-        child: SvgPicture.asset(
-          'assets/vale.svg',
-        ),
+        child: SvgPicture.asset(Assets.companyLogo),
       ),
     );
   }
@@ -76,11 +75,10 @@ class _LatestPrice extends StatelessWidget {
               color: context.spColors.header,
             ),
             const SizedBox(height: 2),
-            // TODO(lucas): Use widget for variable percentage
             Row(
               children: [
-                if (tradingDay.thirtyDaysChange.isPositive()) SvgPicture.asset('assets/arrow_up.svg'),
-                if (tradingDay.thirtyDaysChange.isNegative()) SvgPicture.asset('assets/arrow_down.svg'),
+                if (tradingDay.thirtyDaysChange.isPositive()) SvgPicture.asset(Assets.arrowUp),
+                if (tradingDay.thirtyDaysChange.isNegative()) SvgPicture.asset(Assets.arrowDown),
                 SpText.bodyRegular12(
                   tradingDay.thirtyDaysChange == null
                       ? '-'

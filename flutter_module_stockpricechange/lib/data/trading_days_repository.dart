@@ -12,7 +12,7 @@ class TradingDaysRepository {
     // We subtract 45 days to account for the days the stock market is closed
     final startDate = endDate.subtract(const Duration(days: 45));
 
-    final apiData = await _apiClient.fetchStockData(
+    final apiData = await _apiClient.getTradingDays(
       from: startDate.secondsSinceEpoch,
       until: endDate.secondsSinceEpoch,
     );

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module_stockpricechange/chart/chart_view.dart';
+import 'package:flutter_module_stockpricechange/features/chart/chart_view.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 
-import 'table/table_view.dart';
+import 'features/table/table_view.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});

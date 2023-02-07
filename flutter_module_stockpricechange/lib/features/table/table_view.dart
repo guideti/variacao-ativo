@@ -4,9 +4,9 @@ import 'package:flutter_module_stockpricechange/extensions/formatting_extensions
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/redux/actions.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
-import 'package:flutter_module_stockpricechange/stock_info.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
 import 'package:flutter_module_stockpricechange/widgets/loading.dart';
+import 'package:flutter_module_stockpricechange/widgets/stock_info.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:sp_design_system/sp_design_system.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter_module_stockpricechange/models/trading_day.dart';
-import 'package:flutter_module_stockpricechange/pigeon.dart';
+import 'package:flutter_module_stockpricechange/pigeon/api.dart';
 
 class LoadTradingDaysAction {}
 

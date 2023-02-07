@@ -2,8 +2,10 @@ package com.lucasmbraz.stockpricechange
 
 import android.content.Context
 import android.content.Intent
-import com.lucasmbraz.stockpricechange.FlutterApi.Visualisation
-import com.lucasmbraz.stockpricechange.FlutterApi.VisualisationType
+import com.lucasmbraz.stockpricechange.Api.Visualisation
+import com.lucasmbraz.stockpricechange.Api.VisualisationType
+import com.lucasmbraz.stockpricechange.Api.HostNavigationApi
+import com.lucasmbraz.stockpricechange.Api.FlutterStockApi
 import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -35,19 +37,18 @@ class FlutterStockPriceActivity : FlutterActivity() {
             .setVisualisationType(visualisationType)
             .build()
 
-        FlutterApi.NativeNavigationApi.setup(flutterEngine.dartExecutor, NativeNavigationApiHandler())
+        HostNavigationApi.setup(flutterEngine.dartExecutor, HostNavigationHandler())
 
         // Send in the visualisationType to Flutter
-        FlutterApi.FlutterStockApi(flutterEngine.dartExecutor)
-            .displayStockData(visualisation) {
+        FlutterStockApi(flutterEngine.dartExecutor)
+            .chooseVisualisationType(visualisation) {
                 // ignore callback
             }
     }
 
-    inner class NativeNavigationApiHandler : FlutterApi.NativeNavigationApi {
+    inner class HostNavigationHandler : HostNavigationApi {
         override fun goBack() {
-           finish()
+            finish()
         }
-
     }
 }

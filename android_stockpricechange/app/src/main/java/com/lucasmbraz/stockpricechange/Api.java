@@ -21,7 +21,7 @@ import java.util.Map;
 
 /** Generated class from Pigeon. */
 @SuppressWarnings({"unused", "unchecked", "CodeBlock2Expr", "RedundantSuppression"})
-public class FlutterApi {
+public class Api {
   @NonNull
   private static ArrayList<Object> wrapError(@NonNull Throwable exception) {
     ArrayList<Object> errorList = new ArrayList<Object>(3);
@@ -133,30 +133,30 @@ public class FlutterApi {
     static MessageCodec<Object> getCodec() {
       return FlutterStockApiCodec.INSTANCE;
     }
-    public void displayStockData(@NonNull Visualisation visualisationArg, Reply<Void> callback) {
+    public void chooseVisualisationType(@NonNull Visualisation visualisationArg, Reply<Void> callback) {
       BasicMessageChannel<Object> channel =
           new BasicMessageChannel<>(
-              binaryMessenger, "dev.flutter.pigeon.FlutterStockApi.displayStockData", getCodec());
+              binaryMessenger, "dev.flutter.pigeon.FlutterStockApi.chooseVisualisationType", getCodec());
       channel.send(
           new ArrayList<Object>(Collections.singletonList(visualisationArg)),
           channelReply -> callback.reply(null));
     }
   }
   /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-  public interface NativeNavigationApi {
+  public interface HostNavigationApi {
 
     void goBack();
 
-    /** The codec used by NativeNavigationApi. */
+    /** The codec used by HostNavigationApi. */
     static MessageCodec<Object> getCodec() {
       return new StandardMessageCodec();
     }
-    /**Sets up an instance of `NativeNavigationApi` to handle messages through the `binaryMessenger`. */
-    static void setup(BinaryMessenger binaryMessenger, NativeNavigationApi api) {
+    /**Sets up an instance of `HostNavigationApi` to handle messages through the `binaryMessenger`. */
+    static void setup(BinaryMessenger binaryMessenger, HostNavigationApi api) {
       {
         BasicMessageChannel<Object> channel =
             new BasicMessageChannel<>(
-                binaryMessenger, "dev.flutter.pigeon.NativeNavigationApi.goBack", getCodec());
+                binaryMessenger, "dev.flutter.pigeon.HostNavigationApi.goBack", getCodec());
         if (api != null) {
           channel.setMessageHandler(
               (message, reply) -> {

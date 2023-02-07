@@ -11,10 +11,10 @@ class Visualisation {
 
 @FlutterApi()
 abstract class FlutterStockApi {
-  void displayStockData(Visualisation visualisation);
+  void chooseVisualisationType(Visualisation visualisation);
 }
 
 @HostApi()
-abstract class NativeNavigationApi {
+abstract class HostNavigationApi {
   void goBack();
 }

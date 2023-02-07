@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/assets.dart';
 import 'package:flutter_module_stockpricechange/features/chart/chart_view.dart';
-import 'package:flutter_module_stockpricechange/pigeon.dart';
+import 'package:flutter_module_stockpricechange/pigeon/api.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +12,7 @@ import 'features/table/table_view.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final NativeNavigationApi api = NativeNavigationApi();
+  final hostApi = HostNavigationApi();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
               Assets.arrowBack,
               colorFilter: ColorFilter.mode(context.spColors.body, BlendMode.srcIn),
             ),
-            onPressed: () => api.goBack(),
+            onPressed: () => hostApi.goBack(),
           ),
         ),
       ),

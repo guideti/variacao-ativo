@@ -10,35 +10,35 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, VisualisationType) {
-  VisualisationTypeTable = 0,
-  VisualisationTypeChart = 1,
+typedef NS_ENUM(NSUInteger, SPVisualisationType) {
+  SPVisualisationTypeTable = 0,
+  SPVisualisationTypeChart = 1,
 };
 
-@class Visualisation;
+@class SPVisualisation;
 
-@interface Visualisation : NSObject
+@interface SPVisualisation : NSObject
 /// `init` unavailable to enforce nonnull fields, see the `make` class method.
 - (instancetype)init NS_UNAVAILABLE;
-+ (instancetype)makeWithVisualisationType:(VisualisationType)visualisationType;
-@property(nonatomic, assign) VisualisationType visualisationType;
++ (instancetype)makeWithVisualisationType:(SPVisualisationType)visualisationType;
+@property(nonatomic, assign) SPVisualisationType visualisationType;
 @end
 
-/// The codec used by FlutterStockApi.
-NSObject<FlutterMessageCodec> *FlutterStockApiGetCodec(void);
+/// The codec used by SPFlutterStockApi.
+NSObject<FlutterMessageCodec> *SPFlutterStockApiGetCodec(void);
 
-@interface FlutterStockApi : NSObject
+@interface SPFlutterStockApi : NSObject
 - (instancetype)initWithBinaryMessenger:(id<FlutterBinaryMessenger>)binaryMessenger;
-- (void)displayStockDataVisualisation:(Visualisation *)visualisation completion:(void (^)(NSError *_Nullable))completion;
+- (void)chooseVisualisationTypeVisualisation:(SPVisualisation *)visualisation completion:(void (^)(NSError *_Nullable))completion;
 @end
 
-/// The codec used by NativeNavigationApi.
-NSObject<FlutterMessageCodec> *NativeNavigationApiGetCodec(void);
+/// The codec used by SPHostNavigationApi.
+NSObject<FlutterMessageCodec> *SPHostNavigationApiGetCodec(void);
 
-@protocol NativeNavigationApi
+@protocol SPHostNavigationApi
 - (void)goBackWithError:(FlutterError *_Nullable *_Nonnull)error;
 @end
 
-extern void NativeNavigationApiSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<NativeNavigationApi> *_Nullable api);
+extern void SPHostNavigationApiSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<SPHostNavigationApi> *_Nullable api);
 
 NS_ASSUME_NONNULL_END

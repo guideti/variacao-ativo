@@ -10,13 +10,12 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.lucasmbraz.stockpricechange.FlutterApi.VisualisationType
+import com.lucasmbraz.stockpricechange.Api.VisualisationType
 import com.lucasmbraz.stockpricechange.StockPriceApplication.Companion.ENGINE_ID
 import com.lucasmbraz.stockpricechange.ui.theme.StockPriceChangeTheme
 import io.flutter.embedding.android.FlutterActivity

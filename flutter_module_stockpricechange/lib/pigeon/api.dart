@@ -60,24 +60,24 @@ class _FlutterStockApiCodec extends StandardMessageCodec {
 abstract class FlutterStockApi {
   static const MessageCodec<Object?> codec = _FlutterStockApiCodec();
 
-  void displayStockData(Visualisation visualisation);
+  void chooseVisualisationType(Visualisation visualisation);
 
   static void setup(FlutterStockApi? api, {BinaryMessenger? binaryMessenger}) {
     {
       final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-          'dev.flutter.pigeon.FlutterStockApi.displayStockData', codec,
+          'dev.flutter.pigeon.FlutterStockApi.chooseVisualisationType', codec,
           binaryMessenger: binaryMessenger);
       if (api == null) {
         channel.setMessageHandler(null);
       } else {
         channel.setMessageHandler((Object? message) async {
           assert(message != null,
-          'Argument for dev.flutter.pigeon.FlutterStockApi.displayStockData was null.');
+          'Argument for dev.flutter.pigeon.FlutterStockApi.chooseVisualisationType was null.');
           final List<Object?> args = (message as List<Object?>?)!;
           final Visualisation? arg_visualisation = (args[0] as Visualisation?);
           assert(arg_visualisation != null,
-              'Argument for dev.flutter.pigeon.FlutterStockApi.displayStockData was null, expected non-null Visualisation.');
-          api.displayStockData(arg_visualisation!);
+              'Argument for dev.flutter.pigeon.FlutterStockApi.chooseVisualisationType was null, expected non-null Visualisation.');
+          api.chooseVisualisationType(arg_visualisation!);
           return;
         });
       }
@@ -85,11 +85,11 @@ abstract class FlutterStockApi {
   }
 }
 
-class NativeNavigationApi {
-  /// Constructor for [NativeNavigationApi].  The [binaryMessenger] named argument is
+class HostNavigationApi {
+  /// Constructor for [HostNavigationApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  NativeNavigationApi({BinaryMessenger? binaryMessenger})
+  HostNavigationApi({BinaryMessenger? binaryMessenger})
       : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
@@ -97,7 +97,7 @@ class NativeNavigationApi {
 
   Future<void> goBack() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.NativeNavigationApi.goBack', codec,
+        'dev.flutter.pigeon.HostNavigationApi.goBack', codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(null) as List<Object?>?;

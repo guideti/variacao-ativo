@@ -1,5 +1,5 @@
 import 'package:flutter_module_stockpricechange/data/trading_days_repository.dart';
-import 'package:flutter_module_stockpricechange/pigeon.dart';
+import 'package:flutter_module_stockpricechange/pigeon/api.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_module_stockpricechange/redux/reducers.dart';
 import 'package:flutter_module_stockpricechange/redux/repository_middleware.dart';

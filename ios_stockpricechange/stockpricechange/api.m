@@ -21,25 +21,25 @@ static id GetNullableObjectAtIndex(NSArray *array, NSInteger key) {
   return (result == [NSNull null]) ? nil : result;
 }
 
-@interface Visualisation ()
-+ (Visualisation *)fromList:(NSArray *)list;
-+ (nullable Visualisation *)nullableFromList:(NSArray *)list;
+@interface SPVisualisation ()
++ (SPVisualisation *)fromList:(NSArray *)list;
++ (nullable SPVisualisation *)nullableFromList:(NSArray *)list;
 - (NSArray *)toList;
 @end
 
-@implementation Visualisation
-+ (instancetype)makeWithVisualisationType:(VisualisationType)visualisationType {
-  Visualisation* pigeonResult = [[Visualisation alloc] init];
+@implementation SPVisualisation
++ (instancetype)makeWithVisualisationType:(SPVisualisationType)visualisationType {
+  SPVisualisation* pigeonResult = [[SPVisualisation alloc] init];
   pigeonResult.visualisationType = visualisationType;
   return pigeonResult;
 }
-+ (Visualisation *)fromList:(NSArray *)list {
-  Visualisation *pigeonResult = [[Visualisation alloc] init];
++ (SPVisualisation *)fromList:(NSArray *)list {
+  SPVisualisation *pigeonResult = [[SPVisualisation alloc] init];
   pigeonResult.visualisationType = [GetNullableObjectAtIndex(list, 0) integerValue];
   return pigeonResult;
 }
-+ (nullable Visualisation *)nullableFromList:(NSArray *)list {
-  return (list) ? [Visualisation fromList:list] : nil;
++ (nullable SPVisualisation *)nullableFromList:(NSArray *)list {
+  return (list) ? [SPVisualisation fromList:list] : nil;
 }
 - (NSArray *)toList {
   return @[
@@ -48,24 +48,24 @@ static id GetNullableObjectAtIndex(NSArray *array, NSInteger key) {
 }
 @end
 
-@interface FlutterStockApiCodecReader : FlutterStandardReader
+@interface SPFlutterStockApiCodecReader : FlutterStandardReader
 @end
-@implementation FlutterStockApiCodecReader
+@implementation SPFlutterStockApiCodecReader
 - (nullable id)readValueOfType:(UInt8)type {
   switch (type) {
     case 128: 
-      return [Visualisation fromList:[self readValue]];
+      return [SPVisualisation fromList:[self readValue]];
     default:
       return [super readValueOfType:type];
   }
 }
 @end
 
-@interface FlutterStockApiCodecWriter : FlutterStandardWriter
+@interface SPFlutterStockApiCodecWriter : FlutterStandardWriter
 @end
-@implementation FlutterStockApiCodecWriter
+@implementation SPFlutterStockApiCodecWriter
 - (void)writeValue:(id)value {
-  if ([value isKindOfClass:[Visualisation class]]) {
+  if ([value isKindOfClass:[SPVisualisation class]]) {
     [self writeByte:128];
     [self writeValue:[value toList]];
   } else {
@@ -74,32 +74,32 @@ static id GetNullableObjectAtIndex(NSArray *array, NSInteger key) {
 }
 @end
 
-@interface FlutterStockApiCodecReaderWriter : FlutterStandardReaderWriter
+@interface SPFlutterStockApiCodecReaderWriter : FlutterStandardReaderWriter
 @end
-@implementation FlutterStockApiCodecReaderWriter
+@implementation SPFlutterStockApiCodecReaderWriter
 - (FlutterStandardWriter *)writerWithData:(NSMutableData *)data {
-  return [[FlutterStockApiCodecWriter alloc] initWithData:data];
+  return [[SPFlutterStockApiCodecWriter alloc] initWithData:data];
 }
 - (FlutterStandardReader *)readerWithData:(NSData *)data {
-  return [[FlutterStockApiCodecReader alloc] initWithData:data];
+  return [[SPFlutterStockApiCodecReader alloc] initWithData:data];
 }
 @end
 
-NSObject<FlutterMessageCodec> *FlutterStockApiGetCodec() {
+NSObject<FlutterMessageCodec> *SPFlutterStockApiGetCodec() {
   static FlutterStandardMessageCodec *sSharedObject = nil;
   static dispatch_once_t sPred = 0;
   dispatch_once(&sPred, ^{
-    FlutterStockApiCodecReaderWriter *readerWriter = [[FlutterStockApiCodecReaderWriter alloc] init];
+    SPFlutterStockApiCodecReaderWriter *readerWriter = [[SPFlutterStockApiCodecReaderWriter alloc] init];
     sSharedObject = [FlutterStandardMessageCodec codecWithReaderWriter:readerWriter];
   });
   return sSharedObject;
 }
 
-@interface FlutterStockApi ()
+@interface SPFlutterStockApi ()
 @property(nonatomic, strong) NSObject<FlutterBinaryMessenger> *binaryMessenger;
 @end
 
-@implementation FlutterStockApi
+@implementation SPFlutterStockApi
 
 - (instancetype)initWithBinaryMessenger:(NSObject<FlutterBinaryMessenger> *)binaryMessenger {
   self = [super init];
@@ -108,33 +108,33 @@ NSObject<FlutterMessageCodec> *FlutterStockApiGetCodec() {
   }
   return self;
 }
-- (void)displayStockDataVisualisation:(Visualisation *)arg_visualisation completion:(void (^)(NSError *_Nullable))completion {
+- (void)chooseVisualisationTypeVisualisation:(SPVisualisation *)arg_visualisation completion:(void (^)(NSError *_Nullable))completion {
   FlutterBasicMessageChannel *channel =
     [FlutterBasicMessageChannel
-      messageChannelWithName:@"dev.flutter.pigeon.FlutterStockApi.displayStockData"
+      messageChannelWithName:@"dev.flutter.pigeon.FlutterStockApi.chooseVisualisationType"
       binaryMessenger:self.binaryMessenger
-      codec:FlutterStockApiGetCodec()];
+      codec:SPFlutterStockApiGetCodec()];
   [channel sendMessage:@[arg_visualisation ?: [NSNull null]] reply:^(id reply) {
     completion(nil);
   }];
 }
 @end
 
-NSObject<FlutterMessageCodec> *NativeNavigationApiGetCodec() {
+NSObject<FlutterMessageCodec> *SPHostNavigationApiGetCodec() {
   static FlutterStandardMessageCodec *sSharedObject = nil;
   sSharedObject = [FlutterStandardMessageCodec sharedInstance];
   return sSharedObject;
 }
 
-void NativeNavigationApiSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<NativeNavigationApi> *api) {
+void SPHostNavigationApiSetup(id<FlutterBinaryMessenger> binaryMessenger, NSObject<SPHostNavigationApi> *api) {
   {
     FlutterBasicMessageChannel *channel =
       [[FlutterBasicMessageChannel alloc]
-        initWithName:@"dev.flutter.pigeon.NativeNavigationApi.goBack"
+        initWithName:@"dev.flutter.pigeon.HostNavigationApi.goBack"
         binaryMessenger:binaryMessenger
-        codec:NativeNavigationApiGetCodec()];
+        codec:SPHostNavigationApiGetCodec()];
     if (api) {
-      NSCAssert([api respondsToSelector:@selector(goBackWithError:)], @"NativeNavigationApi api (%@) doesn't respond to @selector(goBackWithError:)", api);
+      NSCAssert([api respondsToSelector:@selector(goBackWithError:)], @"SPHostNavigationApi api (%@) doesn't respond to @selector(goBackWithError:)", api);
       [channel setMessageHandler:^(id _Nullable message, FlutterReply callback) {
         FlutterError *error;
         [api goBackWithError:&error];

@@ -3,6 +3,13 @@ import 'package:flutter_module_stockpricechange/models/trading_day.dart';
 import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/pigeon/api.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
+import 'package:flutter_module_stockpricechange/redux/reducers.dart';
+import 'package:redux/redux.dart';
+
+Store<AppState> buildStore({AppState? state}) => Store<AppState>(
+      appReducer,
+      initialState: state ?? buildAppState(),
+    );
 
 AppState buildAppState({
   List<TradingDayWithStats> tradingDays = const [],

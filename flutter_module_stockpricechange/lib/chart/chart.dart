@@ -112,6 +112,16 @@ class Chart extends StatelessWidget {
           ),
         ),
       ],
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (touchedSpots) => [
+            LineTooltipItem(
+              touchedSpots.first.y.toCurrency(),
+              SpTextStyles.bodyRegular14.copyWith(color: SpColors.green),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

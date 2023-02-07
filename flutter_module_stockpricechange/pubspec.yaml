@@ -1,0 +1,50 @@
+name: flutter_module_stockpricechange
+description: A new Flutter module project.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  collection: ^1.17.0
+  freezed_annotation: ^2.2.0
+  flutter_svg: ^2.0.0+1
+  redux: ^5.0.0
+  flutter_redux: ^0.10.0
+  sp_design_system:
+    path: packages/sp_design_system
+  yahoo_finance_api:
+    path: packages/yahoo_finance_api
+  fl_chart: ^0.60.0
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+  build_runner: 
+  pigeon: ^7.1.4
+  freezed: ^2.3.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  # This section identifies your Flutter project as a module meant for
+  # embedding in a native host app.  These identifiers should _not_ ordinarily
+  # be changed after generation - they are used to ensure that the tooling can
+  # maintain consistency when adding or modifying assets and plugins.
+  # They also do not have any bearing on your native host application's
+  # identifiers, which may be completely independent or the same as these.
+  module:
+    androidX: true
+    androidPackage: com.lucasmbraz.flutter_module_stockpricechange
+    iosBundleIdentifier: com.lucasmbraz.flutterModuleStockpricechange

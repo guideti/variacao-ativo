@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Variação do Ativo</string>
+    <string name="chart">Gráfico</string>
+    <string name="table">Tabela</string>
+</resources>

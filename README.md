@@ -1,55 +1,83 @@
-# Variação do Ativo
+![cover](cover.png)
 
-**(Leia até o final)**
+## Introdução
 
-Este desafio consiste em consultar a variação do preço de um ativo a sua escolha nos últimos 30 pregões. Você deverá apresentar o percentual de variação de preço de um dia para o outro e o percentual desde o primeiro pregão apresentado.
+O aplicativo *"Variação do Ativo"* apresenta os dados dos últimos 30 pregões do ativo VALE3. Os dados podem ser visualisados de duas maneiras: 
+- Tabela: exibe o valor de abertura de cada dia além da variação porcentual com relação ao dia anterior e ao primeiro dia da lista;
+- Gráfico: mostra os valores de abertura de cada pregão em um gráfico de linha. Traz também os valores de fechamento, máximo e mínimo do útimo pregão. 
 
-| Dia   | Data          |  Valor    | Variação em relaçào a D-1     | Variação em relação a primeira data
-|-      | -             | -         | -                             | - 
-|2      |  01/01/2021   |  R$ 1,00  | -                             | -
-|3      |  02/01/2021   |  R$ 1,10  | 10%                           | 10%
-|4      |  03/01/2021   |  R$ 1,05  | -4,54%                        | 5%
-|5      |  04/01/2021   |  R$ 1,90  | 80,95%                        | 90%
+## Plataformas Suportadas
 
-Para este desafio, iremos utilizar a API do Yahoo Finance https://finance.yahoo.com/ 
+O aplicativo está disponível nas plataformas *Android* e *iOS*. As funcionalidades foram desenvolvidas em *Flutter* e, portanto, o código é compartilhado entre as duas plataformas. 
 
-Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para mobile, utilizar **linguagens nativas e flutter**.
+Existe, porém, uma tela que permite ao usuário escolher a forma de visualição dos dados. Esta tela, mostrada abaixo, foi desenvolvida de forma nativa.
 
-## Backend
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Armazenar as informações em uma base de dados a sua escolha.
-3. Implementar uma API que consulte as informações na sua base de dados, retorne o valor do ativo nos últimos 30 pregões e apresente a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-4. Disponibilizar seu código aqui no Github
+![native screens](nativeScreens.png)
 
-## Frontend
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Implementar uma página em Angular que apresente o valor do ativo nos últimos 30 pregões e mostre a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-3. Inclua um gráfico apresentando o resultado da variação.
-4. Disponibilizar seu código aqui no Github
+#### Organização do Projeto
 
-## Fullstack
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Armazenar as informações em uma base de dados a sua escolha.
-3. Implementar uma API que consulte as informações na sua base de dados, retorne o valor do ativo nos últimos 30 pregões e apresente a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-4. Implementar uma página em Angular que consulte a sua API e apresente o valor do ativo nos últimos 30 pregões e mostre a variação do preço no período.
-5. Inclua um gráfico apresentando o resultado da variação.
-6. Disponibilizar seu código aqui no Github
+O projeto está dividido em três partes, conforme demonstrado a seguir:
 
-## Mobile
-1. Implementar uma tela de abertura em linguagem nativa onde o usuário possa escolher entre visualizar a variação do preço ou o gráfico de da variação.
-2. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-3. Implementar uma tela em linguagem nativa ou flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-4. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação.
-5. Disponibilizar seu app junto com seu código aqui no Github
+```
+/project/root
+└── android_stockpricechange/         <--- Aplicativo Android
+└── flutter_module_stockpricechange   <--- Módulo em Flutter (código compartilhado)
+└── ios_stockpricechange              <--- Aplicativo iOS
+```
 
-Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API em vez de utilizar a API do Yahoo Finance. Fica a sua escolha. :smirk:
+## Execução Local
 
-## Importante
-### Sobre a API
-Os valores estrão estruturados em vetores, desta forma, você precisará casar a data do pregão (*chart.result.timestamp*) com o valor de abertura (*chart.result.indicators.quote.open*) através do indice do vetor.
+Para executar o projeto localmente, é necessário ter o *Flutter* configurado na máquina (para *iOS*, também é necessário ter *cocoapods* ) e abrir cada um dos aplicativos na IDE correspondente. 
 
-### Sobre a entrega
-:heavy_exclamation_mark: Use sua criatividade para estruturar sua solução. Importante manter uma documentação clara de como deveremos proceder para executar sua aplicação (__crie um arquivo MD e inclua no seu repositório__), sendo assim, importante disponibilizar os scripts de banco de dados e demais recursos utilizados e como utilizá-los. :heavy_exclamation_mark: 
+O script abaixo exemplifica este processo.
 
-#### ATENÇÃO
-:heavy_exclamation_mark: Seu código deverá ser disponibilizado em um repositório no Github
+```bash
+  #!/bin/bash
+  cd flutter_module_stockpricechange/
+  flutter pub get
+
+  # For Android builds:
+  open -a "Android Studio" ../android_stockpricechange # macOS only
+  # Or open the ../android_stockpricechange folder in Android Studio for other platforms.
+
+  # For iOS builds:
+  cd ../ios_stockpricechange
+  pod install
+  open stockpricechange.xcworkspace
+```
+
+### Comunicação Flutter <> Nativo
+
+A comunicação entre a plataforma nativa e o Flutter foi implementada com o auxílio do [pigeon](https://pub.dev/packages/pigeon). 
+
+Quando o usuário escolhe uma das opções na tela nativa (tabela ou gráfico), a plataforma nativa envia uma mensagem para o Flutter antes de iniciar a tela do Flutter. 
+
+Já na tela Flutter, quando o usuário utiliza o botão para voltar a tela anterior, o Flutter envia uma mensagem a plataforma nativa, que é então responsável por realizar a navegação. 
+
+## Arquitetura
+
+A arquitera do módulo Flutter segue o padrão [Redux](https://pub.dev/packages/flutter_redux). Todos os dados apresentados pela UI vêm da *store* do Redux. 
+
+Existe um *middleware* (`RepositoryMiddleware`) que é responsável por fazer a comunicação assíncrona com o repositório para recuperar os dados. 
+
+O padrão de projeto *Repository*(`TradingDaysRepository`) foi utilizado para abstrair da aplicação a fonte dos dados. Com ele, seria possível substituir a API utilizada sem afetar o resto da aplicação. Também seria possível utilizar um *cache* em disco ou memória, também sem impactar a aplicação. 
+
+Por fim, a comunicação com a API do Yahoo Finance foi feita utilizando o [Dio](https://pub.dev/packages/dio) e está implementada em um *package* separado (`packages/yahoo_finance_api`) que poderia, por exemplo, ser compartilhado com outros projetos. 
+
+## Design System
+
+A UI do applicativo utiliza o conceito de design system, que foi implementado em um *package* separado, chamado `sp_design_system` (assim como a consumo da API, este poderia ser compartilhado com outros projetos).
+
+Um dos benefícios deste design system é o suporte ao dark mode, como visto abaixo, que é conseguido pelo uso consistente da classe `SpColors`.
+
+![light and dark modes](lightDarkModes.png)
+
+## Testes Automatizados
+
+Existem dois exemplos de testes automatizados no projeto: testes unitário para o *reducer*, checam as regras de negócio do aplicativo; testes de widget para o `StockInfo` demonstra como verificar que a UI do *Flutter* apresenta os dados desejados. 
+
+Idealmente, o projeto teria muitos mais testes destes tipos, além de alguns testes de integração. Por restrição de tempo, não foram implementados mais testes, porém estes servem de exemplo da direção que o projeto deveria tomar.
+
+## Demo
+
+![Demo](demo.gif)

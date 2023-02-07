@@ -16,8 +16,6 @@ dependencies:
   flutter_svg: ^2.0.0+1
   redux: ^5.0.0
   flutter_redux: ^0.10.0
-  stock_repository:
-    path: packages/stock_repository
   sp_design_system:
     path: packages/sp_design_system
   yahoo_finance_api:

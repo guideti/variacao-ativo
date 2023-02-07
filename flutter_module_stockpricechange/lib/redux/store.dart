@@ -11,7 +11,7 @@ Store<AppState> createReduxStore() => Store<AppState>(
       initialState: AppState(
         tradingDays: const [],
         dataStatus: DataStatus.initial,
-        visualisationType: VisualisationType.chart,
+        visualisationType: VisualisationType.table,
       ),
       middleware: [
         RepositoryMiddleware(

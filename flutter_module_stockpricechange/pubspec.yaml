@@ -20,6 +20,8 @@ dependencies:
     path: packages/stock_repository
   sp_design_system:
     path: packages/sp_design_system
+  yahoo_finance_api:
+    path: packages/yahoo_finance_api
   fl_chart: ^0.60.0
   intl: ^0.18.0
 

@@ -751,7 +751,7 @@ packages:
     source: hosted
     version: "6.2.2"
   yahoo_finance_api:
-    dependency: transitive
+    dependency: "direct main"
     description:
       path: "packages/yahoo_finance_api"
       relative: true

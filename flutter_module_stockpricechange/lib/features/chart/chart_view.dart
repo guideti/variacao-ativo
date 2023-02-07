@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/features/chart/chart.dart';
 import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
-import 'package:flutter_module_stockpricechange/models/trading_day.dart';
+import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/redux/actions.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_module_stockpricechange/widgets/error_with_retry.dart';
@@ -69,7 +69,7 @@ class _Statistics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, TradingDay>(
+    return StoreConnector<AppState, TradingDayWithStats>(
         converter: (store) => store.state.tradingDays.last,
         builder: (context, day) {
           return Column(

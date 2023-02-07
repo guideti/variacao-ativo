@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppState {
-  List<TradingDay> get tradingDays => throw _privateConstructorUsedError;
+  List<TradingDayWithStats> get tradingDays =>
+      throw _privateConstructorUsedError;
   DataStatus get dataStatus => throw _privateConstructorUsedError;
   VisualisationType get visualisationType => throw _privateConstructorUsedError;
 
@@ -31,7 +32,7 @@ abstract class $AppStateCopyWith<$Res> {
       _$AppStateCopyWithImpl<$Res, AppState>;
   @useResult
   $Res call(
-      {List<TradingDay> tradingDays,
+      {List<TradingDayWithStats> tradingDays,
       DataStatus dataStatus,
       VisualisationType visualisationType});
 }
@@ -57,7 +58,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
       tradingDays: null == tradingDays
           ? _value.tradingDays
           : tradingDays // ignore: cast_nullable_to_non_nullable
-              as List<TradingDay>,
+              as List<TradingDayWithStats>,
       dataStatus: null == dataStatus
           ? _value.dataStatus
           : dataStatus // ignore: cast_nullable_to_non_nullable
@@ -78,7 +79,7 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {List<TradingDay> tradingDays,
+      {List<TradingDayWithStats> tradingDays,
       DataStatus dataStatus,
       VisualisationType visualisationType});
 }
@@ -102,7 +103,7 @@ class __$$_AppStateCopyWithImpl<$Res>
       tradingDays: null == tradingDays
           ? _value._tradingDays
           : tradingDays // ignore: cast_nullable_to_non_nullable
-              as List<TradingDay>,
+              as List<TradingDayWithStats>,
       dataStatus: null == dataStatus
           ? _value.dataStatus
           : dataStatus // ignore: cast_nullable_to_non_nullable
@@ -119,14 +120,14 @@ class __$$_AppStateCopyWithImpl<$Res>
 
 class _$_AppState implements _AppState {
   _$_AppState(
-      {required final List<TradingDay> tradingDays,
+      {required final List<TradingDayWithStats> tradingDays,
       required this.dataStatus,
       required this.visualisationType})
       : _tradingDays = tradingDays;
 
-  final List<TradingDay> _tradingDays;
+  final List<TradingDayWithStats> _tradingDays;
   @override
-  List<TradingDay> get tradingDays {
+  List<TradingDayWithStats> get tradingDays {
     if (_tradingDays is EqualUnmodifiableListView) return _tradingDays;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tradingDays);
@@ -171,12 +172,12 @@ class _$_AppState implements _AppState {
 
 abstract class _AppState implements AppState {
   factory _AppState(
-      {required final List<TradingDay> tradingDays,
+      {required final List<TradingDayWithStats> tradingDays,
       required final DataStatus dataStatus,
       required final VisualisationType visualisationType}) = _$_AppState;
 
   @override
-  List<TradingDay> get tradingDays;
+  List<TradingDayWithStats> get tradingDays;
   @override
   DataStatus get dataStatus;
   @override

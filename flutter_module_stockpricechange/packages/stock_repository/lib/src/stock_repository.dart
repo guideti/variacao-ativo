@@ -7,15 +7,24 @@ class StockRepository {
   final YahooFinanceApiClient _apiClient;
 
   Future<List<StockPriceDay>> getStockPriceData() async {
+    // final endDate = _computeEndDate();
+    // // We subtract 45 days to account for the days the stock market is closed
+    // final startDate = endDate.subtract(const Duration(days: 45));
+
+    // final from = startingDate.millisecondsSinceEpoch ~/ 1000;
+    // final until = today.millisecondsSinceEpoch ~/ 1000;
+
+    // final stockData = await _apiClient.fetchStockData(from: from, until: until);
+    // return stockData.toDailyPrices();
+    return [];
+  }
+
+  // Returns a DateTime that is set to the end of yesterday.
+  // We ignore today's data because it keeps changing if the day hasn't ended yet.
+  DateTime _computeEndDate() {
     final today = DateTime.now();
-    // We use the starting point as 45 days ago to account for days the stock market is closed
-    final startingDate = today.subtract(const Duration(days: 45));
-
-    final from = startingDate.millisecondsSinceEpoch ~/ 1000;
-    final until = today.millisecondsSinceEpoch ~/ 1000;
-
-    final stockData = await _apiClient.fetchStockData(from: from, until: until);
-    return stockData.toDailyPrices();
+    final yesterday = today.subtract(const Duration(days: 1)).copyWith(hour: 23);
+    return yesterday;
   }
 }
 

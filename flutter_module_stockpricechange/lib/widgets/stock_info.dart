@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
-import 'package:flutter_module_stockpricechange/models/trading_day.dart';
+import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -65,7 +65,7 @@ class _LatestPrice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, TradingDay>(
+    return StoreConnector<AppState, TradingDayWithStats>(
       converter: (store) => store.state.tradingDays.last,
       builder: (context, tradingDay) {
         return Column(

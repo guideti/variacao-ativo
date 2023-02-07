@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module_stockpricechange/extensions/formatting_extensions.dart';
-import 'package:flutter_module_stockpricechange/models/trading_day.dart';
+import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/redux/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:sp_design_system/sp_design_system.dart';
@@ -11,7 +11,7 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, List<TradingDay>>(
+    return StoreConnector<AppState, List<TradingDayWithStats>>(
       converter: (store) => store.state.tradingDays,
       builder: (context, tradingDays) {
         return LineChart(
@@ -42,7 +42,7 @@ class Chart extends StatelessWidget {
     );
   }
 
-  LineChartData mainData(BuildContext context, List<TradingDay> tradingDays) {
+  LineChartData mainData(BuildContext context, List<TradingDayWithStats> tradingDays) {
     return LineChartData(
       gridData: FlGridData(
         show: true,

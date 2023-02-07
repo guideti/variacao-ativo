@@ -1,4 +1,4 @@
-import 'package:flutter_module_stockpricechange/models/trading_day.dart';
+import 'package:flutter_module_stockpricechange/models/trading_day_with_stats.dart';
 import 'package:flutter_module_stockpricechange/pigeon.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,7 +9,7 @@ enum DataStatus { initial, loading, loaded, failure }
 @freezed
 class AppState with _$AppState {
   factory AppState({
-    required List<TradingDay> tradingDays,
+    required List<TradingDayWithStats> tradingDays,
     required DataStatus dataStatus,
     required VisualisationType visualisationType,
   }) = _AppState;

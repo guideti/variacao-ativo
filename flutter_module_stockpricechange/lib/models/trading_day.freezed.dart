@@ -21,8 +21,6 @@ mixin _$TradingDay {
   double get closePrice => throw _privateConstructorUsedError;
   double get lowPrice => throw _privateConstructorUsedError;
   double get highPrice => throw _privateConstructorUsedError;
-  double? get previousDayChange => throw _privateConstructorUsedError;
-  double? get thirtyDaysChange => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TradingDayCopyWith<TradingDay> get copyWith =>
@@ -40,9 +38,7 @@ abstract class $TradingDayCopyWith<$Res> {
       double openPrice,
       double closePrice,
       double lowPrice,
-      double highPrice,
-      double? previousDayChange,
-      double? thirtyDaysChange});
+      double highPrice});
 }
 
 /// @nodoc
@@ -63,8 +59,6 @@ class _$TradingDayCopyWithImpl<$Res, $Val extends TradingDay>
     Object? closePrice = null,
     Object? lowPrice = null,
     Object? highPrice = null,
-    Object? previousDayChange = freezed,
-    Object? thirtyDaysChange = freezed,
   }) {
     return _then(_value.copyWith(
       day: null == day
@@ -87,14 +81,6 @@ class _$TradingDayCopyWithImpl<$Res, $Val extends TradingDay>
           ? _value.highPrice
           : highPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      previousDayChange: freezed == previousDayChange
-          ? _value.previousDayChange
-          : previousDayChange // ignore: cast_nullable_to_non_nullable
-              as double?,
-      thirtyDaysChange: freezed == thirtyDaysChange
-          ? _value.thirtyDaysChange
-          : thirtyDaysChange // ignore: cast_nullable_to_non_nullable
-              as double?,
     ) as $Val);
   }
 }
@@ -112,9 +98,7 @@ abstract class _$$_TradingDayCopyWith<$Res>
       double openPrice,
       double closePrice,
       double lowPrice,
-      double highPrice,
-      double? previousDayChange,
-      double? thirtyDaysChange});
+      double highPrice});
 }
 
 /// @nodoc
@@ -133,8 +117,6 @@ class __$$_TradingDayCopyWithImpl<$Res>
     Object? closePrice = null,
     Object? lowPrice = null,
     Object? highPrice = null,
-    Object? previousDayChange = freezed,
-    Object? thirtyDaysChange = freezed,
   }) {
     return _then(_$_TradingDay(
       day: null == day
@@ -157,14 +139,6 @@ class __$$_TradingDayCopyWithImpl<$Res>
           ? _value.highPrice
           : highPrice // ignore: cast_nullable_to_non_nullable
               as double,
-      previousDayChange: freezed == previousDayChange
-          ? _value.previousDayChange
-          : previousDayChange // ignore: cast_nullable_to_non_nullable
-              as double?,
-      thirtyDaysChange: freezed == thirtyDaysChange
-          ? _value.thirtyDaysChange
-          : thirtyDaysChange // ignore: cast_nullable_to_non_nullable
-              as double?,
     ));
   }
 }
@@ -172,14 +146,12 @@ class __$$_TradingDayCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TradingDay implements _TradingDay {
-  const _$_TradingDay(
+  _$_TradingDay(
       {required this.day,
       required this.openPrice,
       required this.closePrice,
       required this.lowPrice,
-      required this.highPrice,
-      this.previousDayChange,
-      this.thirtyDaysChange});
+      required this.highPrice});
 
   @override
   final DateTime day;
@@ -191,14 +163,10 @@ class _$_TradingDay implements _TradingDay {
   final double lowPrice;
   @override
   final double highPrice;
-  @override
-  final double? previousDayChange;
-  @override
-  final double? thirtyDaysChange;
 
   @override
   String toString() {
-    return 'TradingDay(day: $day, openPrice: $openPrice, closePrice: $closePrice, lowPrice: $lowPrice, highPrice: $highPrice, previousDayChange: $previousDayChange, thirtyDaysChange: $thirtyDaysChange)';
+    return 'TradingDay(day: $day, openPrice: $openPrice, closePrice: $closePrice, lowPrice: $lowPrice, highPrice: $highPrice)';
   }
 
   @override
@@ -214,16 +182,12 @@ class _$_TradingDay implements _TradingDay {
             (identical(other.lowPrice, lowPrice) ||
                 other.lowPrice == lowPrice) &&
             (identical(other.highPrice, highPrice) ||
-                other.highPrice == highPrice) &&
-            (identical(other.previousDayChange, previousDayChange) ||
-                other.previousDayChange == previousDayChange) &&
-            (identical(other.thirtyDaysChange, thirtyDaysChange) ||
-                other.thirtyDaysChange == thirtyDaysChange));
+                other.highPrice == highPrice));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, day, openPrice, closePrice,
-      lowPrice, highPrice, previousDayChange, thirtyDaysChange);
+  int get hashCode =>
+      Object.hash(runtimeType, day, openPrice, closePrice, lowPrice, highPrice);
 
   @JsonKey(ignore: true)
   @override
@@ -233,14 +197,12 @@ class _$_TradingDay implements _TradingDay {
 }
 
 abstract class _TradingDay implements TradingDay {
-  const factory _TradingDay(
+  factory _TradingDay(
       {required final DateTime day,
       required final double openPrice,
       required final double closePrice,
       required final double lowPrice,
-      required final double highPrice,
-      final double? previousDayChange,
-      final double? thirtyDaysChange}) = _$_TradingDay;
+      required final double highPrice}) = _$_TradingDay;
 
   @override
   DateTime get day;
@@ -252,10 +214,6 @@ abstract class _TradingDay implements TradingDay {
   double get lowPrice;
   @override
   double get highPrice;
-  @override
-  double? get previousDayChange;
-  @override
-  double? get thirtyDaysChange;
   @override
   @JsonKey(ignore: true)
   _$$_TradingDayCopyWith<_$_TradingDay> get copyWith =>

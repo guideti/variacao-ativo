@@ -36,9 +36,11 @@ Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para 
 6. Disponibilizar seu código aqui no Github
 
 ## Mobile
-1. Implementar uma tela de abertura em linguagem nativa onde o usuário possa escolher entre visualizar a variação do preço ou o gráfico de da variação.
+1. Implementar o core da aplicação a talea inicial em linguagem nativa.
+1.1. Para implementações android, considerar Java.
+1.2. Para implementações iOS, considerar UIKit.
 2. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-3. Implementar uma tela em linguagem nativa ou flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
+3. Implementar uma tela em flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
 4. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação.
 5. Disponibilizar seu app junto com seu código aqui no Github
 

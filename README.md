@@ -44,7 +44,7 @@ Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para 
 6. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação.
 7. Disponibilizar seu app junto com seu código aqui no Github
 
-Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API em vez de utilizar a API do Yahoo Finance. Fica a sua escolha. :smirk:
+Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API para acessar a API do Yahoo Finance. Fica a sua escolha. :smirk:
 
 ## Sobre a avaliação
 :bangbang: :bangbang:  Utilize os recursos disponíveis na lingueagem que você está se candidatando:

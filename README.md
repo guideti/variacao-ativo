@@ -47,13 +47,13 @@ Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para 
 Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API para acessar a API do Yahoo Finance. Fica a sua escolha. :smirk:
 
 ## Sobre a avaliação
-:bangbang: :bangbang:  Utilize os recursos disponíveis na lingueagem que você está se candidatando:
+:bangbang: :bangbang:  Utilize os recursos disponíveis na linguagem que você está se candidatando:
 * Padrões de projetos 
 * Arquiteturas
 * Testes unitários
 * Configuração de deploy
 
-Tudo isso será levado em consideração na avaliação da sua prova, assim como a disponibilização do seu código fonte e o tempo necessário para a realização da prova.
+Seja criativo. Esperamos proatividade no desenvolvimento da solução. Tudo isso será levado em consideração na avaliação da sua prova, assim como a disponibilização do seu código fonte e o tempo necessário para a realização da prova.
 
 ## Importante
 ### Sobre a API

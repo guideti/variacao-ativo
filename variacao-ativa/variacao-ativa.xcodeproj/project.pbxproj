@@ -34,6 +34,7 @@
 		71E495F829BE89E5009D5161 /* ReferenceStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E495F729BE89E5009D5161 /* ReferenceStrings.swift */; };
 		71E495FA29BE8A18009D5161 /* ProgressiveShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E495F929BE8A18009D5161 /* ProgressiveShapeLayer.swift */; };
 		71E495FC29BE9801009D5161 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E495FB29BE9801009D5161 /* HomeViewModel.swift */; };
+		71E4960029BEC457009D5161 /* CustomFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E495FF29BEC457009D5161 /* CustomFlutterViewController.swift */; };
 		BA7BB9AC0A705D8390119777 /* Pods_variacao_ativa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A79602A594085C04FDC79AF2 /* Pods_variacao_ativa.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		71E495F929BE8A18009D5161 /* ProgressiveShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressiveShapeLayer.swift; sourceTree = "<group>"; };
 		71E495FB29BE9801009D5161 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		71E495FD29BEB9B5009D5161 /* Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
+		71E495FF29BEC457009D5161 /* CustomFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlutterViewController.swift; sourceTree = "<group>"; };
 		A79602A594085C04FDC79AF2 /* Pods_variacao_ativa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_variacao_ativa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37D7F6128843A0B66E1F29 /* Pods-variacao-ativa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-variacao-ativa.debug.xcconfig"; path = "Target Support Files/Pods-variacao-ativa/Pods-variacao-ativa.debug.xcconfig"; sourceTree = "<group>"; };
 		D0DDA79E1CBBF0460979562A /* Pods-variacao-ativa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-variacao-ativa.release.xcconfig"; path = "Target Support Files/Pods-variacao-ativa/Pods-variacao-ativa.release.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				71E495C929BE64D1009D5161 /* StrokeAnimation.swift */,
 				71E495F729BE89E5009D5161 /* ReferenceStrings.swift */,
 				71E495F929BE8A18009D5161 /* ProgressiveShapeLayer.swift */,
+				71E495FF29BEC457009D5161 /* CustomFlutterViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71E4960029BEC457009D5161 /* CustomFlutterViewController.swift in Sources */,
 				71E495FC29BE9801009D5161 /* HomeViewModel.swift in Sources */,
 				71E495C629BE6498009D5161 /* ViewInterface.swift in Sources */,
 				71E4959529BE616F009D5161 /* ViewController.swift in Sources */,

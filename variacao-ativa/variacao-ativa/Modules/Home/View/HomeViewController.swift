@@ -15,6 +15,10 @@ protocol HomeViewToHomeViewControllerProtocol {
 
 class HomeViewController: UIViewController, ViewInterface {
     
+    let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
+    
+    var flutterViewController: CustomFlutterViewController?
+    
     var delegate: HomeViewDelegate?
     
     var viewInstace: HomeView?
@@ -38,10 +42,7 @@ class HomeViewController: UIViewController, ViewInterface {
 
 extension HomeViewController: HomeViewModelToHomeViewProtocol {
     func openFlutter() {
-        let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
-        
-        let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
-        present(flutterViewController, animated: true, completion: nil)
+        present(flutterViewController!, animated: true, completion: nil)
     }
     
     func setLoading(isLoading: Bool) {
@@ -69,6 +70,17 @@ extension HomeViewController: HomeViewToHomeViewControllerProtocol {
     
     func getDropDownInfo(selectedText: String) {
         viewModel?.selectedActive = selectedText
+        initializeFlutterEngine(selectedText: selectedText)
         delegate?.setButtonState(buttonState: true)
+    }
+}
+
+private extension HomeViewController {
+    func initializeFlutterEngine(selectedText: String) {
+        flutterEngine.run()
+        
+        flutterViewController = CustomFlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        flutterViewController!.param = viewModel?.selectedActive ?? " "
+        flutterViewController!.modalPresentationStyle = .fullScreen
     }
 }

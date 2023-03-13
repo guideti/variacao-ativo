@@ -32,6 +32,7 @@ class _VariacaoAtivaScreenState extends State<VariacaoAtivaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Variação Ativo'),
         backgroundColor: Colors.blue.shade800,
         leading: IconButton(
           onPressed: () => platform.invokeMethod('exitFlutter'),

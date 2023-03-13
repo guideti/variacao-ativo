@@ -100,7 +100,7 @@ class _VariacaoAtivaScreenState extends State<VariacaoAtivaScreen> {
   static List<LineSeries<double, int>> getData(
       {required List<double?> actives}) {
     actives.removeWhere((element) => element == null);
-    final newActives = actives.map((e) => e ?? 0.0).toList();
+    final newActives = actives.map((e) => e ?? 0.0).toList().take(30).toList();
     return <LineSeries<double, int>>[
       LineSeries(
         dataSource: newActives,

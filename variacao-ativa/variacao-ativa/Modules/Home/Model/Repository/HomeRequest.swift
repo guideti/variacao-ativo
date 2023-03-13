@@ -16,7 +16,6 @@ class HomeRequest: HomeRequestProtocol {
         let decoder = JSONDecoder()
         do {
             let information = try decoder.decode(ActiveModelResponse.self, from: activeMock)
-            print(information)
             sucessCallback(information.result)
         } catch {
             failureCallback(ResponseError(code: 999, message: "Erro ao decodificar") as? Error)

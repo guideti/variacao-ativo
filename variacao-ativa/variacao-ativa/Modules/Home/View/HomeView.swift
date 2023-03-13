@@ -65,6 +65,10 @@ class HomeView: UIView {
         return button
      }()
     
+    @objc func pressButton() {
+        viewController?.onPressedButton()
+    }
+    
     var buttonTitle: String = "Alo" {
         didSet {
             showActiveVariationButton.setTitle(buttonTitle, for: .normal)
@@ -84,6 +88,7 @@ class HomeView: UIView {
         dropDown.didSelect { selectedText, index, id in
             self.viewController?.getDropDownInfo(selectedText: selectedText)
         }
+        showActiveVariationButton.addTarget(self, action: #selector(pressButton), for: .touchDown)
     }
     
     required init?(coder: NSCoder) {

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Flutter
 
 protocol HomeViewToHomeViewControllerProtocol {
     func getDropDownInfo(selectedText: String)
+    func onPressedButton()
 }
 
 class HomeViewController: UIViewController, ViewInterface {
@@ -35,6 +37,17 @@ class HomeViewController: UIViewController, ViewInterface {
 }
 
 extension HomeViewController: HomeViewModelToHomeViewProtocol {
+    func openFlutter() {
+        let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
+        
+        let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        present(flutterViewController, animated: true, completion: nil)
+    }
+    
+    func setLoading(isLoading: Bool) {
+        showLoading(showLoading: isLoading)
+    }
+    
     func onGetActiveSuccess(actives: [ActiveModel]) {
         let listString = actives.map {$0.name}
         delegate?.setActiveList(activeList: listString)
@@ -50,6 +63,10 @@ extension HomeViewController: HomeViewModelToHomeViewProtocol {
 }
 
 extension HomeViewController: HomeViewToHomeViewControllerProtocol {
+    func onPressedButton() {
+        viewModel?.onPressedButton()
+    }
+    
     func getDropDownInfo(selectedText: String) {
         viewModel?.selectedActive = selectedText
         delegate?.setButtonState(buttonState: true)

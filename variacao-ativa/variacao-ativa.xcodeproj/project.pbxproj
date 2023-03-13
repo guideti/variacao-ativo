@@ -66,7 +66,7 @@
 		71E4959729BE616F009D5161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		71E4959929BE6171009D5161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71E4959C29BE6171009D5161 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		71E4959E29BE6171009D5161 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71E4959E29BE6171009D5161 /* Info-Debug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Debug.plist"; sourceTree = "<group>"; };
 		71E495A329BE6171009D5161 /* variacao-ativaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "variacao-ativaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E495A729BE6171009D5161 /* variacao_ativaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variacao_ativaTests.swift; sourceTree = "<group>"; };
 		71E495AD29BE6171009D5161 /* variacao-ativaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "variacao-ativaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +88,7 @@
 		71E495F729BE89E5009D5161 /* ReferenceStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceStrings.swift; sourceTree = "<group>"; };
 		71E495F929BE8A18009D5161 /* ProgressiveShapeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressiveShapeLayer.swift; sourceTree = "<group>"; };
 		71E495FB29BE9801009D5161 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		71E495FD29BEB9B5009D5161 /* Info-Release.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Release.plist"; sourceTree = "<group>"; };
 		A79602A594085C04FDC79AF2 /* Pods_variacao_ativa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_variacao_ativa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD37D7F6128843A0B66E1F29 /* Pods-variacao-ativa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-variacao-ativa.debug.xcconfig"; path = "Target Support Files/Pods-variacao-ativa/Pods-variacao-ativa.debug.xcconfig"; sourceTree = "<group>"; };
 		D0DDA79E1CBBF0460979562A /* Pods-variacao-ativa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-variacao-ativa.release.xcconfig"; path = "Target Support Files/Pods-variacao-ativa/Pods-variacao-ativa.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,7 +182,8 @@
 				71E4959629BE616F009D5161 /* Main.storyboard */,
 				71E4959929BE6171009D5161 /* Assets.xcassets */,
 				71E4959B29BE6171009D5161 /* LaunchScreen.storyboard */,
-				71E4959E29BE6171009D5161 /* Info.plist */,
+				71E4959E29BE6171009D5161 /* Info-Debug.plist */,
+				71E495FD29BEB9B5009D5161 /* Info-Release.plist */,
 			);
 			path = "variacao-ativa";
 			sourceTree = "<group>";
@@ -762,7 +764,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "variacao-ativa/Info.plist";
+				INFOPLIST_FILE = "variacao-ativa/Info-${CONFIGURATION}.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -790,7 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "variacao-ativa/Info.plist";
+				INFOPLIST_FILE = "variacao-ativa/Info-${CONFIGURATION}.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

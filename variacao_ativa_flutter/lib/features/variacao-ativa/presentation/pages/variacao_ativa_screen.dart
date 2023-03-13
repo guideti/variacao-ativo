@@ -67,7 +67,7 @@ class _VariacaoAtivaScreenState extends State<VariacaoAtivaScreen> {
             if (state is VariacaoAtivoSuccess) {
               return SfCartesianChart(
                 title: ChartTitle(text: 'Variação de ativos ($activeName)'),
-                series: getData(actives: state.chart.indicators.first.quote),
+                series: getData(actives: state.chart.actives.first.quote),
               );
             }
 

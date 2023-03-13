@@ -20,9 +20,7 @@ class VariacaoAtivoError extends VariacaoAtivoState {
   List<Object> get props => [errorMessage];
 }
 
-class VariacaoAtivoGetActiveError extends VariacaoAtivoState {
-  
-}
+class VariacaoAtivoGetActiveError extends VariacaoAtivoState {}
 
 class VariacaoAtivoSuccess extends VariacaoAtivoState {
   final ChartEntity chart;

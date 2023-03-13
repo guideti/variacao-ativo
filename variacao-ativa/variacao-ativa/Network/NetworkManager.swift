@@ -19,7 +19,7 @@ class NetworkManager: Decodable {
         return manager
     }()
     
-    func request<U: ResponseHandler>(path: String, method: String, parameters: [String:Any]?, encoding: String?, headers: [String: Any]?, completion: @escaping (U) -> Void) {
+    func request(path: String, method: String, parameters: [String:Any]?, encoding: String?, headers: [String: Any]?, completion: @escaping (ResponseHandler) -> Void) {
             
             let requestHandler = RequestHandler(path: path, httpMethod: method, headers: headers, parameters: parameters, encoding: encoding)
             
@@ -31,7 +31,7 @@ class NetworkManager: Decodable {
                 .responseJSON { (json: AFDataResponse<Any>) in
                     
                     let urlResponse = json.response
-                    let responseObject: U = U(with: json.data, urlResponse: urlResponse, error: json.error)
+                    let responseObject: ResponseHandler = ResponseHandler(with: json.data, urlResponse: urlResponse, error: json.error)
                     completion(responseObject)
                 }
         }

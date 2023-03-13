@@ -14,10 +14,10 @@
 4. Foi utilizado Clean Archtecture como arquitetura do projeto
 
 ## Requisitos
-1. Implementar o core da aplicação a talea inicial em linguagem nativa. - [x]
-2. Para implementações android, considerar Java. []
-3. Para implementações iOS, considerar UIKit. [x]
-4. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA) [x]
-5. Implementar uma tela em flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade  no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*) [x]
-6. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação. [x]
-7. Disponibilizar seu app junto com seu código aqui no Github [x]
+1. Implementar o core da aplicação a talea inicial em linguagem nativa. :heavy_check_mark:
+2. Para implementações android, considerar Java.
+3. Para implementações iOS, considerar UIKit. :heavy_check_mark:
+4. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA) :heavy_check_mark:
+5. Implementar uma tela em flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade  no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*) :heavy_check_mark:
+6. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação. :heavy_check_mark:
+7. Disponibilizar seu app junto com seu código aqui no Github :heavy_check_mark:

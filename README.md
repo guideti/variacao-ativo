@@ -14,7 +14,7 @@
 4. Foi utilizado Clean Archtecture como arquitetura do projeto
 
 ## Requisitos
-1. Implementar o core da aplicação a talea inicial em linguagem nativa. [x]
+1. Implementar o core da aplicação a talea inicial em linguagem nativa. - [x]
 2. Para implementações android, considerar Java. []
 3. Para implementações iOS, considerar UIKit. [x]
 4. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA) [x]

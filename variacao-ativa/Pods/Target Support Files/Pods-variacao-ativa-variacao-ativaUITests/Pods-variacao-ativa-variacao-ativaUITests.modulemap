@@ -1,0 +1,6 @@
+framework module Pods_variacao_ativa_variacao_ativaUITests {
+  umbrella header "Pods-variacao-ativa-variacao-ativaUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

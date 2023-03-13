@@ -18,7 +18,7 @@ class VariacaoAtivoRepository implements IVariacaoAtivoRepository {
         await _variacaoDataSource.getActiveVariation(activeName: activeName);
     if (result is Success) {
       try {
-        final chartList = ChartModel.fromJson(result.data);
+        final chartList = ChartModel.fromJson(Map.from(result.data));
         return Right(chartList);
       } catch (e) {
         return Left(Erro(statusMessage: 'Erro ao decodar'));

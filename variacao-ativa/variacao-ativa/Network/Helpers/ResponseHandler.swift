@@ -20,7 +20,6 @@ class ResponseHandler {
         if let responseData = self.data {
             self.errorMessage = try? JSONDecoder().decode(ErrorMessage.self, from: responseData)
         }
-        try? parseModel()
     }
     func success() -> Bool {
         return (urlResponse?.statusCode == 200) ? true : false
@@ -40,10 +39,6 @@ class ResponseHandler {
         }
         
         return ResponseError(code: urlResponse.statusCode, message: HTTPURLResponse.localizedString(forStatusCode: urlResponse.statusCode))
-    }
-    
-    func parseModel() throws {
-        preconditionFailure("This method must be overridden")
     }
 }
 

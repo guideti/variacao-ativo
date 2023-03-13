@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:variacao_ativa_flutter/core/common/native_helper.dart';
 import 'package:variacao_ativa_flutter/core/network/models/api_result.dart';
@@ -14,15 +13,19 @@ class ApiRequest implements IApiRequest {
     required NetworkRequest networkRequest,
   }) async {
     try {
-      final result = await platform.invokeMethod('getDataFromApi');
+      final result = await platform.invokeMapMethod<String, dynamic>(
+        'getDataFromApi',
+        networkRequest.toJson(),
+      );
       try {
-        final nativeApiResponse = NativeApiResponse.fromJson(result);
-        debugPrint(nativeApiResponse.toString());
-        if (nativeApiResponse.httpUrlResponse?['statusCode'] < 200) {
-          return Success(data: nativeApiResponse.data);
+        final nativeApiResponse = NativeApiResponse.fromJson(result!);
+        if (nativeApiResponse.statusCode == 200) {
+          return Success(
+            data: nativeApiResponse.data,
+            statusCode: nativeApiResponse.statusCode,
+          );
         } else {
-          return Erro(
-              statusMessage: nativeApiResponse.errorMessage?['message']);
+          return Erro(statusMessage: nativeApiResponse.errorMessage);
         }
       } catch (e) {
         return Erro(statusMessage: 'Falha ao decodificar response');

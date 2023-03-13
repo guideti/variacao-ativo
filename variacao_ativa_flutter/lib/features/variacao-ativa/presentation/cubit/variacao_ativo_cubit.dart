@@ -30,4 +30,8 @@ class VariacaoAtivoCubit extends Cubit<VariacaoAtivoState> {
   void setError({required String errorMessage}) {
     emit(VariacaoAtivoError(errorMessage: errorMessage));
   }
+
+  void setGetActiveError() {
+    emit(VariacaoAtivoGetActiveError());
+  }
 }

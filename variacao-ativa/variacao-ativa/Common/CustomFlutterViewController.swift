@@ -10,14 +10,12 @@ import Flutter
 class CustomFlutterViewController: FlutterViewController {
     var param: String!
     var flutterChannel: FlutterMethodChannel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         flutterChannel = FlutterMethodChannel(name: "com.raul.variacaoativa", binaryMessenger: self.binaryMessenger)
         
-        flutterChannel.setMethodCallHandler ({ [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
-            
+        flutterChannel.setMethodCallHandler ({ [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
             switch call.method {
             case "getActiveName":
                 result(self?.param)
@@ -36,16 +34,21 @@ class CustomFlutterViewController: FlutterViewController {
         })
     }
     
-    private func getDataFromApi(args: Dictionary<String,Any>, flutterResult: FlutterResult) {
-        var response: ResponseHandler?
-       if let path = args["path"] as? String, let method = args["method"] as? String, let parameters = args["parameters"] as? [String:Any]?, let encoding = args["encoding"] as? String?, let headers = args["headers"] as? [String:Any]? {
-           NetworkManager.sharedInstance.request(path: path, method: method, parameters: parameters, encoding: encoding, headers: headers) { result in
-               response = result
-           }
-           flutterResult(response)
-       } else {
-           flutterResult(["Error": "Falta parâmetros/parâmetros incorretos"])
-       }
+    private func getDataFromApi(args: Dictionary<String,Any>, flutterResult: @escaping FlutterResult) {
+        if let path = args["path"] as? String, let method = args["method"] as? String {
+            
+            NetworkManager.sharedInstance.request(path: path, method: method, parameters: nil, encoding: nil, headers: nil) { result in
+                
+                do {
+                    let data = try JSONSerialization.jsonObject(with: result.data!) as? [String: Any]
+                    flutterResult(["data": data as [String: Any]?, "statusCode": (result.urlResponse?.statusCode ?? 999) as Int, "errorMessage": result.errorMessage?.message as String?])
+                } catch {
+                    flutterResult(["Error": "bad error"])
+                } 
+            }
+        } else {
+            flutterResult(["Error": "Falta parâmetros/parâmetros incorretos"])
+        }
     }
     
     private func exitFlutter() {

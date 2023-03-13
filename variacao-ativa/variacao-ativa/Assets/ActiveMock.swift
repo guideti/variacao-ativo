@@ -2,34 +2,28 @@ let activeMock = """
 {
    "result": [
         {
-    "name": "PETR4"
+    "name": "PETR4.SA"
 },
         {
-    "name": "OIBR3"
+    "name": "OIBR3.SA"
 },
         {
-    "name": "MGLU3"
+    "name": "MGLU3.SA"
 },
         {
-    "name": "ITSA4"
+    "name": "ITSA4.SA"
 },
         {
-    "name": "IRBR3"
+    "name": "IRBR3.SA"
 },
 {
-    "name": "MGLU3"
-},
-{
-    "name": "BBAS3"
+    "name": "BBAS3.SA"
 },
         {
-    "name": "WEGE3"
+    "name": "WEGE3.SA"
 },
         {
-    "name": "OIBR4"
-},
-        {
-    "name": "OIBR4"
+    "name": "OIBR4.SA"
 }
     ]
 }

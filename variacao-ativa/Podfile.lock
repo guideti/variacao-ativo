@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (5.6.4)
+  - Flutter (1.0.0)
+  - FlutterPluginRegistrant (0.0.1):
+    - Flutter
+  - iOSDropDown (0.4.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Flutter (from `../variacao_ativa_flutter/.ios/Flutter`)
+  - FlutterPluginRegistrant (from `../variacao_ativa_flutter/.ios/Flutter/FlutterPluginRegistrant`)
+  - iOSDropDown
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - iOSDropDown
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: "../variacao_ativa_flutter/.ios/Flutter"
+  FlutterPluginRegistrant:
+    :path: "../variacao_ativa_flutter/.ios/Flutter/FlutterPluginRegistrant"
+
+SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  FlutterPluginRegistrant: 58acfb6cb31ee4ca14f920aba101815efda113ee
+  iOSDropDown: ce9daa584eaa5567cafc1b633e3cc7eb6d9cea42
+
+PODFILE CHECKSUM: 226351ce551b3a4b3f5ca3c1cd395d89ddfffc47
+
+COCOAPODS: 1.11.2

@@ -79,67 +79,68 @@ class _AssetChangePageState
     return Container(
       margin: const EdgeInsets.only(top: 20),
       child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(10)),
-            height: 30,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            margin: const EdgeInsets.only(bottom: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text('Dia'),
-                Text('Data'),
-                Text('Valor R\$'),
-                Text('D-1'),
-                Text('1º Data'),
-              ],
-            ),
-          ),
-          Expanded(
-            child: SizedBox(
-              height: controller!.assetChangeTable.length * 30,
-              child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    final item = controller?.assetChangeTable[index];
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('${item!.day + 1}'),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: Text(item.date),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child:
-                              Text('R\$ ${formatCurrency.format(item.price)}'),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 15),
-                          child:
-                              Text('${formatCurrency.format(item.percent)}%'),
-                        ),
-                        Text(
-                            '${formatCurrency.format(item.percentFirstDate)}%'),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5),
-                      child: Divider(
-                        height: .5,
-                      ),
-                    );
-                  },
-                  itemCount: controller!.assetChangeTable.length),
-            ),
-          )
+        children: [_headerTable(), _contentTable()],
+      ),
+    );
+  }
+
+  Expanded _contentTable() {
+    return Expanded(
+      child: SizedBox(
+        height: controller!.assetChangeTable.length * 30,
+        child: ListView.separated(
+            itemBuilder: (context, index) {
+              final item = controller?.assetChangeTable[index];
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text('${item!.day + 1}'),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Text(item.date),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: Text('R\$ ${formatCurrency.format(item.price)}'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: Text('${formatCurrency.format(item.percent)}%'),
+                  ),
+                  Text('${formatCurrency.format(item.percentFirstDate)}%'),
+                ],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.symmetric(vertical: 5),
+                child: Divider(
+                  height: .5,
+                ),
+              );
+            },
+            itemCount: controller!.assetChangeTable.length),
+      ),
+    );
+  }
+
+  Container _headerTable() {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey[300], borderRadius: BorderRadius.circular(10)),
+      height: 30,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
+      ),
+      margin: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          Text('Dia'),
+          Text('Data'),
+          Text('Valor R\$'),
+          Text('D-1'),
+          Text('1º Data'),
         ],
       ),
     );

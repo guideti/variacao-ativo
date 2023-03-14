@@ -29,9 +29,9 @@ abstract class _AssetChangeController with Store {
   @observable
   bool isShowGraphic = false;
 
-  final IGetAssetChangeUsecase getAssetchangeUsecase;
+  final IGetAssetChangeUsecase getAssetChangeUsecase;
 
-  _AssetChangeController(this.getAssetchangeUsecase);
+  _AssetChangeController(this.getAssetChangeUsecase);
 
   @action
   showGraphic(bool showGraphic) => isShowGraphic = showGraphic;
@@ -40,7 +40,7 @@ abstract class _AssetChangeController with Store {
   Future<void> fetchChartData() async {
     showLoadingDialog();
 
-    final response = await getAssetchangeUsecase();
+    final response = await getAssetChangeUsecase();
     final chartResponse =
         response.fold((l) => ChartResponse(Chart([])), (r) => r);
 

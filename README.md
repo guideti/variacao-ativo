@@ -21,7 +21,7 @@ Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para 
 3. Implementar uma API que consulte as informações na sua base de dados, retorne o valor do ativo nos últimos 30 pregões e apresente a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
 4. Disponibilizar seu código aqui no Github
 
-## Frontend
+## Web
 1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
 2. Implementar uma página em Angular que apresente o valor do ativo nos últimos 30 pregões e mostre a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
 3. Inclua um gráfico apresentando o resultado da variação.

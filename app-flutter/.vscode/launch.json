@@ -1,0 +1,87 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // README -> https://dartcode.org/docs/launch-configuration/
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "run all tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "./test/"
+        },
+        {
+            "name": "run (local)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+                "ENVIRONMENT": "LOCAL",
+            },
+            "args": [
+                "--dart-define",
+                "ENVIRONMENT=LOCAL",
+            ],
+            // "debugConsole" or "terminal". If set to "terminal", will run in the built-in
+            // terminal and will support reading from `stdin`. However some other debug
+            // features may be limited.
+            "console": "debugConsole",
+            // "debug", "profile" or "release".
+            "flutterMode": "debug",
+        },
+        {
+            "name": "run (development)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+                "ENVIRONMENT": "DEVELOPMENT",
+            },
+            "args": [
+                "--dart-define",
+                "ENVIRONMENT=DEVELOPMENT",
+            ]
+        },
+        {
+            "name": "run (testing)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+                "ENVIRONMENT": "TESTING",
+            },
+            "args": [
+                "--dart-define",
+                "ENVIRONMENT=TESTING",
+            ]
+        },
+        {
+            "name": "run (staging)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+                "ENVIRONMENT": "STAGING",
+            },
+            "args": [
+                "--dart-define",
+                "ENVIRONMENT=STAGING",
+            ]
+        },
+        {
+            "name": "run (production)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "env": {
+                "RELEASE_MODE": true,
+                "ENVIRONMENT": "PRODUCTION",
+            },
+            "args": [
+                "--dart-define",
+                "ENVIRONMENT=PRODUCTION",
+            ]
+        },
+    ]
+}

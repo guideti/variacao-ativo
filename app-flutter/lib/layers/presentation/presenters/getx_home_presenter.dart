@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:ativo/commons/commons.dart';
 import 'package:get/get.dart';
 
+import '../../../commons/commons.dart';
 import '../../domain/domain.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';

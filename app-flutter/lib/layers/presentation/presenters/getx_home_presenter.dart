@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../../commons/commons.dart';
@@ -16,12 +17,24 @@ class GetxHomePresenter extends GetxController with LoadingManager, NavigationMa
 
   final LoadChart loadChart;
   final CacheChart cacheChart;
-  final String typeActive = "PETR4.SA";
+  String typeActive = "PETR4.SA";
+
+  late MethodChannel _channel;
 
   @override
   void onInit() {
-    fetch();
+    _channel = const MethodChannel('app-flutter-engine');
+    _channel.setMethodCallHandler((call) async {
+      if (call.method == "setActive") {
+        typeActive = (call.arguments as String?) ?? "PETR4.SA";
+        isReceiver = true;
+        fetch();
+      } else {
+        throw Exception('not implemented ${call.method}');
+      }
+    });
 
+    fetch();
     super.onInit();
   }
 
@@ -49,6 +62,11 @@ class GetxHomePresenter extends GetxController with LoadingManager, NavigationMa
   Rx<TotalItemEnum> get totalItemRx => _totalItemRx;
   final Rx<TotalItemEnum> _totalItemRx = Rx<TotalItemEnum>(TotalItemEnum.thirty);
   set totalItem(TotalItemEnum value) => _totalItemRx.value = value;
+
+  @override
+  RxBool get isReceiverRx => _isReceiver;
+  final _isReceiver = false.obs;
+  set isReceiver(bool value) => _isReceiver.value = value;
 
   @override
   int random() => 5 + Random().nextInt(50);
@@ -109,8 +127,8 @@ class GetxHomePresenter extends GetxController with LoadingManager, NavigationMa
           );
         },
         (success) {
-          saveCache(success);
           changingDataToView(success);
+          saveCache(success);
         },
       );
     } catch (error) {
@@ -129,12 +147,7 @@ class GetxHomePresenter extends GetxController with LoadingManager, NavigationMa
     try {
       await cacheChart.delete(typeActive);
       await cacheChart.save(typeActive, entity);
-    } catch (error) {
-      mainSnackbarMessage = UISnackbarMessage(
-        message: error.toString(),
-        details: [],
-      );
-    }
+    } catch (error) {}
   }
 
   Future<void> fetchCache() async {
@@ -231,6 +244,10 @@ class GetxHomePresenter extends GetxController with LoadingManager, NavigationMa
   }
 
   double calcVariation(double valueAtLaterTime, double valueAtThePreviousMoment) {
+    if (valueAtThePreviousMoment == 0.0) {
+      return valueAtLaterTime;
+    }
+
     return ((valueAtLaterTime / valueAtThePreviousMoment) - 1) * 100;
   }
 

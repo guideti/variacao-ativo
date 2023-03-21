@@ -12,6 +12,7 @@ abstract class HomePresenter {
   Rx<TotalItemEnum> get totalItemRx;
   Rx<IntervalEnum> get intervalRx;
   RxBool get isLoadingRx;
+  RxBool get isReceiverRx;
 
   int random();
 

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:get/get.dart';
+
 import '../../ui.dart';
 import 'widgets/widgets.dart';
 
@@ -68,71 +70,76 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
         statusBarColor: Theme.of(context).scaffoldBackgroundColor,
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Petrobras (PETR4.SA)",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+      child: Obx(() {
+        var receiver = widget.presenter.isReceiverRx.value;
+        return Scaffold(
+          appBar: receiver
+              ? AppBar()
+              : AppBar(
+                  title: const Text(
+                    "Petrobras (PETR4.SA)",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  actions: [
+                    IconButton(
+                      onPressed: widget.presenter.fetch,
+                      icon: const Icon(
+                        Icons.refresh_rounded,
+                      ),
+                    ),
+                  ],
+                ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              builder: (context) {
+                return BottomSheetWidget(
+                  presenter: widget.presenter,
+                  intervalController: _intervalController,
+                  rangeDateController: _rangeDateController,
+                  totalItemController: _totalItemController,
+                );
+              },
+            ),
+            child: const Icon(
+              Icons.tune_rounded,
             ),
           ),
-          actions: [
-            IconButton(
-              onPressed: widget.presenter.fetch,
-              icon: const Icon(
-                Icons.refresh_rounded,
-              ),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => showModalBottomSheet(
-            isScrollControlled: true,
-            context: context,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            builder: (context) {
-              return BottomSheetWidget(
-                presenter: widget.presenter,
-                intervalController: _intervalController,
-                rangeDateController: _rangeDateController,
-                totalItemController: _totalItemController,
-              );
-            },
+          body: PageView(
+            physics: const ClampingScrollPhysics(),
+            controller: pageController,
+            onPageChanged: pageChanged,
+            children: [
+              TableWidget(presenter: widget.presenter),
+              ChartWidget(presenter: widget.presenter),
+            ],
           ),
-          child: const Icon(
-            Icons.tune_rounded,
-          ),
-        ),
-        body: PageView(
-          physics: const ClampingScrollPhysics(),
-          controller: pageController,
-          onPageChanged: pageChanged,
-          children: [
-            TableWidget(presenter: widget.presenter),
-            ChartWidget(presenter: widget.presenter),
-          ],
-        ),
-        bottomNavigationBar: StreamBuilder<int>(
-            stream: _indexPageController.stream,
-            initialData: 0,
-            builder: (context, snapshot) {
-              int indexPage = snapshot.data ?? 0;
-              return BottomNavigationBar(
-                onTap: bottomTapped,
-                currentIndex: indexPage,
-                items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.dashboard_rounded),
-                    label: "Tabela",
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.query_stats_rounded),
-                    label: "Gráfico",
-                  ),
-                ],
-              );
-            }),
-      ),
+          bottomNavigationBar: StreamBuilder<int>(
+              stream: _indexPageController.stream,
+              initialData: 0,
+              builder: (context, snapshot) {
+                int indexPage = snapshot.data ?? 0;
+                return BottomNavigationBar(
+                  onTap: bottomTapped,
+                  currentIndex: indexPage,
+                  items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.dashboard_rounded),
+                      label: "Tabela",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.query_stats_rounded),
+                      label: "Gráfico",
+                    ),
+                  ],
+                );
+              }),
+        );
+      }),
     );
   }
 }

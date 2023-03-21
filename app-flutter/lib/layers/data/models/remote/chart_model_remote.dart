@@ -34,7 +34,7 @@ class ChartModelRemote {
     var chart = ChartModelRemote(
       symbol: result["meta"]["symbol"],
       timestamp: (result["timestamp"] as List).map((e) => e as int).toList(),
-      open: (result["indicators"]["quote"][0]["open"] as List).map((e) => e as double).toList(),
+      open: (result["indicators"]["quote"][0]["open"] as List).map((e) => double.parse("${e ?? 0.0}")).toList(),
     );
 
     if (chart.open.length != chart.timestamp.length) {

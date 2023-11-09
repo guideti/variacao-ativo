@@ -1,17 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
+import { HomeComponent } from './home/home.component';
 import { LayoutRoutingModule } from './layout-routing.module';
-import { ChartComponent } from './chart/chart.component';
-
 
 @NgModule({
-  declarations: [
-    ChartComponent
-  ],
-  imports: [
-    CommonModule,
-    LayoutRoutingModule
-  ]
+  declarations: [HomeComponent],
+  imports: [CommonModule, LayoutRoutingModule],
 })
-export class LayoutModule { }
+export class LayoutModule {}

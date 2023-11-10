@@ -9,6 +9,13 @@ Como inicializar o projeto:
   - Buildar o projeto local com o comando 'ng serve'
 
 
-Tecnologias utilizadas: Angular v16, RxJS
+Tecnologias utilizadas: 
+ -Angular v16 - https://angular.dev/
+
+Bibliotecas utilizadas: 
+- https://primeng.org/
+- https://www.chartjs.org/
+- https://rxjs.dev/
+
 
 

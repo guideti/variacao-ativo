@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   creatForm(): void {
     this.assetForm = this.fb.group({
-      asset: new FormControl('btc-usd', Validators.required),
+      asset: new FormControl(null, Validators.required),
     });
   }
 

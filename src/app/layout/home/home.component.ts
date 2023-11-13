@@ -29,12 +29,23 @@ import { HomeService } from './services/home.service';
   templateUrl: './home.component.html',
   styles: [
     `
+      header {
+        margin: 2rem;
+      }
+      .input-search-container,
+      .noDataMessageExihibit {
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        margin-right: 1.5rem;
+      }
       body {
         display: grid;
         grid-template-columns: 50% 50%;
         margin: 2rem;
       }
-      .card {
+      .section {
         width: 50rem;
       }
     `,
@@ -62,6 +73,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       asset: new FormControl('btc-usd', Validators.required),
     });
   }
+
   submit(): void {
     this.formattedAssetData = [];
     this.formattedDateArray = [];
@@ -93,7 +105,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     assetDatesArray: number[],
     assetValuesArray: number[],
     assetSymbol: string
-  ) {
+  ): void {
     assetDatesArray.forEach((assetDate, index) => {
       const assetValueInTheFirstDay = assetValuesArray[0];
       const assetCurrentValue = assetValuesArray[index];
@@ -121,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     assetDate: number,
     assetCurrentValue: number,
     symbol: string
-  ) {
+  ): void {
     const date = new Date(assetDate * 1000);
     const handleMonth = String(date.getUTCMonth()).padStart(2, '0');
     const handleDay = String(date.getUTCDay()).padStart(2, '0');
@@ -133,7 +145,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.chartConfig(this.formattedDateArray, symbol);
   }
 
-  chartConfig(assetDatesArray: string[], symbol: string) {
+  chartConfig(assetDatesArray: string[], symbol: string): void {
     const documentStyle = getComputedStyle(document.documentElement);
 
     this.data = {

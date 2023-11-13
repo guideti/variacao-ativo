@@ -1,6 +1,6 @@
 <header>
   <form [formGroup]="assetForm">
-    <div class="card flex justify-content-center">
+    <div class="input-search-container">
       <input
         type="text"
         placeholder="Digite um ativo"
@@ -17,12 +17,11 @@
   </form>
 </header>
 <body>
-  <div class="card">
+  <div class="section">
     <p-chart type="line" [data]="data"></p-chart>
-    <!-- [options]="options" -->
   </div>
 
-  <div class="card">
+  <div class="section">
     <p-table
       [value]="formattedAssetData"
       [tableStyle]="{ 'min-width': '20rem' }"
@@ -52,11 +51,9 @@
           <td *ngIf="formattedAssetData.variationPreviousDay > 0; else noData">
             {{ formattedAssetData.variationComparedToFirstDay | percent }}
           </td>
-
           <ng-template #noData> <td>-</td></ng-template>
         </tr>
       </ng-template>
     </p-table>
   </div>
 </body>
-<footer></footer>

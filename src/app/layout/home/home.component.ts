@@ -51,29 +51,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       asset: new FormControl(null, Validators.required),
     });
   }
-  convertTimeStampToDate(timeStamp?: string): any {
-    const unix_timestamp = 1696896000;
-
-    // Create a new JavaScript Date object based on the timestamp
-    // multiplied by 1000 so that the argument is in milliseconds, not seconds
-    const date = new Date(unix_timestamp * 1000);
-    this.chartData = date;
-    // // Hours part from the timestamp
-    // var hours = date.getHours();
-    // var day = date.getDate();
-    // // Minutes part from the timestamp
-    // var minutes = '0' + date.getMinutes();
-
-    // // Seconds part from the timestamp
-    // var seconds = '0' + date.getSeconds();
-
-    // // Will display time in 10:30:23 format
-    // var formattedTime =
-    //   hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-    console.log(date);
-  }
-
   submit(): void {
     this.formattedAssetData = [];
     const formData = this.assetForm.get('asset')?.value;
@@ -103,13 +80,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     assetValuesArray: number[]
   ) {
     assetDatesArray.forEach((assetDate, index) => {
-      var date = new Date(assetDate * 1000);
       // Hours part from the timestamp
+      var date = new Date(assetDate * 1000);
       var hours = date.getHours();
       const assetValueInTheFirstDay = assetValuesArray[0];
       const assetCurrentValue = assetValuesArray[index];
 
-      const obj = {
+      const tableObject = {
         day: index + 1,
         date: assetDate,
         value: assetCurrentValue,
@@ -117,11 +94,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         variationComparedToFirstDay:
           assetCurrentValue - assetValueInTheFirstDay,
       };
-      this.valuePreviousDay = obj.value;
-      console.log(this.valuePreviousDay, obj.variationPreviousDay);
-
-      this.formattedAssetData.push(obj);
-      // console.log(this.formattedAssetData);
+      this.valuePreviousDay = tableObject.value;
+      this.formattedAssetData.push(tableObject);
     });
   }
 
@@ -134,12 +108,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
     this.data = {
-      // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       labels: assetDatesArray,
       datasets: [
         {
           label: 'First Dataset',
-          // data: [65, 59, 80, 81, 56, 55, 40],
           data: assetValuesArray,
           fill: false,
           borderColor: documentStyle.getPropertyValue('--blue-500'),
@@ -148,9 +120,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       ],
     };
   }
-
-  //data do pregão (chart.result.timestamp)
-  // valor de abertura (chart.result.indicators.quote.open)
 
   ngOnDestroy(): void {
     this.subs.map((item) => item.unsubscribe);

@@ -1,3 +1,11 @@
+export interface FormattedAssetData {
+  day?: number;
+  date: string | number;
+  value: any | number;
+  variationPreviousDay?: string | number;
+  variationComparedToFirstDay?: string | number;
+}
+
 export interface AssetChart {
   chart: Chart;
 }
@@ -77,6 +85,6 @@ export interface Quote {
   volume: number | undefined[];
   low: number | undefined[];
   high: number | undefined[];
-  open: number | undefined[];
+  open: number[];
   close: number | undefined[];
 }

@@ -12,8 +12,7 @@ import { ChartModule } from 'primeng/chart';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { Subscription } from 'rxjs';
-import { ChartComponent } from '../chart/chart.component';
-import { FormattedAssetData } from '../chart/models/chart.models';
+import { FormattedAssetData } from '../../shared/models/chart.models';
 import { HomeService } from './services/home.service';
 
 @Component({
@@ -23,21 +22,33 @@ import { HomeService } from './services/home.service';
     ButtonModule,
     TableModule,
     ReactiveFormsModule,
-    ChartComponent,
     CommonModule,
     ChartModule,
   ],
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: [],
+  styles: [
+    `
+      body {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin: 2rem;
+      }
+      .card {
+        width: 50rem;
+      }
+    `,
+  ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
   assetForm!: FormGroup;
   private subs: Subscription[] = [];
-  public chartData: any;
   public formattedAssetData: FormattedAssetData[] = [];
+  public formattedDateArray: string[] = [];
+  public formattedCurrencyArray: number[] = [];
   public valuePreviousDay!: number;
   data: any;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly homeService: HomeService
@@ -48,11 +59,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   creatForm(): void {
     this.assetForm = this.fb.group({
-      asset: new FormControl(null, Validators.required),
+      asset: new FormControl('btc-usd', Validators.required),
     });
   }
   submit(): void {
     this.formattedAssetData = [];
+    this.formattedDateArray = [];
+    this.formattedCurrencyArray = [];
     const formData = this.assetForm.get('asset')?.value;
     this.getBankAssetChart(formData);
   }
@@ -61,13 +74,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subs.push(
       this.homeService.getAssetData(asset).subscribe({
         next: (response) => {
-          this.chartData = response;
-          const assetDatesArray = response[0].timestamp;
-          const assetValuesArray = response[0].indicators.quote[0].open;
-          this.chartConfig(assetDatesArray, assetValuesArray);
+          const assetDatesArray = response.timestamp;
+          const assetValuesArray = response.indicators.quote[0].open;
+          const assetSymbol = response.meta.symbol;
           this.formatAssetDataAccordingToTable(
             assetDatesArray,
-            assetValuesArray
+            assetValuesArray,
+            assetSymbol
           );
         },
         error: () => {},
@@ -75,16 +88,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       })
     );
   }
+
   formatAssetDataAccordingToTable(
     assetDatesArray: number[],
-    assetValuesArray: number[]
+    assetValuesArray: number[],
+    assetSymbol: string
   ) {
     assetDatesArray.forEach((assetDate, index) => {
-      // Hours part from the timestamp
-      var date = new Date(assetDate * 1000);
-      var hours = date.getHours();
       const assetValueInTheFirstDay = assetValuesArray[0];
       const assetCurrentValue = assetValuesArray[index];
+
+      this.formatAssetDateAccordingToChartAndPopulateCurrencyArray(
+        assetDate,
+        assetCurrentValue,
+        assetSymbol
+      );
 
       const tableObject = {
         day: index + 1,
@@ -99,20 +117,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  chartConfig(assetDatesArray: number[], assetValuesArray: number[]) {
+  formatAssetDateAccordingToChartAndPopulateCurrencyArray(
+    assetDate: number,
+    assetCurrentValue: number,
+    symbol: string
+  ) {
+    const date = new Date(assetDate * 1000);
+    const handleMonth = String(date.getUTCMonth()).padStart(2, '0');
+    const handleDay = String(date.getUTCDay()).padStart(2, '0');
+    const formattedDate =
+      handleDay + '/' + handleMonth + '/' + date.getUTCFullYear();
+    this.formattedDateArray.push(formattedDate);
+
+    this.formattedCurrencyArray.push(assetCurrentValue);
+    this.chartConfig(this.formattedDateArray, symbol);
+  }
+
+  chartConfig(assetDatesArray: string[], symbol: string) {
     const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue(
-      '--text-color-secondary'
-    );
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
     this.data = {
       labels: assetDatesArray,
       datasets: [
         {
-          label: 'First Dataset',
-          data: assetValuesArray,
+          label: `Ativo: ${symbol}`,
+          data: this.formattedCurrencyArray,
           fill: false,
           borderColor: documentStyle.getPropertyValue('--blue-500'),
           tension: 0.4,

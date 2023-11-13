@@ -13,8 +13,6 @@
         [disabled]="!assetForm.valid"
         (onClick)="submit()"
       ></p-button>
-      <!-- <div class="card flex justify-content-center">
-        </div> -->
     </div>
   </form>
 </header>
@@ -27,31 +25,38 @@
   <div class="card">
     <p-table
       [value]="formattedAssetData"
-      [columns]
-      [tableStyle]="{ 'min-width': '50rem' }"
+      [tableStyle]="{ 'min-width': '20rem' }"
     >
       <ng-template pTemplate="header">
-        <tr>
+        <tr *ngIf="formattedAssetData.length > 0; else noTableItemsFound">
           <th>Dia</th>
           <th>Data</th>
           <th>Valor</th>
           <th>Variação em relação a D-1</th>
           <th>Variação em relação a primeira data</th>
         </tr>
+        <ng-template #noTableItemsFound>
+          <tr>
+            <td>Não foram encontrados dados.</td>
+          </tr>
+        </ng-template>
       </ng-template>
       <ng-template pTemplate="body" let-formattedAssetData>
         <tr>
           <td>{{ formattedAssetData.day }}</td>
-          <td>{{ formattedAssetData.date | date }}</td>
-          <td>{{ formattedAssetData.value | currency }}</td>
-          <td>{{ formattedAssetData.variationPreviousDay | percent }}</td>
-          <td>
+          <td>{{ formattedAssetData.date | date : "dd/MM/yyyy" }}</td>
+          <td>{{ formattedAssetData.value | currency : "BRL" }}</td>
+          <td *ngIf="formattedAssetData.variationPreviousDay > 0; else noData">
+            {{ formattedAssetData.variationPreviousDay | percent }}
+          </td>
+          <td *ngIf="formattedAssetData.variationPreviousDay > 0; else noData">
             {{ formattedAssetData.variationComparedToFirstDay | percent }}
           </td>
+
+          <ng-template #noData> <td>-</td></ng-template>
         </tr>
       </ng-template>
     </p-table>
   </div>
-  <!-- <app-chart [assetChart]="chartData"></app-chart> -->
 </body>
 <footer></footer>

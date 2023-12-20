@@ -51,8 +51,11 @@ Estruture um backlog para o desenvolvimento do aplicativo, considerando as segui
 6. **Tratamento de Erros e Mensagens:**
    - Incluir funcionalidades que tratem possíveis erros na consulta de ativo e forneçam mensagens claras ao usuário.
 
+### Sobre a entrega
+:heavy_exclamation_mark: Use sua criatividade para estruturar sua solução. 
+
 **Formato de Entrega:**
-Apresente seu backlog em formato de lista, priorizando as funcionalidades e incluindo breves descrições e critérios de aceitação para cada uma.
+Apresente seu backlog em formato de lista, priorizando as funcionalidades e incluindo breves descrições e critérios de aceitação para cada uma. O backlog deverá ser disponibilizado em arquivo PDF.
 
 **Prazo de Entrega:**
 Você terá uma semana a partir de hoje para concluir o desafio.

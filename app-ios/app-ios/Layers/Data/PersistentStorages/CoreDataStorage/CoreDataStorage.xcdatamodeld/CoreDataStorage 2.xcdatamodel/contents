@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SymbolQueryEntity" representedClassName="SymbolQueryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="query" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SymbolResponseEntity" representedClassName="SymbolResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="longname" optional="YES" attributeType="String"/>
+        <attribute name="symbol" optional="YES" attributeType="String"/>
+        <relationship name="symbolsResponse" maxCount="1" deletionRule="Nullify" destinationEntity="SymbolsResponseEntity" inverseName="symbols" inverseEntity="SymbolsResponseEntity"/>
+    </entity>
+    <entity name="SymbolsRequestEntity" representedClassName="SymbolsRequestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="query" optional="YES" attributeType="String"/>
+        <relationship name="response" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SymbolsResponseEntity" inverseName="request" inverseEntity="SymbolsResponseEntity"/>
+    </entity>
+    <entity name="SymbolsResponseEntity" representedClassName="SymbolsResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalPages" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SymbolsRequestEntity" inverseName="response" inverseEntity="SymbolsRequestEntity"/>
+        <relationship name="symbols" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SymbolResponseEntity" inverseName="symbolsResponse" inverseEntity="SymbolResponseEntity"/>
+    </entity>
+</model>

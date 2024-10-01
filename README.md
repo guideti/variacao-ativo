@@ -1,8 +1,11 @@
-# Variação do Ativo
+# Prova Técnica: Variação de Ativo Usando Backend em .NET ou Ruby on Rails e Frontend em Angular ou JavaScript ou Mobile Flutter
 
-**(Leia até o final)**
+## Desafio
+Este desafio consiste em criar uma aplicação fullstack que consulte a variação de preço de um ativo financeiro nos últimos 30 pregões. Você deve consumir os dados da [API do Yahoo Finance](https://finance.yahoo.com/) e exibir as variações de preço. A aplicação deve ser composta por:
 
-Este desafio consiste em consultar a variação do preço de um ativo a sua escolha nos últimos 30 pregões. Você deverá apresentar o percentual de variação de preço de um dia para o outro e o percentual desde o primeiro pregão apresentado.
+- Um backend implementado em .NET Core ou Ruby on Rails.
+- Um frontend implementado em Angular ou JavaScript puro.
+- Opcional: um aplicativo mobile em Flutter.
 
 | Dia   | Data          |  Valor    | Variação em relaçào a D-1     | Variação em relação a primeira data
 |-      | -             | -         | -                             | - 
@@ -11,56 +14,94 @@ Este desafio consiste em consultar a variação do preço de um ativo a sua esco
 |4      |  03/01/2021   |  R$ 1,05  | -4,54%                        | 5%
 |5      |  04/01/2021   |  R$ 1,90  | 80,95%                        | 90%
 
-Para este desafio, iremos utilizar a API do Yahoo Finance https://finance.yahoo.com/ 
+## Objetivos
 
-Como sistemas de backend implementar a solução em **.NET Core ou Ruby**. Para mobile, utilizar **linguagens nativas e flutter**.
+### 1. **Backend (em .NET ou Ruby on Rails)**:
+   - Implementar um serviço que consulte a API do Yahoo Finance e obtenha o preço de um ativo (exemplo: PETR4).
+   - Armazenar os dados obtidos (preço de abertura dos últimos 30 pregões) em uma base de dados à sua escolha.
+   - Implementar uma API REST que retorne os dados dos últimos 30 pregões, incluindo:
+     - A variação percentual do preço de um dia para o outro.
+     - A variação percentual em relação ao primeiro pregão.
+   - **Pontos adicionais**: incluir testes unitários e usar padrões de projeto adequados.
+   
+### 2. **Frontend (em Angular ou JavaScript)**:
+   - Criar uma página que consuma a API implementada no backend.
+   - Exibir os dados dos últimos 30 pregões em uma tabela, incluindo as variações calculadas.
+   - Incluir um gráfico que mostre a evolução do preço ao longo dos 30 pregões.
+   - O gráfico deve ser interativo e responsivo, apresentando visualmente a variação percentual.
+   
+### 3. **Mobile (em Flutter)**:
+   - Implementar um aplicativo mobile que consulte diretamente a API do Yahoo Finance para obter os preços de um ativo (exemplo: PETR4).
+   - Exibir os preços dos últimos 30 pregões em uma lista, incluindo a variação percentual entre os pregões.
+   - Incluir um gráfico em Flutter que mostre a variação do preço do ativo ao longo dos 30 pregões.
+   - Implementar a possibilidade de consultar múltiplos ativos no aplicativo.
+   - **Pontos adicionais**: implementar gráficos interativos com animações e exibir notificações sobre grandes variações de preço.
 
-## Backend
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Armazenar as informações em uma base de dados a sua escolha.
-3. Implementar uma API que consulte as informações na sua base de dados, retorne o valor do ativo nos últimos 30 pregões e apresente a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-4. Disponibilizar seu código aqui no Github
+## Requisitos Técnicos
+- **Backend**:
+  - Utilize .NET Core ou Ruby on Rails para implementar a API.
+  - A API deve ser documentada e exposta via Swagger (ou equivalente).
+  - Utilize qualquer banco de dados (relacional ou NoSQL) para persistência.
+  - O código do backend deve estar disponível em um repositório público no GitHub.
 
-## Web
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Implementar uma página em Angular que apresente o valor do ativo nos últimos 30 pregões e mostre a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-3. Inclua um gráfico apresentando o resultado da variação.
-4. Disponibilizar seu código aqui no Github
+- **Frontend**:
+  - Utilize Angular ou JavaScript puro para desenvolver a página web.
+  - A página deve ser responsiva e funcional em dispositivos móveis.
+  - O código do frontend deve estar disponível em um repositório público no GitHub.
 
-## Fullstack
-1. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-2. Armazenar as informações em uma base de dados a sua escolha.
-3. Implementar uma API que consulte as informações na sua base de dados, retorne o valor do ativo nos últimos 30 pregões e apresente a variação do preço no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-4. Implementar uma página em Angular que consulte a sua API e apresente o valor do ativo nos últimos 30 pregões e mostre a variação do preço no período.
-5. Inclua um gráfico apresentando o resultado da variação.
-6. Disponibilizar seu código aqui no Github
+- **Mobile**:
+  - Utilize Flutter para implementar o aplicativo mobile.
+  - O aplicativo deve bater diretamente na API do Yahoo Finance e exibir a variação do preço em tempo real.
+  - O código do aplicativo deve estar disponível em um repositório público no GitHub.
 
-## Mobile
-1. Implementar o core da aplicação a talea inicial em linguagem nativa.
-2. Para implementações android, considerar Java.
-3. Para implementações iOS, considerar UIKit.
-4. Consultar o preço do ativo na API do Yahoo Finance (este é um exemplo da consulta do ativo PETR4 https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA)
-5. Implementar uma tela em flutter que apresente a variação do preço do ativo nos últimos 30 pregões e mostre a rentabilidade no período. Você deverá considerar o valor de abertura (*chart.result.indicators.quote.open*)
-6. Inclua um gráfico em linguagem nativa ou flutter apresentando o resultado da variação.
-7. Disponibilizar seu app junto com seu código aqui no Github
+## Exemplos de Consulta de API do Yahoo Finance:
+- API de consulta para PETR4: `https://query2.finance.yahoo.com/v8/finance/chart/PETR4.SA`
+- Os valores de abertura podem ser extraídos de `chart.result.indicators.quote.open`, e as datas dos pregões de `chart.result.timestamp`.
 
-Você pode ainda montar a parte de Backend deste desafio e consumir sua própria API para acessar a API do Yahoo Finance. Fica a sua escolha. :smirk:
+## Avaliação
+A solução será avaliada com base nos seguintes critérios:
+- Correção do código e funcionalidade completa.
+- Organização, estrutura e padrões de código.
+- Criatividade e proatividade no desenvolvimento.
+- Testes unitários e documentação.
+- Qualidade do frontend (design, usabilidade e performance).
+- Qualidade do aplicativo mobile (design, experiência do usuário e performance).
 
-## Sobre a avaliação
-:bangbang: :bangbang:  Utilize os recursos disponíveis na linguagem que você está se candidatando:
-* Padrões de projetos 
-* Arquiteturas
-* Testes unitários
-* Configuração de deploy
+## Pontos Extras:
 
-Seja criativo. Esperamos proatividade no desenvolvimento da solução. Tudo isso será levado em consideração na avaliação da sua prova, assim como a disponibilização do seu código fonte e o tempo necessário para a realização da prova.
+- **Consulta de Múltiplos Ativos**:
+  - Implementar a funcionalidade para o usuário selecionar e consultar a variação de múltiplos ativos simultaneamente.
+  - Exibir comparações lado a lado das variações de preços entre diferentes ativos.
 
-## Importante
-### Sobre a API
-Os valores estrão estruturados em vetores, desta forma, você precisará casar a data do pregão (*chart.result.timestamp*) com o valor de abertura (*chart.result.indicators.quote.open*) através do indice do vetor.
+- **Gráficos Avançados**:
+  - Utilizar bibliotecas avançadas de gráficos (como Chart.js, D3.js ou similar) para criar visualizações mais complexas, como gráficos de velas (candlestick) ou gráficos interativos com zoom e tooltip detalhados.
 
-### Sobre a entrega
-:heavy_exclamation_mark: Use sua criatividade para estruturar sua solução. Importante manter uma documentação clara de como deveremos proceder para executar sua aplicação (__crie um arquivo MD e inclua no seu repositório__), sendo assim, importante disponibilizar os scripts de banco de dados e demais recursos utilizados e como utilizá-los. :heavy_exclamation_mark: 
+- **Análises Estatísticas**:
+  - Implementar análises adicionais, como média móvel, volatilidade ou outras métricas financeiras com base nos preços dos ativos.
+  - Exibir essas informações no frontend como complementos aos gráficos.
 
-#### ATENÇÃO
-:heavy_exclamation_mark: Seu código deverá ser disponibilizado em um repositório no Github
+- **Filtro de Datas Personalizado**:
+  - Permitir que o usuário escolha um intervalo de datas personalizado para consultar a variação do ativo, além dos últimos 30 pregões.
+
+- **Sistema de Notificações**:
+  - Implementar notificações (via e-mail ou no próprio frontend/mobile) para alertar o usuário sobre variações críticas de preço ou mudanças significativas em um ativo.
+
+- **Funcionalidades de Exportação**:
+  - Adicionar uma opção para exportar os dados exibidos (preços e variações) em formatos como CSV ou PDF.
+
+- **Autenticação e Autorização**:
+  - Implementar um sistema básico de autenticação de usuários e permitir que cada usuário salve seus ativos favoritos para consulta rápida.
+
+- **Desempenho e Cache**:
+  - Implementar cache de consultas no backend para evitar múltiplas requisições à API externa e melhorar o desempenho da aplicação.
+
+- **Testes Automatizados**:
+  - Implementar testes automatizados de integração e end-to-end (E2E) para garantir a qualidade do sistema.
+
+## Entrega
+- Disponibilize o código em um repositório no GitHub, incluindo:
+  - Um arquivo `README.md` explicando como configurar e executar o projeto.
+  - Scripts de configuração do banco de dados e instruções detalhadas sobre como rodar a aplicação.
+  - Se for o caso de desenvolvimento mobile, incluir instruções detalhadas para execução do app.
+
+Boa sorte e mostre sua criatividade e habilidades!

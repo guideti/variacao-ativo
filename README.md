@@ -1,4 +1,4 @@
-# Prova Técnica: Variação de Ativo Usando Backend em .NET ou Ruby on Rails e Frontend em Angular ou JavaScript ou Mobile Flutter
+# Prova Técnica: Variação de Ativo Usando Backend em .NET ou Ruby on Rails, Frontend em Angular ou JavaScript e Mobile Flutter
 
 ## Desafio
 Este desafio consiste em criar uma aplicação fullstack que consulte a variação de preço de um ativo financeiro nos últimos 30 pregões. Você deve consumir os dados da [API do Yahoo Finance](https://finance.yahoo.com/) e exibir as variações de preço. A aplicação deve ser composta por:

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.5.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Variacao.Ativo.Domain\Variacao.Ativo.Domain.csproj" />
+    <ProjectReference Include="..\Variacao.Ativo.Infra.Data\Variacao.Ativo.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

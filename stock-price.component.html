@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Yahoo Finance Chart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  </head>
+  <body ng-app="app">
+    <div ng-controller="YahooChartController">
+      <h1>Yahoo Finance Chart</h1>
+      <p>Valor do ativo nos últimos 30 pregões:</p>
+      <table>
+        <tr>
+          <th>Data</th>
+          <th>Valor de Abertura</th>
+          <th>Valor de Fechamento</th>
+          <th>Variação do Preço</th>
+        </tr>
+        <tr ng-repeat="data in chartData">
+          <td>{{data.date}}</td>
+          <td>{{data.open}}</td>
+          <td>{{data.close}}</td>
+          <td>{{data.change}}</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      var app = angular.module('app', []);
+      app.controller('YahooChartController', function($scope, $http) {
+        $http.get('https://query1.finance.yahoo.com/v7/finance/chart/PETR4.SA?range=1d&interval=1d').then(function(response) {
+          $scope.chartData = [];
+          var chartData = response.data.chart.result[0].indicators.quote;
+          for (var i = 0; i < chartData.length; i++) {
+            $scope.chartData.push({
+              date: response.data.chart.result[0].timestamp[i],
+              open: chartData[i].open[0],
+              close: chartData[i].close[0],
+              change: chartData[i].close[0] - chartData[i].open[0]
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
